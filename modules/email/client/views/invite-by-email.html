@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--- This is a rough draft of the skeleton code for the webapp. This is the background that will be constant across all views for the webapp. -->
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>EvaluMate</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Slab">
+</head>
+<body>
+  <div id = "main-nav">
+    <div id = "navbar">
+      <!--- Insert the LovED logo image here. This will be located on the far left, and the rest of the navigation bar will be shifted to the far right. -->
+      <!---<img class="logo-img" src="loved.png" ALT="align box" ALIGN=CENTER>-->
+      <ul >
+        <li><a ui-sref = "user.profile" class = "smoothScroll"> Emotional Triggers </a> </li>
+        <li><a ui-sref = "user.game" class = "smoothScroll"> Game </a>  </li>
+        <li><a ui-sref = "user.quiz" class = "smoothScroll"> Quiz Assessment </a> </li>
+         <li><a ui-sref = "user.trigger" class = "smoothScroll"> Invite Friends </a>  </li>
+        <li><a ui-sref = "user.invite" class = "smoothScroll"> Profile </a> </li>
+      </ul>
+    </div>
+  </div>
+	<div id = "invite prompt" ng-controller="EmailController">
+		<h1> Pick three friends and put their email in the boxes so they can rate you! </h1>
+		<div class="jumbotron">
+		 		<h2>Email 1</h2>
+		 		<form id="reset" name="Email 1">
+		 		<input id="tag0" type="text" size="40" placeholder="username@email.com" required="">
+				<h2>Email 2</h2>
+		 		<input id="tag1" type="text" size="40" placeholder="username@email.com" required="">
+				<h2>Email 3</h2>
+				<input id="tag2" type="text" size="40" placeholder="username@email.com" required="">
+	</div>
+	<div class = "send button"><input  type="submit" value="Send the emails!" ng-click="clicked()">
+	</div>
+</body>
+
+<!--- This is the footer. Will update when necessary information is provided -->
+<!---<footer>
+  <div id = "foot">
+    <h4 align="center"> CEN3031 Project </h4>
+  </div>
+</footer>-->
+</html>
