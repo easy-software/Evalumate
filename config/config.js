@@ -9,6 +9,13 @@ var _ = require('lodash'),
   fs = require('fs'),
   path = require('path');
 
+  
+  module.exports = {
+  db: {
+    uri: 'mongodb://kolos2:kolos2@ds129374.mlab.com:29374/kolos',
+  }
+};
+
 /**
  * Get files by glob patterns
  */
