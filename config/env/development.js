@@ -6,7 +6,7 @@ module.exports = {
   db: {
     //<dbuser>:<dbpassword>@ds161194.mlab.com:61194/loveddb
     //uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean-dev',
-    uri:process.env.MONGODB_URI || process.env.PROD_MONGODB,
+    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://stanley:celestin@ds161194.mlab.com:61194/loveddb',
     options: {
       user: '',
       pass: ''

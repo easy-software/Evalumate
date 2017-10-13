@@ -9,7 +9,7 @@ module.exports = {
   port: process.env.PORT || 8443,
   db: {
     // env vars
-    uri: uri:process.env.MONGODB_URI || process.env.PROD_MONGODB,
+    uri: process.env.MONGODB_URI || process.env.PROD_MONGODB,
     options: {
       user: '',
       pass: ''
