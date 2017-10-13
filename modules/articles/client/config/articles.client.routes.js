@@ -7,7 +7,7 @@ angular.module('articles').config(['$stateProvider',
     $stateProvider
       .state('articles', {
         abstract: true,
-        url: '/blog',
+        url: '/journal',
         template: '<ui-view/>'
       })
       .state('articles.list', {
