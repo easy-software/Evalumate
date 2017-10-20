@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Ways2grows</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="ways2grow in vm.ways2grows"
+       ui-sref="ways2grows.view({ ways2growId: ways2grow._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="ways2grow.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="ways2grow.user" ng-bind="ways2grow.user.displayName"></span>
+        <span ng-if="!ways2grow.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="ways2grow.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.ways2grows.$resolved && !vm.ways2grows.length">
+    No Ways2grows yet, why don't you <a ui-sref="ways2grows.create">create one</a>?
+  </div>
+</section>

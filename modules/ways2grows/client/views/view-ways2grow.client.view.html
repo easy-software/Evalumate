@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h1 ng-bind="vm.ways2grow.name"></h1>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.ways2grow.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="ways2grows.edit({ ways2growId: vm.ways2grow._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.ways2grow.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.ways2grow.user"
+            ng-bind="vm.ways2grow.user.displayName"></span>
+      <span ng-if="!vm.ways2grow.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.ways2grow.content"></p>
+</section>

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('emas')
+    .module('ways2grows')
     .run(menuConfig);
 
   menuConfig.$inject = ['Menus'];
@@ -10,22 +10,22 @@
   function menuConfig(menuService) {
     // Set top bar menu items
     menuService.addMenuItem('topbar', {
-      title: 'Assessments',
-      state: 'emas',
+      title: 'Ways2grow',
+      state: 'ways2grows',
       type: 'dropdown',
       roles: ['*']
     });
 
     // Add the dropdown list item
-    menuService.addSubMenuItem('topbar', 'emas', {
-      title: 'Emotional Maturity',
-      state: 'emas.list'
+    menuService.addSubMenuItem('topbar', 'ways2grows', {
+      title: 'List Ways2grows',
+      state: 'ways2grows.list'
     });
 
     // Add the dropdown create item
-    menuService.addSubMenuItem('topbar', 'emas', {
-      title: 'Romantic Attraction',
-      state: 'emas.create',
+    menuService.addSubMenuItem('topbar', 'ways2grows', {
+      title: 'Create Ways2grow',
+      state: 'ways2grows.create',
       roles: ['user']
     });
   }
