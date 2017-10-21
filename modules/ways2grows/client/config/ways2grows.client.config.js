@@ -13,7 +13,7 @@
       title: 'Ways2grow',
       state: 'ways2grows',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['user']
     });
 
     // Add the dropdown list item

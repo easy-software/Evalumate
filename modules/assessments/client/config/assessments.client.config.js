@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('profiles')
+    .module('assessments')
     .run(menuConfig);
 
   menuConfig.$inject = ['Menus'];
@@ -10,22 +10,22 @@
   function menuConfig(menuService) {
     // Set top bar menu items
     menuService.addMenuItem('topbar', {
-      title: 'Profile',
-      state: 'profiles',
+      title: 'Assessments',
+      state: 'assessments',
       type: 'dropdown',
       roles: ['user']
     });
 
     // Add the dropdown list item
-    menuService.addSubMenuItem('topbar', 'profiles', {
-      title: 'List Profiles',
-      state: 'profiles.list'
+    menuService.addSubMenuItem('topbar', 'assessments', {
+      title: 'Emotional Maturity',
+      state: 'assessments.list'
     });
 
     // Add the dropdown create item
-    menuService.addSubMenuItem('topbar', 'profiles', {
-      title: 'Create Profile',
-      state: 'profiles.create',
+    menuService.addSubMenuItem('topbar', 'assessments', {
+      title: 'Romantic Attraction',
+      state: 'assessments.create',
       roles: ['user']
     });
   }
