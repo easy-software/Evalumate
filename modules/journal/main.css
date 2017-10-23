@@ -8,11 +8,20 @@ body {
 	font-family: 'Josefin Slab', sans-serif;
 	color: #3b3b3b;
 	overflow-x: hidden;
+
+
+
+  margin: auto;
 }
+
+
 #main-nav {
 	/*width: 100%;*/
 	background-color: #3b3b3b;
 }
+
+
+
 .img-circle {
     border-radius: 50%;
 }
@@ -356,6 +365,24 @@ i.fa.fa-file:hover{
 	margin-bottom:20px;
 }
 
+
+#content{
+    height:200px;
+    font-size:14pt;
+
+
+}
+#tableContent{
+	white-space: nowrap;
+	 overflow: hidden;
+	 text-overflow: ellipsis;
+	 max-width: 75ch;
+}
+
+#redtext{
+	color:#b4292e;
+}
+
 #tipper{
 	background: url('/Users/prakash/Documents/Website/clip-0.png');
 	background-position: center;
@@ -423,3 +450,5 @@ i.fa.fa-file:hover{
     display: flex;
     list-style-type: none;
     justify-content: space-between;
+
+}
