@@ -14,9 +14,9 @@
         url: '/assessments',
         template: '<ui-view/>'
       })
-      .state('assessments.list', {
+      .state('assessments.emotional-maturity', {
         url: '',
-        templateUrl: 'modules/assessments/client/views/list-assessments.client.view.html',
+        templateUrl: 'modules/assessments/client/views/emotional-maturity-assessment.client.view.html',
         controller: 'AssessmentsListController',
         controllerAs: 'vm',
         data: {
