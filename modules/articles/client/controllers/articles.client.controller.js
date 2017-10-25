@@ -46,7 +46,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$window'
         }
       } else {
         $scope.article.$remove(function () {
-          $location.path('articles');
+          $location.path('journal'); //this works
         });
       }
     };
@@ -64,7 +64,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$window'
       var article = $scope.article;
 
       article.$update(function () {
-        $location.path('articles/' + article._id);
+        $location.path('journal/' + article._id);
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
