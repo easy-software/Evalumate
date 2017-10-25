@@ -1,8 +1,8 @@
 'use strict';
 
 // Articles controller
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles',
-  function ($scope, $stateParams, $location, Authentication, Articles) {
+angular.module('articles').controller('ArticlesController', ['$scope', '$window', '$stateParams', '$location', 'Authentication', 'Articles',
+  function ($scope, $window, $stateParams, $location, Authentication, Articles) {
     $scope.authentication = Authentication;
 
     // Create new Article
@@ -23,11 +23,12 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 
       // Redirect after save
       article.$save(function (response) {
-        $location.path('articles/' + response._id);
+        //$location.path('articles/' + response._id);
 
         // Clear form fields
         $scope.title = '';
         $scope.content = '';
+        $window.location.reload();
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -45,7 +46,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
         }
       } else {
         $scope.article.$remove(function () {
-          $location.path('articles');
+          $location.path('journal'); //this works
         });
       }
     };
@@ -63,7 +64,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
       var article = $scope.article;
 
       article.$update(function () {
-        $location.path('articles/' + article._id);
+        $location.path('journal/' + article._id);
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--- This is a rough draft of the skeleton code for the webapp. This is the background that will be constant across all views for the webapp. -->
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>EvaluMate</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Slab">
+  <style>
+    .redtext{color:red;}
+    </style>
+
+
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel = "stylesheet" type="text/css" href="main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+  <div id = "main-nav">
+    <div id = "navbar">
+      <!--- Insert the LovED logo image here. This will be located on the far left, and the rest of the navigation bar will be shifted to the far right. -->
+      <!---<img class="logo-img" src="loved.png" ALT="align box" ALIGN=CENTER>-->
+      <ul >
+        <li><a ui-sref = "user.profile" class = "smoothScroll"> Emotional Triggers </a> </li>
+        <li><a ui-sref = "user.game" class = "smoothScroll"> Game </a>  </li>
+        <li><a ui-sref = "user.quiz" class = "smoothScroll"> Quiz Assessment </a> </li>
+         <li><a ui-sref = "user.trigger" class = "smoothScroll"> Invite Friends </a>  </li>
+        <li><a ui-sref = "user.invite" class = "smoothScroll"> Profile </a> </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+<div>
+  <head>
+
+  </head>
+  <body ng-app="journal">
+    <div class="container">
+      <div >
+        <h1 class = "text-center col-md-4 col-md-offset-4 redtext">Journal</h1>
+      </div>
+      <div class="form-group" ng-controller="JournalsController">
+        <div class="text-center col-md-4 col-md-offset-4">
+          <div class="tableWrapper"  >
+            <table class="table table-striped table-hover" >
+              <tr>
+                <th>Title</th>
+                <th >Content</th>
+                <th></th>
+              </tr>
+              <tr ng-repeat ="listing in listings | filter:searchText">
+
+                <td>
+
+                  <button class = "btn btn-default" data-toggle="modal" data-target ="#mymodal" ng-click = "showDetails($index)">
+                    {{listing.title}}
+                  </button>
+
+                  <div class = "modal fade" id="mymodal">
+                    <div class = "modal-dialog">
+                      <div class = "modal-content">
+                        <div class = "modal-header">
+                          <h3>{{detailedInfo.title}}</h3>
+                          <div class = "modal-body">
+                            <p>{{detailedInfo.content}} </p>
+                          <div class = "modal-footer">
+                            <button class = "btn btn-default" data-dismiss ="modal">Close</button>
+                          </div>
+                          </div>
+                          </div>
+                    </div>
+                  </div>
+                  </div>
+                </td>
+                <td id = tableContent>{{listing.content}}</td>
+
+                <td class="glyphicon glyphicon-trash" ng-click = "deleteListing($index)"></td>
+              </tr>
+            </table>
+          </div>
+            <br>
+            <form>
+              <h1 class = "redtext">Add your Entry!</h1>
+             Title<input type="text" class = "form-control" ng-model ="x.title">
+             <br>
+             <br>
+             Content <textarea name="content" ng-model="x.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+             <br>
+              <button class = "btn btn-primary" ng-click ="addListing()">
+                Add
+              </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="controller.js"></script>
+
+
+  </body>
+</div>
+</div>

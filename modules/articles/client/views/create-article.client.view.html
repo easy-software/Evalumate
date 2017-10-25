@@ -1,6 +1,40 @@
+<!DOCTYPE html>
+<!--- This is a rough draft of the skeleton code for the webapp. This is the background that will be constant across all views for the webapp. -->
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>EvaluMate</title>
+<link rel="stylesheet" type="text/css" href="modules/articles/client/views/styles.css">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Slab">
+</head>
+<body>
+  <div id = "main-nav">
+    <div id = "navbar">
+      <!--- Insert the LovED logo image here. This will be located on the far left, and the rest of the navigation bar will be shifted to the far right. -->
+      <!---<img class="logo-img" src="loved.png" ALT="align box" ALIGN=CENTER>-->
+      <ul >
+        <li><a ui-sref = "user.profile" class = "smoothScroll"> Emotional Triggers </a> </li>
+        <li><a ui-sref = "user.game" class = "smoothScroll"> Game </a>  </li>
+        <li><a ui-sref = "user.quiz" class = "smoothScroll"> Quiz Assessment </a> </li>
+         <li><a ui-sref = "user.trigger" class = "smoothScroll"> Invite Friends </a>  </li>
+        <li><a ui-sref = "user.invite" class = "smoothScroll"> Profile </a> </li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
+<!--- This is the footer. Will update when necessary information is provided -->
+<!---<footer>
+  <div id = "foot">
+    <h4 align="center"> CEN3031 Project </h4>
+  </div>
+</footer>-->
+
+
+
 <section ng-controller="ArticlesController">
   <div class="page-header">
-    <h1>New Article</h1>
+    <h1>New Journal</h1>
   </div>
   <div class="col-md-12">
     <form name="articleForm" class="form-horizontal" ng-submit="create(articleForm.$valid)" novalidate>
@@ -9,7 +43,7 @@
           <label for="title">Title</label>
           <input name="title" type="text" ng-model="title" id="title" class="form-control" placeholder="Title" required>
           <div ng-messages="articleForm.title.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Article title is required.</p>
+            <p class="help-block error-text" ng-message="required">Journal title is required.</p>
           </div>
         </div>
         <div class="form-group">
@@ -24,5 +58,26 @@
         </div>
       </fieldset>
     </form>
+  </div>
+</section>
+
+<section ng-controller="ArticlesController" ng-init="find()">
+  <div class="page-header">
+    <h1>Posted Journals</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="article.created | date:'mediumDate'"></span>
+        by
+        <span ng-bind="article.user.displayName"></span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="article.title"></h4>
+      <p class="list-group-item-text" ng-bind="article.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="articles.$resolved && !articles.length">
+    No journal entries yet, why don't you <a ui-sref="articles.create">create one</a>?
   </div>
 </section>
