@@ -60,7 +60,14 @@
         data: {
           pageTitle: 'Assessment {{ assessmentResolve.name }}'
         }
-      });
+      })
+      .state('scores', {
+      url: '/scores',
+      templateUrl: 'modules/assessments/client/views/see-your-scores.html',
+      data: {
+        ignoreState: true
+      }
+    });
   }
 
   getAssessment.$inject = ['$stateParams', 'AssessmentsService'];

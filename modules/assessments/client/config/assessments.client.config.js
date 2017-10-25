@@ -24,9 +24,10 @@
 
     // Add the dropdown create item
     menuService.addSubMenuItem('topbar', 'assessments', {
-      title: 'Romantic Attraction',
+      title: 'Email Friend Assessment',
       state: 'assessments.create',
       roles: ['user']
     });
+    
   }
 }());

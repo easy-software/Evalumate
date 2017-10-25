@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('ways2grows')
+    .module('redflags')
     .run(menuConfig);
 
   menuConfig.$inject = ['Menus'];
@@ -10,22 +10,22 @@
   function menuConfig(menuService) {
     // Set top bar menu items
     menuService.addMenuItem('topbar', {
-      title: 'Ways2grows',
-      state: 'ways2grows',
+      title: 'Red Flags',
+      state: 'redflags',
       type: 'dropdown',
-      roles: ['user']
+      roles: ['*']
     });
 
     // Add the dropdown list item
-    menuService.addSubMenuItem('topbar', 'ways2grows', {
-      title: 'List Ways2grows',
-      state: 'ways2grows.list'
+    menuService.addSubMenuItem('topbar', 'redflags', {
+      title: 'List Redflags',
+      state: 'redflags.list'
     });
 
     // Add the dropdown create item
-    menuService.addSubMenuItem('topbar', 'ways2grows', {
-      title: 'Create Ways2grow',
-      state: 'ways2grows.create',
+    menuService.addSubMenuItem('topbar', 'redflags', {
+      title: 'Create Redflag',
+      state: 'redflags.create',
       roles: ['user']
     });
   }
