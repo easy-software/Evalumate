@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--- This is a rough draft of the skeleton code for the webapp. This is the background that will be constant across all views for the webapp. -->
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>EvaluMate</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Slab">
+</head>
+<body>
+  <div id = "main-nav">
+    <div id = "navbar">
+      <!--- Insert the LovED logo image here. This will be located on the far left, and the rest of the navigation bar will be shifted to the far right. -->
+      <!---<img class="logo-img" src="loved.png" ALT="align box" ALIGN=CENTER>-->
+			<ul >
+				<li><a ui-sref = "user.profile" class = "smoothScroll"> Emotional Triggers </a> </li>
+				<li><a ui-sref = "user.game" class = "smoothScroll"> Game </a>  </li>
+				<li><a ui-sref = "user.quiz" class = "smoothScroll"> Quiz Assessment </a> </li>
+				 <li><a class = "inviter" href = "/email"> Invite Friends </a>  </li>
+				<li><a ui-sref = "user.invite" class = "smoothScroll"> Profile </a> </li>
+			</ul>
+    </div>
+  </div>
+	<h1>Emotional Maturity scores from friends</h1>
+	<p> The following documents are dated by when the average was created. Each score is an average from three
+			friends who you invited to rate you.
+	<p>
+</body>
+
+<!--- This is the footer. Will update when necessary information is provided -->
+<!---<footer>
+  <div id = "foot">
+    <h4 align="center"> CEN3031 Project </h4>
+  </div>
+</footer>-->
+</html>

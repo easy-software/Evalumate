@@ -37,6 +37,27 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       data: {
         ignoreState: true
       }
+    })
+		.state('email', {
+      url: '/email',
+      templateUrl: 'modules/core/client/views/invite-by-email.html',
+      data: {
+        ignoreState: true
+      }
+    })
+		.state('scores', {
+      url: '/scores',
+      templateUrl: 'modules/core/client/views/see-your-scores.html',
+      data: {
+        ignoreState: true
+      }
+    })
+		.state('waiting', {
+      url: '/waiting',
+      templateUrl: 'modules/core/client/views/wait-for-response.html',
+      data: {
+        ignoreState: true
+      }
     });
   }
 ]);

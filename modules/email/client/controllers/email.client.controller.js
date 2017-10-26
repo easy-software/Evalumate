@@ -1,7 +1,8 @@
-angular.module('email').controller('EmailController', ['$scope', 'Email' ,
-	function($scope, Email, $location {
-		$scope.clicked = function( path ){
-       window.location = "#/wait-for-response";
- }
-
-	}]);
+// 'use strict';
+// angular.module('email').controller('EmailController', ['$scope', 'Email' ,
+// function($scope, Email) {
+//   var path = '/wait-for-response.html';
+//   $scope.clicked = function(){
+//     var path = '/wait-for-response.html';
+//     window.location.href = path;};
+//   }]);
