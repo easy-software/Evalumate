@@ -15,18 +15,18 @@
 			<!--?subject=lovED: you've been invited to rate your friend's emotional maturity!&body=Don't worry,
 			your response will be kept totally anonymous and they will only see an average of multiple scores. Click here to rate your friend."-->
 
-			<form ng-controller=EmailController {{emailstring}} method="post">
+			<form  action="mailto:test1@gmail.com" method="post">
 
 		 		<h2>Email 1</h2>
 			 		<input id="tag0" type="text" size="40" placeholder="username@email.com"  ng-model="email1" required />
 					<h2>Email 2</h2>
+
 			 		<input id="tag1" type="text" size="40" placeholder="username@email.com" ng-model="email2" required />
 					<h2>Email 3</h2>
 					<input id="tag2" type="text" size="40" placeholder="username@email.com" ng-model="email3" required />
-					<input  type="submit" value="Send the emails!" ng-click=printEmail() >
-					</form>
-		</div>
-<h1> HelloWorld {{ emailstring }}</h1>
+
+					<button  type="button" value="Send the emails!"  method="post" ng-click=getEmail()>Send the emails</button>
+			</form>
 		<div>
 			 <form action="mailto:test@test.com,test2@test.com,test3@test.com?subject=lovED: Your friend is still awaiting your response to the emotional maturity quiz&body=Don't worry,
 			 your response will be kept totally anonymous and they will only see an average of multiple scores. Don't keep them waiting! Click this link to rate your friend now." method="post">
