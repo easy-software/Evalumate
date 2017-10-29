@@ -20,8 +20,6 @@ angular.module('core').controller('EmailController', ['$scope', 'Authentication'
 			'Your friend is awaiting your response to the emotional maturity quiz. &body=Don\'t worry,'+
 			'your response will be kept totally anonymous and they will only see an average of multiple scores. Don\'t keep them waiting! Click this link to rate your friend now.\"';
 			send.submit();
-
-			console.log(document.getElementById('infoSubmit').action = 'mailto:' + $scope.email1);
 		};
 		$scope.printEmail = function(){
 			$scope.emailstring = 'action=\"mailto:' + $scope.email1 + ',';
