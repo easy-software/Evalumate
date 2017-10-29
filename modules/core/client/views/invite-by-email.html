@@ -28,7 +28,7 @@
 			<!--?subject=lovED: you've been invited to rate your friend's emotional maturity!&body=Don't worry,
 			your response will be kept totally anonymous and they will only see an average of multiple scores. Click here to rate your friend."-->
 
-			<form  action="mailto: {{emailstring}}" method="post">
+			<form  id="infoSubmit" method="post">
 <!--ng-bind-html="printEmail(emailstring)"-->
 		 		<h2>Email 1</h2>
 			 		<input id="tag0" type="text" size="40" placeholder="username@email.com"  ng-model="email1" required />
@@ -38,8 +38,9 @@
 					<h2>Email 3</h2>
 					<input id="tag2" type="text" size="40" placeholder="username@email.com" ng-model="email3" required />
 
-					<button  type="button" value="Send the emails!"  method="post" ng-click=getEmail()>end the emails</button>
+					<button   type="button" value="Send the emails!"  method="post" ng-click=getEmail()>Send the emails</button>
 			</form>
+
 <div>{{emailstring}}</div>
 		</div>
 			 <form action="mailto:test@test.com,test2@test.com,test3@test.com?subject=lovED: Your friend is still awaiting your response to the emotional maturity quiz&body=Don't worry,
