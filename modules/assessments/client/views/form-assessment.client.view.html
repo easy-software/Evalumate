@@ -25,34 +25,41 @@
 -->
 <div>
   <div id = "invite prompt" ng-controller="EmailController">
-    <h1> Pick three friends and put their email in the boxes so they can rate you! </h1>
-    <div class="jumbotron">
-      <!--?subject=lovED: you've been invited to rate your friend's emotional maturity!&body=Don't worry,
-      your response will be kept totally anonymous and they will only see an average of multiple scores. Click here to rate your friend."-->
+		<h1 class="text center" style="color:#818185"> Pick three friends and put their email in the boxes so they can rate your emotional maturity </h1>
+		</br>
+		<p style="color:#818185"> Their responses will remain anonymous. You will only be able to view
+			the average score of all three responses once every friend have completed the assessment
+		</p>
+		<div class="jumbotron">
+			<!--?subject=lovED: you've been invited to rate your friend's emotional maturity!&body=Don't worry,
+			your response will be kept totally anonymous and they will only see an average of multiple scores. Click here to rate your friend."-->
 
-      <form ng-controller=EmailController [[emailstring]] method="post">
+			<form  id="infoSubmit" method="post">
+<!--ng-bind-html="printEmail(emailstring)"-->
+				<h2 style="color:#D97804">Email 1</h2>
+					<input type="email" size="40" placeholder="username@email.com" required ng-model="email1"   />
+					<h2 style="color:#D97804">Email 2</h2>
 
-        <h2>Email 1</h2>
-          <input id="tag0" type="text" size="40"  placeholder="username@email.com"  ng-model="email1" required />
-          <h2>Email 2</h2>
+					<input type="email" size="40" placeholder="username@email.com" ng-model="email2" required />
+					<h2 style="color:#D97804">Email 3</h2>
+					<input type="email" size="40" placeholder="username@email.com" ng-model="email3" required />
+				</br></br>
+					<button class="btn btn-warning" method="post" ng-click="getEmail()" ng-hide="checkEmail()">Send the emails</button>
+			</form>
+		</div>
+		<form action="mailto:test@test.com,test2@test.com,test3@test.com?subject=lovED: Your friend is still awaiting your response to the emotional maturity quiz&body=Don't worry,
+			 your response will be kept totally anonymous and they will only see an average of multiple scores. Don't keep them waiting! Click this link to rate your friend now." method="post">
+				<input class="btn btn-warning" type="submit" value="If you already invited friends and want to send them a reminder, click here">
+		</form>
+	</br>
 
-          <input id="tag1" type="text" size="40" placeholder="username@email.com" ng-model="email2" required />
-          <h2>Email 3</h2>
-          <input id="tag2" type="text" size="40" placeholder="username@email.com" ng-model="email3" required />
-          <input  type="submit"  class="btn btn-warning" value="Send the emails!" ng-click=printEmail() >
-          </form>
-    </div>
 
-    <div>
-       <form action="mailto:test@test.com,test2@test.com,test3@test.com?subject=lovED: Your friend is still awaiting your response to the emotional maturity quiz&body=Don't worry,
-       your response will be kept totally anonymous and they will only see an average of multiple scores. Don't keep them waiting! Click this link to rate your friend now." method="post">
-        <input type="submit" value="If you already invited friends and want to send them a reminder, click here">
-      </form>
-      <a href = "scores">
-      <h3 >  Navigate to the scores page to view past scores! </h3>
-      </a>
+			<a href = "scores" >
+			<button class="btn btn-warning">  Navigate to the scores page to view past scores! </button>
+			</a>
+
     </div>
   </div>
-  
+
 </div>
 </section>
