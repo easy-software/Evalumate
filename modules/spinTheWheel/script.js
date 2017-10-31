@@ -43,7 +43,7 @@ var padding = {top:20, right:40, bottom:0, left:0},
         ];
 
         var ways_to_grow_data_bold = [
-         {"label":"Option 21", "option":" Share something that people don't know about you."}, 
+                    {"label":"Option 21", "option":" Share something that people don't know about you."}, 
                     {"label":"Option 22", "option":" List everyone you carry resentment for."}, 
                     {"label":"Option 23", "option":" Write yourself a forgiveness letter."}, 
                     {"label":"Option 24", "option":" Write an encouragement letter to your future self."}, 
@@ -163,7 +163,7 @@ var padding = {top:20, right:40, bottom:0, left:0},
 
             var dataPick = "";
 
-            if(spinCounter >=20)
+            if(spinCounter >20)
                 dataPick = ways_to_grow_data_bold[pickedOption-20].option;
             else
                 dataPick = ways_to_grow_data[pickedOption].option;
