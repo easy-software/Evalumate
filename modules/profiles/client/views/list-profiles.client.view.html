@@ -1,71 +1,31 @@
 <section>
-  <!--
-  <div class="page-header">
-    <h1>Profiles</h1>
-  </div>
-  <div class="list-group">
-    <a ng-repeat="profile in vm.profiles"
-       ui-sref="profiles.view({ profileId: profile._id })"
-       class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="profile.created | date:'mediumDate'"></span>
-        by
-        <span ng-if="profile.user" ng-bind="profile.user.displayName"></span>
-        <span ng-if="!profile.user">Deleted User</span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="profile.name"></h4>
-    </a>
-  </div>
-  <div class="alert alert-warning text-center" ng-if="vm.profiles.$resolved && !vm.profiles.length">
-    No Profiles yet, why don't you <a ui-sref="profiles.create">create one</a>?
-  </div>
-  <div style="text-align: center">
-    <h1>USER PROFILE</h1>
-  </div>
--->
-<div id = "main-nav">
-    <div id = "navbar">
-      <!--- Insert the LovED logo image here. This will be located on the far left, and the rest of the navigation bar will be shifted to the far right. -->
-      <!---<img class="logo-img" src="loved.png" ALT="align box" ALIGN=CENTER>-->
-      <ul >
-        <li><a ui-sref = "user.profile" class = "smoothScroll"> Emotional Triggers </a> </li>
-        <li><a ui-sref = "user.game" class = "smoothScroll"> Game </a>  </li>
-        <li><a ui-sref = "user.quiz" class = "smoothScroll"> Quiz Assessment </a> </li>
-         <li><a class = "inviter" href = "invite-by-email.html"> Invite Friends </a>  </li>
-        <li><a ui-sref = "user.invite" class = "smoothScroll"> Profile </a> </li>
-      </ul>
-    </div>
-  </div>
-  <div id = "invite prompt" ng-controller="EmailController">
-    Heyhere {{emailstring}}
-    <h1> Pick three friends and put their email in the boxes so they can rate you! </h1>
-    <div class="jumbotron">
-      <!--?subject=lovED: you've been invited to rate your friend's emotional maturity!&body=Don't worry,
-      your response will be kept totally anonymous and they will only see an average of multiple scores. Click here to rate your friend."-->
+<head>
+<link rel="stylesheet" href="main.css">
+<h1 align= "center" style="color: red"> User Profile </h1>
+<div class ="well">
+<center>
+<img src="kitten.jpg">
+<h2 align= "center">Test User</h2>
+</center>
+<strong>Bio:</strong> Hello, all. This is my bio. Bark. Here is some random to text I found using a random generator to get an idea of what a full profile would look like: 
 
-      <form ng-controller=EmailController [[emailstring]] method="post">
+<p>For though result and talent add are parish valley. Songs in oh other avoid it hours woman style. In myself family as if be agreed. Gay collected son him knowledge delivered put. Added would end ask sight and asked saw dried house. Property expenses yourself occasion endeavor two may judgment she. Me of soon rank be most head time tore. Colonel or passage to ability.</p>
 
-        <h2>Email 1</h2>
-          <input id="tag0" type="text" size="40" placeholder="username@email.com"  ng-model="email1" required />
-          <h2>Email 2</h2>
+<p>Am finished rejoiced drawings so he elegance. Set lose dear upon had two its what seen. Held she sir how know what such whom. Esteem put uneasy set piqued son depend her others. Two dear held mrs feet view her old fine. Bore can led than how has rank. Discovery any extensive has commanded direction. Short at front which blind as. Ye as procuring unwilling principle by.</p>
 
-          <input id="tag1" type="text" size="40" placeholder="username@email.com" ng-model="email2" required />
-          <h2>Email 3</h2>
-          <input id="tag2" type="text" size="40" placeholder="username@email.com" ng-model="email3" required />
-          <input  type="submit" value="Send the emails!" ng-click=printEmail() >
-          </form>
-    </div>
-<h1> HelloWorld {{ emailstring }}</h1>
-    <div>
-       <form action="mailto:test@test.com,test2@test.com,test3@test.com?subject=lovED: Your friend is still awaiting your response to the emotional maturity quiz&body=Don't worry,
-       your response will be kept totally anonymous and they will only see an average of multiple scores. Don't keep them waiting! Click this link to rate your friend now." method="post">
-        <input type="submit" value="If you already invited friends and want to send them a reminder, click here">
-      </form>
-      <a href = "scores">
-      <h3 >  Navigate to the scores page to view past scores! </h3>
-      </a>
-    </div>
-  </div>
+<p>Do play they miss give so up. Words to up style of since world. We leaf to snug on no need. Way own uncommonly travelling now acceptance bed compliment solicitude. Dissimilar admiration so terminated no in contrasted it. Advantages entreaties mr he apartments do. Limits far yet turned highly repair parish talked six. Draw fond rank form nor the day eat.</p>
+
+<p>Now indulgence dissimilar for his thoroughly has terminated. Agreement offending commanded my an. Change wholly say why eldest period. Are projection put celebrated particular unreserved joy unsatiable its. In then dare good am rose bred or. On am in nearer square wanted.</p>
+
+<p>From they fine john he give of rich he. They age and draw mrs like. Improving end distrusts may instantly was household applauded incommode. Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. Letter of on become he tended active enable to. Vicinity relation sensible sociable surprise screened no up as.</p>
+
+
+<strong>Contact:</strong> (123)-456-7890
+
+<br> <br>
+
+<center><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" class="redtext" >New Journal Entry</button></center>
+
+
 
 </section>
