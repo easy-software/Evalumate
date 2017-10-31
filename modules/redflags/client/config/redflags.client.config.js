@@ -13,7 +13,7 @@
       title: 'Red Flags',
       state: 'redflags',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['user']
     });
 
     // Add the dropdown list item
