@@ -23,7 +23,7 @@ var padding = {top:20, right:40, bottom:0, left:0},
                     {"label":"Option 11", "option":" Share some wisdom with your younger self."}, 
                     {"label":"Option 12", "option":" Give someone a handmade card/gift."}, 
                     {"label":"Option 13", "option":" Share your Strive for 5 progress with a friend."},
-                    {"label":"Option 14", "option":" Listen to personal growth podcast."}, 
+                    {"label":"Option 14", "option":" Listen to a personal growth podcast."}, 
                     {"label":"Option 15", "option":" Stop using social media for today."}, 
                     {"label":"Option 16", "option":" Share LovEd with someone who's struggling."}, 
                     {"label":"Option 17", "option":" Watch a TED Talk on personal growth."}, 
@@ -42,6 +42,21 @@ var padding = {top:20, right:40, bottom:0, left:0},
                     {"label":"Option 30", "option":" Apologize to someone."}, 
         ];
 
+        var ways_to_grow_data_bold = [
+         {"label":"Option 21", "option":" Share something that people don't know about you."}, 
+                    {"label":"Option 22", "option":" List everyone you carry resentment for."}, 
+                    {"label":"Option 23", "option":" Write yourself a forgiveness letter."}, 
+                    {"label":"Option 24", "option":" Write an encouragement letter to your future self."}, 
+                    {"label":"Option 25", "option":" List what you've learned from past relationships."},
+                    {"label":"Option 26", "option":" Ask for feedback from someone."}, 
+                    {"label":"Option 27", "option":" Reach out to someone for advice."}, 
+                    {"label":"Option 28", "option":" Invite a negative person in your life to change."}, 
+                    {"label":"Option 29", "option":" Create a list of things you need to let go."}, 
+                    {"label":"Option 30", "option":" Apologize to someone."}, 
+
+        ];
+
+        var spinCounter = 0;
 
         var svg = d3.select('#chart')
             .append("svg")
@@ -97,32 +112,69 @@ var padding = {top:20, right:40, bottom:0, left:0},
                         .text("All options have been chosen!");
             }
 
-
-            var  ps       = 360/ways_to_grow_data.length,
-                 pieslice = Math.round(1440/ways_to_grow_data.length),
-                 rng      = Math.floor((Math.random() * 1440) + 360);
-                
+            if(spinCounter<=20)
+                 var  ps = 360/30;
+             else
+                var  ps = 360/30;
+                 
+            var rng  = Math.floor((Math.random() * 1440) + 360);
             rotation = (Math.round(rng / ps) * ps);
-            
+            //console.log(rotation+"rotation");
+            //pickedOption = Math.round(ways_to_grow_data.length - (rotation % 360)/ps);
+            //pickedOption = pickedOption >= ways_to_grow_data.length ? (pickedOption % ways_to_grow_data.length) : pickedOption;
+
+            if(spinCounter<20){
             pickedOption = Math.round(ways_to_grow_data.length - (rotation % 360)/ps);
+            var oldPickedOption= pickedOption
+            console.log(pickedOption+"beforeunder20");
+            pickedOption = pickedOption >= ways_to_grow_data.length-10 ? (pickedOption % (ways_to_grow_data.length-10)) : pickedOption;
+            console.log(pickedOption+"afterunder20");
+            if(pickedOption!=oldPickedOption){
+                rotation = rotation - (ps*10);
+                //console.log(rotation+"alteredrotation");
+            }
+
+            }   
+            else{
+            pickedOption = Math.round(ways_to_grow_data.length - (rotation % 360)/ps);
+            console.log(pickedOption+"beforenormal");
             pickedOption = pickedOption >= ways_to_grow_data.length ? (pickedOption % ways_to_grow_data.length) : pickedOption;
+            console.log(pickedOption+"afternormal");
+            }
 
-
+            //pickedOption = Math.round(ways_to_grow_data.length - (rotation % 360)/ps);
+            //console.log(pickedOption + "before");
+            //pickedOption = ((pickedOption >= ways_to_grow_data.length &&spinCounter>20) || (pickedOption >= ways_to_grow_data.length-10 &&spinCounter<21)) ? (pickedOption % ways_to_grow_data.length) : pickedOption;
+            //console.log(pickedOption + "after");
+            //console.log(pickedOption);
             if(selectedOptions.indexOf(pickedOption) !== -1){
                 d3.select(this).call(spinWheel);
+                //spinCounter++;
+                //console.log(spinCounter);
                 return;
             } else {
                 selectedOptions.push(pickedOption);
+                spinCounter++;
+                console.log(spinCounter);
             }
 
             rotation += 90 - Math.round(ps/2);
+            //console.log(rotation+"newrotation");
+
+            var dataPick = "";
+
+            if(spinCounter >=20)
+                dataPick = ways_to_grow_data_bold[pickedOption-20].option;
+            else
+                dataPick = ways_to_grow_data[pickedOption].option;
+
 
             vis.transition()
                 .duration(3000)
                 .attrTween("transform", rotateWheel)
                 .each("end", function(){
                     d3.select("#option h1")
-                        .text(ways_to_grow_data[pickedOption].option);
+                        .text(dataPick);
                     oldrotation = rotation;
                     container.on("click", spinWheel);
                 });
