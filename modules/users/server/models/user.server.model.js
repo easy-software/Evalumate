@@ -101,7 +101,7 @@ var UserSchema = new Schema({
   DOB: {
     type: Date
   },
-  jornail: [{
+  jornal: [{
     title : {type: String},
     body  : {type: String},
     date  : {type: String}
