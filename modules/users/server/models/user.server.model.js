@@ -97,6 +97,22 @@ var UserSchema = new Schema({
   },
   resetPasswordExpires: {
     type: Date
+  },
+  DOB: {
+    type: Date
+  },
+  jornal: [{
+    title : {type: String},
+    body  : {type: String},
+    date  : {type: String}
+  }],
+  emailInvites: [{
+    email: {type: String},
+    response: {type: Boolean },
+  }],
+  assessment: {
+    ema : {type: Number},
+    raa : {type: Number},
   }
 });
 

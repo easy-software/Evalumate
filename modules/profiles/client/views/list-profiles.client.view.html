@@ -1,12 +1,61 @@
 <section>
+
+  <!--
+  <div class="page-header">
+    <h1>Profiles</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="profile in vm.profiles"
+       ui-sref="profiles.view({ profileId: profile._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="profile.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="profile.user" ng-bind="profile.user.displayName"></span>
+        <span ng-if="!profile.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="profile.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.profiles.$resolved && !vm.profiles.length">
+    No Profiles yet, why don't you <a ui-sref="profiles.create">create one</a>?
+  </div>
+  <div style="text-align: center">
+    <h1>USER PROFILE</h1>
+  </div>
+-->
+
 <head>
-<link rel="stylesheet" href="main.css">
-<h1 align= "center" style="color: red"> User Profile </h1>
+
+<style>
+img{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    overflow:hidden;
+}
+</style> 
+<link rel="stylesheet" href="main.css"><link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">
+<h1 align= "center" style="color: red"> Profile </h1>
+<div class="col-md-10 col-md-offset-1">
 <div class ="well">
 <center>
-<img src="kitten.jpg">
-<h2 align= "center">Test User</h2>
+<section ui-view="" class="ng-scope"><section class="row ng-scope" ng-controller="AuthenticationController">
+  <div class="col-md-12 text-center">
+    <img width="20%" height="20%" ng-src="/modules/profiles/client/img/buttons/scroll0015.jpg" src="/modules/profiles/client/img/buttons/scroll0015.jpg">
+    </div>
+
+</section>
+</section>
+<h2 align= "center">Pup Pupper</h2>
 </center>
+
+
+
+
+
+
 <strong>Bio:</strong> Hello, all. This is my bio. Bark. Here is some random to text I found using a random generator to get an idea of what a full profile would look like: 
 
 <p>For though result and talent add are parish valley. Songs in oh other avoid it hours woman style. In myself family as if be agreed. Gay collected son him knowledge delivered put. Added would end ask sight and asked saw dried house. Property expenses yourself occasion endeavor two may judgment she. Me of soon rank be most head time tore. Colonel or passage to ability.</p>
@@ -20,12 +69,62 @@
 <p>From they fine john he give of rich he. They age and draw mrs like. Improving end distrusts may instantly was household applauded incommode. Why kept very ever home mrs. Considered sympathize ten uncommonly occasional assistance sufficient not. Letter of on become he tended active enable to. Vicinity relation sensible sociable surprise screened no up as.</p>
 
 
-<strong>Contact:</strong> (123)-456-7890
+<br>
+<table>
+<tr>
+<td>
+
+<!--
+<div class="btn-group">
+<input type="button" class="btn btn-primary show" value="Edit Bio" class="redtext">
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" class="redtext" >New Journal Entry</button>
+</div>
+<input type="button" class="btn btn-primary show" value="Show Password">
+<input type="button" class="btn btn-primary hide" value="Hide Password" style="display:none;">
+<td>
+</tr>
+<tr class="password" style="display:none;">
+<td>
+<br>
+<div class="form-group">
+<textarea class="form-control" rows="6" cols="145" id="comment"></textarea>
+<span class="input-group-addon btn btn-primary">Send</span>
+</div>
+<td>
+</tr>
+</table>
+-->
+<div class="btn-group">
+<input onclick = "myFunction()" type="button" class="btn btn-primary show" value="Edit Bio" class="redtext">
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" class="redtext" >New Journal Entry</button>
+</div>
+<div id="myDIV" style="display:none;">
+<div class="form-group">
+<textarea class="form-control" rows="6" cols="145" id="comment"></textarea>
+<span class="input-group-addon btn btn-primary">Send</span>
+</div>
+</div>
+ 
+                
+<script>
+function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
 
 <br> <br>
 
-<center><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" class="redtext" >New Journal Entry</button></center>
-
+</div>
 
 
 </section>
+
+
+
+
