@@ -24,6 +24,20 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         ignoreState: true
       }
     })
+    .state('privacy', {
+      url: '/privacy',
+      templateUrl: 'modules/core/client/views/privacy.client.view.html',
+      data: {
+        ignoreState: true
+      }
+    })
+     .state('termsofservice', {
+      url: '/termsofservice',
+      templateUrl: 'modules/core/client/views/termsofservice.client.view.html',
+      data: {
+        ignoreState: true
+      }
+    })
     .state('bad-request', {
       url: '/bad-request',
       templateUrl: 'modules/core/client/views/400.client.view.html',
