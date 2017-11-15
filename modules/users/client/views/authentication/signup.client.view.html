@@ -1,4 +1,5 @@
 <div ng-controller="AuthenticationController">
+<script src='https://www.google.com/recaptcha/api.js'></script>
   <h3 class="col-md-12 text-center">Or sign up using your email</h3>
   <div class="col-xs-offset-2 col-xs-8 col-md-offset-4 col-md-4">
     <form name="userForm" ng-submit="signup(userForm.$valid)" class="signin" novalidate autocomplete="off">
@@ -46,10 +47,49 @@
           <label>Password Requirements</label>
           <progressbar value="requirementsProgress" type="{{requirementsColor}}"><span style="color:white; white-space:nowrap;">{{requirementsProgress}}%</span></progressbar>
         </div>
+		
+		
+		
+		<span class="msg-error error"></span>
+		<div id="recaptcha" class="g-recaptcha" data-sitekey="6LfBtjQUAAAAAKkYMGGIjFpfGmTs5KjqWIlui8OO"></div>
+
+		<form action="https://www.google.com/recaptcha/api/siteverify" method="post">
+		<br>
+		<form action="">
+<input type="checkbox" name="brithday" id="apple" onclick ="check()" > I am at least 13 years old 
+</form> 
+
+</form>
+
+
+
+<script>
+function check() {
+	var v = grecaptcha.getResponse();
+	var x = document.getElementById("ultimatesubmit");
+	var z = document.getElementById("veri");
+	if(v.length == 0)
+	{
+		console.log("fail");
+		x.style.display = "none";
+	return false;
+	}
+	if(v.length != 0)
+	{
+	    console.log("success");
+		x.style.display = "block";
+		z.style.display = "none";
+	return true; 
+	}
+
+}
+
+</script>
+	
         <div class="text-center form-group">
-          <button type="submit" class="btn btn-primary">Sign up</button>
+          <button id="ultimatesubmit" type="submit" class="btn btn-primary" style="display:none;">Sign up</button>
           &nbsp; or&nbsp;
-          <a ui-sref="authentication.signin" class="show-signup">Sign in</a>
+          <a ui-sref="authentication.signin" class="show-signup" >Sign in</a>
         </div>
         <div ng-show="error" class="text-center text-danger">
           <strong ng-bind="error"></strong>
@@ -58,3 +98,4 @@
     </form>
   </div>
 </div>
+
