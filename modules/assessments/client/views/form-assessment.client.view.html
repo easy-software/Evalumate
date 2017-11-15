@@ -24,10 +24,19 @@
   </div>
 -->
 <div>
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Proxima Nova" />
   <div id = "invite prompt" ng-controller="EmailController">
-		<h1 class="text center" style="color:#818185"> Pick three friends and put their email in the boxes so they can rate your emotional maturity </h1>
+		<style>
+		h1   {font-family: Comfortaa;}
+		h2 {font-family: Comfortaa;}
+		input {font-family: Comfortaa;}
+		p {font-family: Proxima Nova}
+		button {font-family: Comfortaa;}
+		</style>
+		<h1 class="text center" style="color:#818185;"> Pick three friends and put their email in the boxes so they can rate your emotional maturity </h1>
 		</br>
-		<p style="color:#818185"> Their responses will remain anonymous. You will only be able to view
+		<p style="color:#818185;"> Their responses will remain anonymous. You will only be able to view
 			the average score of all three responses once every friend has completed the assessment
 		</p>
 		<div class="jumbotron">
@@ -35,12 +44,13 @@
 			your response will be kept totally anonymous and they will only see an average of multiple scores. Click here to rate your friend."-->
 
 			<form  id="infoSubmit" method="post">
-				<h2 style="color:#D97804">Email 1</h2>
+				<h2 style="color:#fad654;">Email 1</h2>
 					<input type="email" size="40" placeholder="username@email.com" required ng-model="email1"   />
-					<h2 style="color:#D97804">Email 2</h2>
 
+					<h2 style="color:#FFA309;">Email 2</h2>
 					<input type="email" size="40" placeholder="username@email.com" ng-model="email2" required />
-					<h2 style="color:#D97804">Email 3</h2>
+
+					<h2 style="color:#D97804;">Email 3</h2>
 					<input type="email" size="40" placeholder="username@email.com" ng-model="email3" required />
 				</br></br>
 					<button class="btn btn-warning" method="post" ng-click="getEmail()" ng-hide="checkEmail()">Send the emails</button>
@@ -48,7 +58,7 @@
 		</div>
 		<form action="mailto:test@test.com,test2@test.com,test3@test.com?subject=lovED: Your friend is still awaiting your response to the emotional maturity quiz&body=Don't worry,
 			 your response will be kept totally anonymous and they will only see an average of multiple scores. Don't keep them waiting! Click this link to rate your friend now." method="post">
-				<input class="btn btn-warning" type="submit" value="If you already invited friends and want to send them a reminder, click here">
+				<input class="btn btn-warning" style="font-family: Comfortaa" type="submit" value="If you already invited friends and want to send them a reminder, click here">
 		</form>
 	</br>
 
