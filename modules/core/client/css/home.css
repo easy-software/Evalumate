@@ -1,12 +1,12 @@
-h1   {font-family: Comfortaa;width: 64%; margin: 0 auto;
+h1.home   {font-family: Comfortaa;width: 64%; margin: 0 auto;
 margin-top: 0px;
 margin-right: auto;
 margin-bottom: 0px;
 margin-left: auto;
 text-align: center;
 }
-button {font-family: Comfortaa;}
-h2 {font-family: Comfortaa; width: 64%; margin: 0 auto;
+button.home {font-family: Comfortaa;}
+h2.home {font-family: Comfortaa; width: 64%; margin: 0 auto;
 margin-top: 0px;
 margin-right: auto;
 margin-bottom: 0px;
@@ -14,7 +14,7 @@ margin-left: auto;
 text-align: center;
 }
 
-h3 {font-family: Comfortaa; width: 64%; margin: 0 auto;
+h3.home {font-family: Comfortaa; width: 64%; margin: 0 auto;
 margin-top: 0px;
 margin-right: auto;
 margin-bottom: 0px;
@@ -22,7 +22,7 @@ margin-left: auto;
 text-align: justify;
 text-align: center;
 }
-h4 {font-family: Proxima Nova; width: 64%; margin: 0 auto;
+h4.home {font-family: Proxima Nova; width: 64%; margin: 0 auto;
 margin-top: 0px;
 margin-right: auto;
 margin-bottom: 0px;
@@ -30,12 +30,11 @@ margin-left: auto;
 text-align: justify;
 text-align: center;
 }
-input {font-family: Comfortaa;}
-p {font-family: Proxima Nova; width: 64%; margin: 0 auto;
+input.home {font-family: Comfortaa;}
+p.home {font-family: Proxima Nova; width: 64%; margin: 0 auto;
 margin-top: 0px;
 margin-right: auto;
 margin-bottom: 0px;
 margin-left: auto;
 text-align: center;
 text-align: justify;}
-button {font-family: Comfortaa;}

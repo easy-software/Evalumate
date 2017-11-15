@@ -1,3 +1,45 @@
-a {
+a.header {
 	font-family:Comfortaa
 }
+h1.header {
+	font-family:  Comfortaa;width: 64%; margin: 0 auto;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	text-align: center;
+	}
+
+	h2.header {font-family: Comfortaa; width: 64%; margin: 0 auto;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	text-align: center;
+	}
+
+	h3.header {font-family: Comfortaa; width: 64%; margin: 0 auto;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	text-align: justify;
+	text-align: center;
+	}
+	h4.header {font-family: Proxima Nova; width: 64%; margin: 0 auto;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	text-align: justify;
+	text-align: center;
+	}
+	input.header {font-family: Comfortaa;}
+	p.header {font-family: Proxima Nova; width: 64%; margin: 0 auto;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	text-align: center;
+	text-align: justify;}
+button.header {font-family: Comfortaa;}
