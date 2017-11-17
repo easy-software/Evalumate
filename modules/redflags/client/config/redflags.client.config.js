@@ -11,22 +11,11 @@
     // Set top bar menu items
     menuService.addMenuItem('topbar', {
       title: 'Red Flags',
-      state: 'redflags',
-      type: 'dropdown',
+      state: 'redflags.list',
+      type: 'button',
       roles: ['user']
     });
 
-    // Add the dropdown list item
-    menuService.addSubMenuItem('topbar', 'redflags', {
-      title: 'List Redflags',
-      state: 'redflags.list'
-    });
-
-    // Add the dropdown create item
-    menuService.addSubMenuItem('topbar', 'redflags', {
-      title: 'Create Redflag',
-      state: 'redflags.create',
-      roles: ['user']
-    });
+   
   }
 }());

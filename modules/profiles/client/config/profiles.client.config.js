@@ -11,22 +11,12 @@
     // Set top bar menu items
     menuService.addMenuItem('topbar', {
       title: 'Profile',
-      state: 'profiles',
-      type: 'dropdown',
+      state: 'profiles.list',
+      type: 'button',
       roles: ['user']
     });
 
-    // Add the dropdown list item
-    menuService.addSubMenuItem('topbar', 'profiles', {
-      title: 'List Profiles',
-      state: 'profiles.list'
-    });
 
-    // Add the dropdown create item
-    menuService.addSubMenuItem('topbar', 'profiles', {
-      title: 'Create Profile',
-      state: 'profiles.create',
-      roles: ['user']
-    });
+ 
   }
 }());
