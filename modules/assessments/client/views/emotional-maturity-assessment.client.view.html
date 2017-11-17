@@ -1,5 +1,8 @@
-<section ng-controller="AssessmentsController">
+<section ng-controller="AssessmentsListController">
+
+
   <!--
+    <p ng-repeat="value in vm.ema">{{value}}</p>
   <div class="page-header">
     <h1>Emas</h1>
   </div>
@@ -23,9 +26,10 @@
 
   -->
 </br>
+
   <div class="container ">
 <div>
-  <!---<form  ng-controller="EmasListController">-->
+  <form  ng-controller="EmasListController">
 
 
       <table class='table'> <!-- add style="table-layout:fixed;" so that table do not vary in width due to text size variations -->
@@ -59,7 +63,7 @@
      <!--
       <button type="button" class="btn btn-default" ng-show="radioClicked">Next</button> -->
 
-<!--  </form>-->
+</form>
 </div>
   <div class="row">
     <div class="col-md-4 ">
@@ -82,5 +86,6 @@
 
     </div>
   </div>
+
 </div>
 </section>

@@ -70,6 +70,10 @@ var UserSchema = new Schema({
     type: String,
     default: 'modules/users/client/img/profile/default.png'
   },
+  profileMantra: {
+  	type: String,
+  	default: 'Enter a mantra!'
+  },
   provider: {
     type: String,
     required: 'Provider is required'
@@ -101,7 +105,7 @@ var UserSchema = new Schema({
   DOB: {
     type: Date
   },
-  jornal: [{
+  journal: [{
     title : {type: String},
     body  : {type: String},
     date  : {type: String}
@@ -193,7 +197,7 @@ UserSchema.statics.generateRandomPassphrase = function () {
     var password = '';
     var repeatingCharacters = new RegExp('(.)\\1{2,}', 'g');
 
-    // iterate until the we have a valid passphrase. 
+    // iterate until the we have a valid passphrase.
     // NOTE: Should rarely iterate more than once, but we need this to ensure no repeating characters are present.
     while (password.length < 20 || repeatingCharacters.test(password)) {
       // build the random password

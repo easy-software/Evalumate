@@ -1,0 +1,40 @@
+h1.home   {font-family: Comfortaa;width: 64%; margin: 0 auto;
+margin-top: 0px;
+margin-right: auto;
+margin-bottom: 0px;
+margin-left: auto;
+text-align: center;
+}
+button.home {font-family: Comfortaa;}
+h2.home {font-family: Comfortaa; width: 64%; margin: 0 auto;
+margin-top: 0px;
+margin-right: auto;
+margin-bottom: 0px;
+margin-left: auto;
+text-align: center;
+}
+
+h3.home {font-family: Comfortaa; width: 64%; margin: 0 auto;
+margin-top: 0px;
+margin-right: auto;
+margin-bottom: 0px;
+margin-left: auto;
+text-align: justify;
+text-align: center;
+}
+h4.home {font-family: Proxima Nova; width: 64%; margin: 0 auto;
+margin-top: 0px;
+margin-right: auto;
+margin-bottom: 0px;
+margin-left: auto;
+text-align: justify;
+text-align: center;
+}
+input.home {font-family: Comfortaa;}
+p.home {font-family: Proxima Nova; width: 64%; margin: 0 auto;
+margin-top: 0px;
+margin-right: auto;
+margin-bottom: 0px;
+margin-left: auto;
+text-align: center;
+text-align: justify;}

@@ -25,6 +25,11 @@ var ArticleSchema = new Schema({
     default: '',
     trim: true
   },
+  mantra: {
+    type: String,
+    default: 'Click on the button below to create a mantra!',
+    trim: true
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'

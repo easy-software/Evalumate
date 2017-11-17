@@ -14,13 +14,23 @@
         url: '/assessments',
         template: '<ui-view/>'
       })
-      .state('assessments.emotional-maturity', {
-        url: '',
+      .state('assessments.emotional-maturity-landing', {
+        url: '/landing',
+        templateUrl: 'modules/assessments/client/views/emotional-maturity-landing.client.view.html',
+        controller: 'AssessmentsListController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Emotional Maturity Assessments Landing'
+        }
+      })
+      .state('EMA', {
+        url: '/EMA',
         templateUrl: 'modules/assessments/client/views/emotional-maturity-assessment.client.view.html',
         controller: 'AssessmentsListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Assessments List'
+          ignoreState: true,
+          pageTitle: 'Emotional Maturity Assessment'
         }
       })
       .state('assessments.create', {
