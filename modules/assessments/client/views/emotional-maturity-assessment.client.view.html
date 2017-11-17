@@ -25,61 +25,61 @@
 </br>
   <div class="container ">
 <div>
-  <form  ng-controller="EmasListController">
-  
+  <!---<form  ng-controller="EmasListController">-->
+
 
       <table class='table'> <!-- add style="table-layout:fixed;" so that table do not vary in width due to text size variations -->
       <tr>
         <td style="word-wrap:break-word">
           <h4 class="text-center">This person is aware of and able to express accurately how he/she feels. </h4>
         </td>
-     
+
         <td style="background-color: #F9E79F; vertical-align: middle;"><label><input type="radio" name="optradio" >1 - Almost Never</label></td>
-        <td style="background-color: #FAD7A0  
+        <td style="background-color: #FAD7A0
 ; vertical-align: middle;"><label><input type="radio" name="optradio" >2 - Sometimes</label></td>
         <td style="background-color: #F5CBA7; vertical-align: middle;"><label><input type="radio" name="optradio" >3 - Moderately Often</label></td>
         <td style="background-color: #F5B7B1; vertical-align: middle;"><label><input type="radio" name="optradio" >4 - Often</label></td>
         <td style="background-color: #E6B0AA; vertical-align: middle;"><label><input type="radio" name="optradio" >5 - Very Often</label></td>
       </tr>
-      
+
       <tr ng-repeat="Q in ema">
         <td style="word-wrap:break-word">
           <h4 class="text-center">Q</h4>
         </td>
-     
+
         <td style="background-color: #F9E79F; vertical-align: middle;"><label><input type="radio" name="optradio" >1 - Almost Never</label></td>
-        <td style="background-color: #FAD7A0  
+        <td style="background-color: #FAD7A0
 ; vertical-align: middle;"><label><input type="radio" name="optradio" >2 - Sometimes</label></td>
         <td style="background-color: #F5CBA7; vertical-align: middle;"><label><input type="radio" name="optradio" >3 - Moderately Often</label></td>
         <td style="background-color: #F5B7B1; vertical-align: middle;"><label><input type="radio" name="optradio" >4 - Often</label></td>
         <td style="background-color: #E6B0AA; vertical-align: middle;"><label><input type="radio" name="optradio" >5 - Very Often</label></td>
       </tr>
-      
+
      </table>
      <!--
       <button type="button" class="btn btn-default" ng-show="radioClicked">Next</button> -->
-  
-  </form>
+
+<!--  </form>-->
 </div>
   <div class="row">
     <div class="col-md-4 ">
-      
+
     </div>
     <div class="col-md-1 ">
-      
+
     </div>
 
     <div class="col-md-2">
-      
+
       <button type="button btn-lg" class="btn btn-secondary">Save</button>
       <button type="button btn-lg" class="btn btn-success">Submit</button>
     </div>
     <div class="col-md-1">
-      
+
     </div>
 
     <div class="col-md-4 ">
-      
+
     </div>
   </div>
 </div>
