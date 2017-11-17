@@ -15,8 +15,7 @@
       type: 'button',
       roles: ['user']
     });
-
-    
+ 
  
   }
-}());s
+}());
