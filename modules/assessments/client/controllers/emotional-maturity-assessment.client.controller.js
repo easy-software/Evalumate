@@ -7,7 +7,7 @@
 
   AssessmentsListController.$inject = ['AssessmentsService'];
 
-  function AssessmentsListController(AssessmentsService) {
+  function AssessmentsListController(AssessmentsService,$scope, $state, $window, Authentication, assessment) {
     var vm = this;
 
     vm.assessments = AssessmentsService.query();
@@ -42,6 +42,11 @@
             "This person is respectful of other peoples property and belongings.",
             "This person willingly carries his/her own share of the workload."
     ];
-    vm.results =  []
+    vm.results =  [];
+
+    function done() {
+      console.log("Submitted");
+    }
+
   }
 }());
