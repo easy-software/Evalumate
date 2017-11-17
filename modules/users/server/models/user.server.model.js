@@ -70,6 +70,10 @@ var UserSchema = new Schema({
     type: String,
     default: 'modules/users/client/img/profile/default.png'
   },
+  profileMantra: {
+  	type: String,
+  	default: 'Enter a mantra!'
+  },
   provider: {
     type: String,
     required: 'Provider is required'
