@@ -5,23 +5,23 @@
  */
 var path = require('path'),
   mongoose = require('mongoose'),
-  Article = mongoose.model('Article'),
+  Article1 = mongoose.model('Article1'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
  * Create a article
  */
 exports.create = function (req, res) {
-  var article = new Article(req.body);
-  article.user = req.user;
+  var article1 = new Article1(req.body);
+  article1.user = req.user;
 
-  article.save(function (err) {
+  article1.save(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(article);
+      res.json(article1);
     }
   });
 };
@@ -30,26 +30,26 @@ exports.create = function (req, res) {
  * Show the current article
  */
 exports.read = function (req, res) {
-  res.json(req.article);
+  res.json(req.article1);
 };
 
 /**
  * Update a article
  */
 exports.update = function (req, res) {
-  var article = req.article;
+  var article1 = req.article1;
 
-  article.title = req.body.title;
-  article.content = req.body.content;
-  article.mantra = req.body.mantra;
+  article1.title = req.body.title;
+  article1.content = req.body.content;
+  article1.mantra = req.body.mantra;
 
-  article.save(function (err) {
+  article1.save(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(article);
+      res.json(article1);
     }
   });
 };
@@ -58,15 +58,15 @@ exports.update = function (req, res) {
  * Delete an article
  */
 exports.delete = function (req, res) {
-  var article = req.article;
+  var article1 = req.article1;
 
-  article.remove(function (err) {
+  article1.remove(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(article);
+      res.json(article1);
     }
   });
 };
@@ -75,13 +75,13 @@ exports.delete = function (req, res) {
  * List of Articles
  */
 exports.list = function (req, res) {
-  Article.find().sort('-created').populate('user', 'displayName').exec(function (err, articles) {
+  Article1.find().sort('-created').populate('user', 'displayName').exec(function (err, articles1) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(articles);
+      res.json(articles1);
     }
   });
 };
@@ -89,23 +89,23 @@ exports.list = function (req, res) {
 /**
  * Article middleware
  */
-exports.articleByID = function (req, res, next, id) {
+exports.article1ByID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
-      message: 'Article is invalid'
+      message: 'Article1 is invalid'
     });
   }
 
-  Article.findById(id).populate('user', 'displayName').exec(function (err, article) {
+  Article1.findById(id).populate('user', 'displayName').exec(function (err, article1) {
     if (err) {
       return next(err);
-    } else if (!article) {
+    } else if (!article1) {
       return res.status(404).send({
-        message: 'No article with that identifier has been found'
+        message: 'No article1 with that identifier has been found'
       });
     }
-    req.article = article;
+    req.article1 = article1;
     next();
   });
 };

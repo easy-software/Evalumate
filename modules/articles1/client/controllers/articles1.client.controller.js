@@ -1,8 +1,8 @@
 'use strict';
 
 // Articles controller
-angular.module('articles').controller('ArticlesController', ['$scope', '$window', '$stateParams', '$location', 'Authentication', 'Articles',
-  function ($scope, $window, $stateParams, $location, Authentication, Articles) {
+angular.module('articles1').controller('Articles1Controller', ['$scope', '$window', '$stateParams', '$location', 'Authentication', 'Articles1',
+  function ($scope, $window, $stateParams, $location, Authentication, Articles1) {
     $scope.authentication = Authentication;
 
     // Create new Article
@@ -10,21 +10,21 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$window'
       $scope.error = null;
 
       if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'articleForm');
+        $scope.$broadcast('show-errors-check-validity', 'article1Form');
 
         return false;
       }
 
       // Create new Article object
-      var article = new Articles({
+      var article1 = new Articles1({
         title: this.title,
         content: this.content,
         mantra: this.mantra
       });
       
       // Redirect after save
-      article.$save(function (response) {
-        //$location.path('articles/' + response._id);
+      article1.$save(function (response) {
+        //$location.path('articles1/' + response._id);
 
         // Clear form fields
         $scope.title = '';
@@ -37,17 +37,17 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$window'
     };
 
     // Remove existing Article
-    $scope.remove = function (article) {
-      if (article) {
-        article.$remove();
+    $scope.remove = function (article1) {
+      if (article1) {
+        article1.$remove();
 
-        for (var i in $scope.articles) {
-          if ($scope.articles[i] === article) {
-            $scope.articles.splice(i, 1);
+        for (var i in $scope.articles1) {
+          if ($scope.articles1[i] === article1) {
+            $scope.articles1.splice(i, 1);
           }
         }
       } else {
-        $scope.article.$remove(function () {
+        $scope.article1.$remove(function () {
           $location.path('journal'); //this works
         });
       }
@@ -58,15 +58,15 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$window'
       $scope.error = null;
 
       if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'articleForm');
+        $scope.$broadcast('show-errors-check-validity', 'article1Form');
 
         return false;
       }
 
-      var article = $scope.article;
+      var article1 = $scope.article1;
 
-      article.$update(function () {
-        $location.path('journal/' + article._id);
+      article1.$update(function () {
+        $location.path('journal/' + article1._id);
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -74,13 +74,13 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$window'
 
     // Find a list of Articles
     $scope.find = function () {
-      $scope.articles = Articles.query();
+      $scope.articles1 = Articles1.query();
     };
 
     // Find existing Article
     $scope.findOne = function () {
-      $scope.article = Articles.get({
-        articleId: $stateParams.articleId
+      $scope.article1 = Articles1.get({
+        article1Id: $stateParams.article1Id
       });
     };
   }
