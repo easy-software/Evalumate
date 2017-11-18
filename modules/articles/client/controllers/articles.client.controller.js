@@ -5,6 +5,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$window'
   function ($scope, $window, $stateParams, $location, Authentication, Articles) {
     $scope.authentication = Authentication;
 
+     
     // Create new Article
     $scope.create = function (isValid) {
       $scope.error = null;
@@ -70,11 +71,21 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$window'
       });
     };
 
+
+
+
     // Find a list of Articles
     $scope.find = function () {
+
       $scope.articles = Articles.query();
     };
 
+    /*
+    Article.find
+    $scope.findBynName  =function(){
+      Article.findONe({'userid': 'userid'})
+    };
+*/
     // Find existing Article
     $scope.findOne = function () {
       $scope.article = Articles.get({
@@ -83,3 +94,14 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$window'
     };
   }
 ]);
+
+
+
+/*
+      Articles.query({start:$scope.startDate, end:$scope.endDate}, function(articles) {
+       $scope.articles = articles;
+   });
+   */
+
+
+//Article.find({ userId: variable_UserId}).exec(function(err,article))
