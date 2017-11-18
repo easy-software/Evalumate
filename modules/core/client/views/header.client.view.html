@@ -22,7 +22,7 @@
             <a class="header" ui-sref="{{subitem.state}}" ng-bind="subitem.title"></a>
           </li>
         </ul>
-        <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
+        <a class="header"ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
@@ -31,7 +31,7 @@
       </li>
       <li class="divider-vertical"></li>
       <li ui-sref-active="active">
-        <a ui-sref="authentication.signin" style="font-size:18px;">Sign In</a>
+        <a class = "header" ui-sref="authentication.signin" style="font-size:18px;">Sign In</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">

@@ -6,6 +6,13 @@
 <title>EvaluMate</title>
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Josefin+Slab">
 </head>
+<style>
+h1   {font-family: Comfortaa;}
+h2 {font-family: Comfortaa;}
+input {font-family: Comfortaa;}
+p {font-family: Proxima Nova}
+button {font-family: Comfortaa;}
+</style>
 <body>
   <div id = "main-nav">
   </div>
@@ -13,6 +20,24 @@
 	<p style="font-family: Proxima Nova; color:#818185"> The following documents are dated by when the average was created. Each score is an average from three
 			friends who you invited to rate you.
 	<p>
+		<section ng-controller="ArticlesController" ng-init="find()">
+		  <div class="page-header">
+		    <h1>Scores</h1>
+		  </div>
+		  <div class="list-group">
+		    <a ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})" class="list-group-item">
+		      <small class="list-group-item-text">
+		        Posted on
+		        <span ng-bind="article.created | date:'mediumDate'"></span>
+		      </small>
+		      <h4 class="list-group-item-heading" ng-bind="article.title"></h4>
+		      <p class="list-group-item-text" ng-bind="article.date"></p>
+		    </a>
+		  </div>
+		  <div class="alert alert-warning text-center" ng-if="articles.$resolved && !articles.length">
+		    No journal entires yet, why don't you <a ui-sref="articles.create">create one</a>?
+		  </div>
+		</section>
 </body>
 
 <!--- This is the footer. Will update when necessary information is provided -->
