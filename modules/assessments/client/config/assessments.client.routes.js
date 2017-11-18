@@ -29,7 +29,6 @@
         controller: 'AssessmentsListController',
         controllerAs: 'vm',
         data: {
-          ignoreState: true,
           pageTitle: 'Emotional Maturity Assessment'
         }
       })
