@@ -222,5 +222,5 @@ module.exports = initGlobalConfig();
 module.exports = {
   db: {
     uri: 'mongodb://stanleycelestin1:WesternUnion1!@ds161194.mlab.com:61194/loveddb', //place the URI of your mongo database here.
-};
+},
 };
