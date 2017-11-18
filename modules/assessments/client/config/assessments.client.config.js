@@ -19,7 +19,7 @@
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'assessments', {
       title: 'Emotional Maturity',
-      state: 'assessments.emotional-maturity'
+      state: 'assessments.emotional-maturity-landing'
     });
 
     // Add the dropdown create item

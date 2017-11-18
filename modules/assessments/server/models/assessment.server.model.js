@@ -23,6 +23,10 @@ var AssessmentSchema = new Schema({
   user: {
     type: Schema.ObjectId,
     ref: 'User'
+  },
+  result: {
+    type: Number,
+    default:  0
   }
 });
 
