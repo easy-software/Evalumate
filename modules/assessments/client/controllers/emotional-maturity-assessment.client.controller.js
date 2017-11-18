@@ -5,12 +5,23 @@
     .module('assessments')
     .controller('AssessmentsListController', AssessmentsListController);
 
-  AssessmentsListController.$inject = ['AssessmentsService'];
+  AssessmentsListController.$inject = ['Authentication','assessmentResolve']];
 
   function AssessmentsListController(AssessmentsService,$scope, $state, $window, Authentication, assessment) {
     var vm = this;
 
-    vm.assessments = AssessmentsService.query();
+
+    //vm.assessments = AssessmentsService.query();
+    vm.findOne = findOne
+
+    function findOne (){
+        vm.assessment = 0
+    }
+
+    function done() {
+      console.log("Submitted");
+    }
+
     vm.ema=["This person is aware of and able to express accurately how he/she feels.",
             "This person demonstrates sensitivity to how others are feeling.",
             "This person is willing and able to disclose personal feelings.",
@@ -42,11 +53,5 @@
             "This person is respectful of other peoples property and belongings.",
             "This person willingly carries his/her own share of the workload."
     ];
-    vm.results =  [];
-
-    function done() {
-      console.log("Submitted");
-    }
-
   }
 }());
