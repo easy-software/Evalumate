@@ -1,0 +1,53 @@
+
+
+
+
+<section ng-controller="Articles1Controller">
+  <div class="page-header">
+    <h1>New Journal</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="articleForm" class="form-horizontal" ng-submit="create(articleForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label for="title">Title</label>
+          <input name="title" type="text" ng-model="title" id="title" class="form-control" placeholder="Title" required>
+          <div ng-messages="articleForm.title.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Journal title is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <textarea name="content" ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-default">
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
+
+<section ng-controller="Articles1Controller" ng-init="find()">
+  <div class="page-header">
+    <h1>Posted Journals</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="article in articles1" ui-sref="articles1.view({articleId: article._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="article.created | date:'mediumDate'"></span>
+        by
+        <span ng-bind="article.user.displayName"></span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="article.title"></h4>
+      <p class="list-group-item-text" ng-bind="article.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="articles1.$resolved && !articles1.length">
+    No journal entries yet, why don't you <a ui-sref="articles1.create">create one</a>?
+  </div>
+</section>
