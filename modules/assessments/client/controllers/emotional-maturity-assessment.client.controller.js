@@ -5,7 +5,7 @@
     .module('assessments')
     .controller('AssessmentsListController', AssessmentsListController);
 
-  AssessmentsListController.$inject = ['Authentication','assessmentResolve']];
+  AssessmentsListController.$inject = ['Authentication'];
 
   function AssessmentsListController(AssessmentsService,$scope, $state, $window, Authentication, assessment) {
     var vm = this;
