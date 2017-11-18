@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('assessments').controller('EmailController', ['$scope', 'Authentication','$window', '$stateParams', '$location', 'Assessments',
-  function ($scope, Authentication, $window, $stateParams, $location, Emails) {
+angular.module('assessments').controller('EmailController', ['$scope', 'Authentication',
+  function ($scope, Authentication) {
     // This provides Authentication context.
 		 $scope.authentication = Authentication;
 		 $scope.email1 = '';
@@ -30,11 +30,5 @@ angular.module('assessments').controller('EmailController', ['$scope', 'Authenti
 			 }
 
 	 };
-
-	 // Create new Article object
-	 var assessment = new Assessments({
-		 title: this.title,
-		 content: this.content
-	 });
 
  }]);

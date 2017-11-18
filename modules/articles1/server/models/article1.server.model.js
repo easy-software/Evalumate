@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 /**
  * Article Schema
  */
-var ArticleSchema = new Schema({
+var Article1Schema = new Schema({
   created: {
     type: Date,
     default: Date.now
@@ -17,8 +17,7 @@ var ArticleSchema = new Schema({
   title: {
     type: String,
     default: '',
-    trim: true,
-    required: 'Title cannot be blank'
+    trim: true
   },
   content: {
     type: String,
@@ -36,4 +35,4 @@ var ArticleSchema = new Schema({
   }
 });
 
-mongoose.model('Article', ArticleSchema);
+mongoose.model('Article1', Article1Schema);
