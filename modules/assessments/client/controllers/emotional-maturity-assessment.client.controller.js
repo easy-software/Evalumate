@@ -11,6 +11,7 @@
     var vm = this;
 
 
+
     //vm.assessments = AssessmentsService.query();
     vm.findOne = findOne
 
@@ -19,7 +20,11 @@
     }
 
     function done() {
+			
       console.log("Submitted");
+
+
+
     }
 
     vm.ema=["This person is aware of and able to express accurately how he/she feels.",

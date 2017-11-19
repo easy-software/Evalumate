@@ -1,4 +1,4 @@
-<section>
+<section ng-app="assessment" >
   <!--
   <div class="page-header">
     <h1>{{vm.assessment._id ? 'Edit Assessment' : 'New Assessment'}}</h1>
@@ -23,11 +23,11 @@
     </form>
   </div>
 -->
-<div>
+<div ng-controller='emailController'>
 	<link rel="stylesheet" type="text/css" href="modules/core/client/css/emailFriends.css" />
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Proxima Nova" />
-  <div id = "invite prompt" ng-controller="EmailController">
+  <div id = "invite prompt" >
 		<style>
 		h1   {font-family: Comfortaa;}
 		h2 {font-family: Comfortaa;}

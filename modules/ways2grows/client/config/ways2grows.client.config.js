@@ -10,7 +10,7 @@
   function menuConfig(menuService) {
     // Set top bar menu items
     menuService.addMenuItem('topbar', {
-      title: 'Ways2grows',
+      title: 'Strive For Five',
       state: 'ways2grows.list',
       type: 'button',
       roles: ['user']

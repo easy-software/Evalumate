@@ -1,7 +1,18 @@
-'use strict';
+// 'use strict';
+//
+// angular.module('assessment').controller('EmailController', ['$scope','Authentication','Assessment',
+//   function ($scope, Authentication, Assessment) {
 
-angular.module('assessments').controller('EmailController', ['$scope', 'Authentication',
-  function ($scope, Authentication) {
+(function () {
+  'use strict';
+
+  angular
+    .module('assessments')
+    .controller('emailController', emailController);
+
+  emailController.$inject = ['$scope', '$window', '$stateParams', '$location', 'Authentication', 'AssessmentsService'];
+
+	function emailController($scope, $window, $stateParams, $location, Authentication, AssessmentsService){
     // This provides Authentication context.
 		 $scope.authentication = Authentication;
 		 $scope.email1 = '';
@@ -16,9 +27,45 @@ angular.module('assessments').controller('EmailController', ['$scope', 'Authenti
 			 $scope.emailstring += $scope.email3;
 			 send.action = 'mailto:?bcc=' +$scope.email1 + ',' + $scope.email2 +',' + $scope.email3 + '&subject=lovED: ' +
 			 'Your friend is awaiting your response to the emotional maturity quiz. &body=Don\'t worry,'+
-			 'your response will be kept totally anonymous and they will only see an average of multiple scores. Don\'t keep them waiting! Click this link to rate your friend now.\"';
+			 'your response will be kept totally anonymous and they will only see an average of multiple scores. Don\'t keep them waiting! Click this link to rate your friend now.';
 			 send.submit();
-		 };
+
+
+			 $scope.authentication = Authentication;
+
+	     // Create new Article
+	     $scope.create = function (isValid) {
+	       $scope.error = null;
+
+	       if (!isValid) {
+	         $scope.$broadcast('show-errors-check-validity', 'articleForm');
+
+	         return false;
+	       }
+
+
+	       // Create new Article object
+	       var ass = new AssessmentsService({
+					 email1: {
+							 address: this.email1
+						 }
+		       });
+
+
+	       // Redirect after save
+	       ass.$save(function (response) {
+	         //$location.path('articles/' + response._id);
+
+	         // Clear form fields
+	         $scope.email1 = '';
+	         $window.location.reload();
+	       }, function (errorResponse) {
+	         $scope.error = errorResponse.data.message;
+	       });
+				 };
+				 };
+
+
 		 $scope.checkEmail = function(){
 			 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.email3) && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.email1) &&
 			 /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.email2))
@@ -28,7 +75,6 @@ angular.module('assessments').controller('EmailController', ['$scope', 'Authenti
 			 else {
 				 return true;
 			 }
-
-	 };
-
- }]);
+		};
+	}
+}());
