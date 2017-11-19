@@ -15,8 +15,7 @@
     "npm": "4.2.0"
   },
   "scripts": {
-    "start": "grunt",
-    "test": "grunt test",
+    "start": "node server.js",
     "postinstall": "bower install --config.interactive=false"
   },
   "dependencies": {
