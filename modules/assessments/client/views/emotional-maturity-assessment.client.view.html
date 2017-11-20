@@ -1,30 +1,6 @@
 <section ng-controller="AssessmentsListController">
 
 
-  <!--
-    <p ng-repeat="value in vm.ema">{{value}}</p>
-  <div class="page-header">
-    <h1>Emas</h1>
-  </div>
-  <div class="list-group">
-    <a ng-repeat="ema in vm.emas"
-       ui-sref="emas.view({ emaId: ema._id })"
-       class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="ema.created | date:'mediumDate'"></span>
-        by
-        <span ng-if="ema.user" ng-bind="ema.user.displayName"></span>
-        <span ng-if="!ema.user">Deleted User</span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="ema.name"></h4>
-    </a>
-  </div>
-  <div class="alert alert-warning text-center" ng-if="vm.emas.$resolved && !vm.emas.length">
-    No Emas yet, why don't you <a ui-sref="emas.create">create one</a>?
-  </div>
-
-  -->
 
   <div class="container ">
     <div>
@@ -44,20 +20,20 @@
           <div class="row">
            <div class="col-md-1">
            </div>
-           <div class="col-md-2" style="background-color: #F9E79F; vertical-align: middle;">
+           <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #fad654; vertical-align: middle;">
              <label><input type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' value="1">1 - Almost Never</label>
            </div>
-            <div class="col-md-2" style="background-color: #FAD7A0; vertical-align: middle;">
+            <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #ffa309; vertical-align: middle;">
              <label><input type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="2">2 - Sometimes</label>
            </div>
-            <div class="col-md-2" style="background-color: #F5CBA7; vertical-align: middle;">
+            <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #d97804; vertical-align: middle;">
              <label><input type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="3">3 - Moderately Often</label>
            </div>
 
-            <div class="col-md-2" style="background-color: #F5B7B1; vertical-align: middle;">
+            <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #ed2937; vertical-align: middle;">
              <label><input type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="4">4 - Often</label>
            </div>
-            <div class="col-md-2" style="background-color: #E6B0AA; vertical-align: middle;">
+            <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #b4292e; vertical-align: middle;">
              <label><input type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="5">5 - Very Often</label>
            </div>
            <div class="col-md-1">
