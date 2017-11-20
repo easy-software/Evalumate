@@ -53,11 +53,7 @@
       .state('assessments.create', {
         url: '/create',
         templateUrl: 'modules/assessments/client/views/form-assessment.client.view.html',
-        controller: 'AssessmentsController',
-        controllerAs: 'vm',
-        resolve: {
-          assessmentResolve: newAssessment
-        },
+       
         data: {
           roles: ['user', 'admin'],
           pageTitle: 'Assessments Create'

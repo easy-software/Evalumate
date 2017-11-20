@@ -52,6 +52,6 @@ var emailSchema = new Schema({
 
 
 
-mongoose.model('email', emailSchema);
+mongoose.model('emails', emailSchema);
 
 mongoose.model('Assessment', AssessmentSchema);
