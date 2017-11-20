@@ -1,18 +1,21 @@
 <section ng-controller="AssessmentsListController">
+	<link rel="stylesheet" type="text/css" href="modules/assessments/client/css/ea.css" />
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Proxima Nova" />
 
 
 
   <div class="container ">
     <div>
       <form  ng-submit="done()">
-      
+
         <div class="form-group" ng-repeat="raa in vm.raa track by $index">
          <div class="row">
            <div class="col-md-1">
-             
+
            </div>
            <div class="col-md-10">
-             <h4 class="text-center">{{raa}}</h4>
+             <h4 class="text-center; ea">{{raa}}</h4>
            </div>
            <div class="col-md-1">
            </div>
@@ -21,32 +24,32 @@
            <div class="col-md-1">
            </div>
            <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #fad654;  vertical-align: middle;">
-             <label><input type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' value="1">1 - Strongly-Disagree</label>
+             <label class="ea"><input type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' value="1"> 1 - Strongly-Disagree</label>
            </div>
             <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #ffa309; vertical-align: middle;">
-             <label><input type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="2">2 - Disagree</label>
+             <label class="ea"><input type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="2"> 2 - Disagree</label>
            </div>
             <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #d97804; vertical-align: middle;">
-             <label><input type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="3"> 3 - Neutral</label>
+             <label class="ea"><input type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="3"> 3 - Neutral</label>
            </div>
 
             <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #ed2937; vertical-align: middle;">
-             <label><input type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="4">4 - Agree</label>
+             <label class="ea"><input type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="4"> 4 - Agree</label>
            </div>
             <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #b4292e; vertical-align: middle;">
-             <label><input type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="5">5 - Strongly-Agree</label>
+             <label class="ea"><input type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="5"> 5 - Strongly-Agree</label>
            </div>
            <div class="col-md-1">
-             
+
            </div>
          </div>
         </div>
         <div style="text-align: center;">
           <button type="button btn-lg" class="btn btn-success" ng-click="done()">Submit</button>
         </div>
-        
+
       </form>
-    </div>    
+    </div>
 
 </div>
 </section>

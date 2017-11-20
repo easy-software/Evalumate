@@ -110,10 +110,20 @@ var UserSchema = new Schema({
     body  : {type: String},
     date  : {type: String}
   }],
-  emailInvites: [{
-    email: {type: String},
-    response: {type: Boolean },
-  }],
+	email1 : {
+		address: {
+			type: String,
+			default: ''
+		},
+		hasResponded: {
+			type: Boolean,
+			default: false
+		},
+		score: {
+			type: Number,
+			default: 0
+		}
+	},
   assessment: {
     ema : {type: Number},
     raa : {type: Number},

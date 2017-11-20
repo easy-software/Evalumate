@@ -11,6 +11,7 @@
     var vm = this;
 
 
+
     //vm.assessments = AssessmentsService.query();
     vm.findOne = findOne
 
@@ -19,7 +20,11 @@
     }
 
     function done() {
+			
       console.log("Submitted");
+
+
+
     }
     vm.results = [];
     console.log(vm.results[0]);
