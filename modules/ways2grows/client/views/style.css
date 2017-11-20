@@ -1,0 +1,28 @@
+text {
+    font-family:Helvetica, Arial, sans-serif;
+    font-size:11px;
+    pointer-events:none;
+}
+#chart {
+    position:relative;
+    width:500px;
+    height:500px;
+    top:0;
+    left:0;
+}
+#option {
+    position: absolute;
+    width:500px;
+    height:500px;
+    top:215px;
+    left:550px;
+}
+#option h1 {
+    font-size: 50px;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top:50%;
+    -webkit-transform:translate(0,-50%);
+            transform:translate(0,-50%);
+}
