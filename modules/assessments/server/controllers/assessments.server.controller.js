@@ -81,7 +81,7 @@ exports.delete = function(req, res) {
  * List of Assessments
  */
 exports.list = function(req, res) {
-  Assessment.find().sort('-created').populate('user', 'displayName').exec(function(err, assessments) {
+  Assessment.find({'user': req.user.id }).sort('-created').populate('user', 'displayName').exec(function(err, assessments) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)

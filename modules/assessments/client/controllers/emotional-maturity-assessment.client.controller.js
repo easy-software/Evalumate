@@ -11,14 +11,17 @@
     var vm = this;
 
 
-    vm.userEMAs = []
+    vm.userEMAs = [{
+        name: 'Stanley',
+        result: 130
+    }]
     vm.submit = false;
     vm.results = [];
     vm.totalClicks =0;
     vm.name = null;
 
     vm.init = function (){
-    
+        vm.assessment_= AssessmentsService.query();
     }
 
 
