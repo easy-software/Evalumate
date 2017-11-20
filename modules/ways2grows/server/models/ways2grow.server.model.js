@@ -16,9 +16,17 @@ var Ways2growSchema = new Schema({
     required: 'Please fill Ways2grow name',
     trim: true
   },
-  created: {
+  lastSpin: {
     type: Date,
     default: Date.now
+  },
+  selectedOptions: {
+    type: [Number],
+    default: []
+  },
+  spinCounter: {
+    type: Number,
+    default: 0
   },
   user: {
     type: Schema.ObjectId,
