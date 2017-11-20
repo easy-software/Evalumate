@@ -9,6 +9,7 @@
 
   function AssessmentsListController(AssessmentsService,$scope, $state, $window, Authentication, assessment) {
     var vm = this;
+    //$scope.radioClicked = {};
 
 
 
@@ -26,8 +27,14 @@
 
 
     }
+
     vm.results = [];
-    console.log(vm.results[0]);
+    vm.totalClicks =0;
+    for (var i =0 ; i <vm.results.length; i++) {
+        vm.totalClicks+=1;
+    }
+    console.log(vm.totalClicks);
+    vm.name = '';
 
     vm.raa=["Physical affection with this person is very special.",
             "I experience something special with this person that I do not experience with others.", 
@@ -91,5 +98,7 @@
             "This person is respectful of other peoples property and belongings.",
             "This person willingly carries his/her own share of the workload."
     ];
+
+   
   }
 }());
