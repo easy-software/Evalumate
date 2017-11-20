@@ -30,4 +30,28 @@ var AssessmentSchema = new Schema({
   }
 });
 
+var emailSchema = new Schema({
+  email1: {
+    type: String,
+    default: '',
+  },
+   email2: {
+    type: String,
+    default: '',
+  },
+   email3: {
+    type: String,
+    default: '',
+  },
+   user: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  },
+  
+});
+
+
+
+mongoose.model('email', emailSchema);
+
 mongoose.model('Assessment', AssessmentSchema);

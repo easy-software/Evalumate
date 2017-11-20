@@ -4,10 +4,31 @@ angular.module('assessments').controller('EmailController', ['$scope', 'Authenti
   function ($scope, Authentication) {
     // This provides Authentication context.
 		 $scope.authentication = Authentication;
-		 $scope.email1 = '';
-		 $scope.email2 = '';
-		 $scope.email3 = '';
-		 $scope.emailstring = '';
+
+      $scope.error = null;
+
+
+      // Create new Article object
+      var email = new email({
+        email1: this.email1,
+         email2: this.email2,
+         email3: this.email3
+      });
+      
+      // Redirect after save
+      email.$save(function (response) {
+        //$location.path('articles/' + response._id);
+
+        // Clear form fields
+        $scope.email1 = '';
+        $scope.email2 = '';
+        $scope.email3 = '';
+        $window.location.reload();
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+
+	
 		 var send = document.getElementById('infoSubmit');
 
 		 $scope.getEmail = function(){
