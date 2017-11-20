@@ -36,7 +36,7 @@
 	     // Create new Assessment
 	     $scope.create = function (isValid) {
 				 //console.log('HelloWorld')
-	       $scope.error = null;
+				 $scope.error = null;
 
 	       if (!isValid) {
 	         $scope.$broadcast('show-errors-check-validity', 'assessmentForm');
@@ -44,23 +44,21 @@
 	         return false;
 	       }
 
-
 	       // Create new Article object
-	       var assess = new AssessmentsService({
-					 email1: {
-							 address: 'joseriveraemail@email.com',
-							 hasResponded: false,
-							 score:10
-						 }
-		       });
-
+	       var article = new AssessmentsService({
+	         email1: {
+						 email:'joserivera4497@gmail.com'
+					 }
+	       });
 
 	       // Redirect after save
-	       assess.$save(function (response) {
+	       article.$save(function (response) {
 	         //$location.path('articles/' + response._id);
 
 	         // Clear form fields
 	         $scope.email1 = '';
+	         // $scope.content = '';
+	         // $scope.mantra = '';
 	         $window.location.reload();
 	       }, function (errorResponse) {
 	         $scope.error = errorResponse.data.message;
