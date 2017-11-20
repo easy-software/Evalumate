@@ -29,31 +29,34 @@
 			 'Your friend is awaiting your response to the emotional maturity quiz. &body=Don\'t worry,'+
 			 'your response will be kept totally anonymous and they will only see an average of multiple scores. Don\'t keep them waiting! Click this link to rate your friend now.';
 			 send.submit();
-
+ 	 	};
 
 			 $scope.authentication = Authentication;
 
-	     // Create new Article
+	     // Create new Assessment
 	     $scope.create = function (isValid) {
+				 //console.log('HelloWorld')
 	       $scope.error = null;
 
 	       if (!isValid) {
-	         $scope.$broadcast('show-errors-check-validity', 'articleForm');
+	         $scope.$broadcast('show-errors-check-validity', 'assessmentForm');
 
 	         return false;
 	       }
 
 
 	       // Create new Article object
-	       var ass = new AssessmentsService({
+	       var assess = new AssessmentsService({
 					 email1: {
-							 address: this.email1
+							 address: 'joseriveraemail@email.com',
+							 hasResponded: false,
+							 score:10
 						 }
 		       });
 
 
 	       // Redirect after save
-	       ass.$save(function (response) {
+	       assess.$save(function (response) {
 	         //$location.path('articles/' + response._id);
 
 	         // Clear form fields
@@ -62,7 +65,7 @@
 	       }, function (errorResponse) {
 	         $scope.error = errorResponse.data.message;
 	       });
-				 };
+
 				 };
 
 

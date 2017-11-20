@@ -38,7 +38,8 @@ var AssessmentSchema = new Schema({
 			default: false
 		},
 		score: {
-			type: Number
+			type: Number,
+			default: 0
 		}
 	}
 });

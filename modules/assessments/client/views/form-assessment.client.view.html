@@ -31,20 +31,34 @@
 		<style>
 		h1   {font-family: Comfortaa;}
 		h2 {font-family: Comfortaa;}
+		h4 {font-family: Comfortaa;
+				text-align: center
+		}
 		input {font-family: Comfortaa;}
-		p {font-family: Proxima Nova}
+		h5 {font-family: Comfortaa;}
+		p {font-family: Proxima Nova;
+			 text-align: center;
+		}
 		button {font-family: Comfortaa;}
 		</style>
-		<h1 class="text" style="color:#818185;"> Pick three friends and put their email in the boxes so they can rate your emotional maturity </h1>
+		<h1 class="text" style="color:#b4292e;"> Emotional Maturity Self-Assessment
+		</h1>
 		</br>
-		<p style="color:#818185;"> Their responses will remain anonymous. You will only be able to view
-			the average score of all three responses once every friend has completed the assessment
-		</p>
+		<h4 style="color:#818185;"> Not only is it important to make smart choice in a partner,
+			but also in how we can grow our own EM so we become the partners we would want.
+			<br><br>
+			It’s not only in how we occur to ourselves, but also in how we occur to others because that
+			is who we’re impacting with our behavior. With this self-assessment, we get honest feedback that
+			allows us to understand how we occur to others.
+			<br><br>
+			By inviting three individuals that we know and trust to anonymously evaluate us, we can strive to be the 5.
+
+	</h4>
 		<div class="jumbotron">
 			<!--?subject=lovED: you've been invited to rate your friend's emotional maturity!&body=Don't worry,
 			your response will be kept totally anonymous and they will only see an average of multiple scores. Click here to rate your friend."-->
 
-			<form  id="infoSubmit" method="post">
+			<form  id="infoSubmit" name="assessmentForm" method="post">
 				<h2 style="color:#fad654;">Email 1</h2>
 					<input type="email" size="40" placeholder="username@email.com" required ng-model="email1"   />
 
@@ -54,19 +68,19 @@
 					<h2 style="color:#D97804;">Email 3</h2>
 					<input type="email" size="40" placeholder="username@email.com" ng-model="email3" required />
 				</br></br>
-					<button class="btn btn-warning" method="post" ng-click="getEmail()" ng-hide="checkEmail()">Send the emails</button>
+					<button class="btn btn-warning" method="post" ng-click="getEmail(); create(assessmentForm.$valid)" novalidate ng-hide="checkEmail()">Send the emails</button>
 			</form>
 		</div>
 		<form action="mailto:test@test.com,test2@test.com,test3@test.com?subject=lovED: Your friend is still awaiting your response to the emotional maturity quiz&body=Don't worry,
 			 your response will be kept totally anonymous and they will only see an average of multiple scores. Don't keep them waiting! Click this link to rate your friend now." method="post">
-				<input class="btn btn-warning" style="font-family: Comfortaa" type="submit" value="If you already invited friends and want to send them a reminder, click here">
+				<!--input class="text" style="font-family: Comfortaa" type="submit"
+				value="If you already invited friends and want to send them a reminder, click here"-->
+				<h5>If you already invited friends and want to send them a reminder, click <input type="submit" value="here" style="outline:none; border: 0; color: blue; margin: 0"></h5>
 		</form>
 	</br>
 
 
-			<a href = "scores" >
-			<button class="btn btn-warning">  Navigate to the scores page to view past scores! </button>
-			</a>
+
 
     </div>
   </div>

@@ -1,4 +1,7 @@
 <section ng-controller="AssessmentsListController">
+	<!--link rel="stylesheet" type="text/css" href="modules/assessments/client/css/ea.css" /-->
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Proxima Nova" />
 
 
   <!--
@@ -29,14 +32,14 @@
   <div class="container ">
     <div>
       <form  ng-submit="done()">
-      
+
         <div class="form-group" ng-repeat="ema in vm.ema track by $index">
          <div class="row">
            <div class="col-md-1">
-             
+
            </div>
            <div class="col-md-10">
-             <h4 class="text-center">{{ema}}</h4>
+             <h4 class="text-left">{{ema}}</h4>
            </div>
            <div class="col-md-1">
            </div>
@@ -61,16 +64,16 @@
              <label><input type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="5">5 - Very Often</label>
            </div>
            <div class="col-md-1">
-             
+
            </div>
          </div>
         </div>
         <div style="text-align: center;">
           <button type="button btn-lg" class="btn btn-success" ng-click="done()">Submit</button>
         </div>
-        
+
       </form>
-    </div>    
+    </div>
 
 </div>
 </section>
