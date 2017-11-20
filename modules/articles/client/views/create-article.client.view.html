@@ -3,6 +3,17 @@
 
 
 <section ng-controller="ArticlesController">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Proxima Nova" />
+	<style>
+	h1   {font-family: Comfortaa; color: #ffa309;}
+	h4 {font-family: Comfortaa;}
+	input {font-family: Proxima Nova;}
+	p {font-family: Proxima Nova}
+	small {font-family: Proxima Nova}
+	button {font-family: Comfortaa;}
+	label {font-family: Comfortaa;}
+	</style>
   <div class="page-header">
     <h1>New Journal</h1>
   </div>
@@ -33,7 +44,7 @@
 
 <section ng-controller="ArticlesController" ng-init="find()">
   <div class="page-header">
-    <h1>Posted Journals</h1>
+    <h1 style="color:#d97804">Posted Journals</h1>
   </div>
   <div class="list-group">
     <a ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})" class="list-group-item">

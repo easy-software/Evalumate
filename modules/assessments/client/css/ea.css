@@ -1,26 +1,29 @@
-a {
+a.ea{
 	font-family:Comfortaa
 }
-h1 {
+h1.ea {
 	font-family:  Comfortaa;
 
 
 	}
 
-	h2 {font-family: Comfortaa;
+	h2.ea {font-family: Comfortaa;
 
 	}
+label.ea {font-family: Proxima Nova;
 
-	h3 {font-family: Comfortaa;
+}
+	h3.ea {font-family: Comfortaa;
 
 	}
-	h4 {font-family: Comfortaa;
+	h4.ea {font-family: Comfortaa;
 		text-align: left;
+		
 
 	}
-	input {font-family: Comfortaa;}
-	p {font-family: Proxima Nova;
+	input.ea {font-family: Comfortaa;}
+	p.ea {font-family: Proxima Nova;}
 
-	
 
-button {font-family: Comfortaa;}
+
+button.ea {font-family: Comfortaa;}
