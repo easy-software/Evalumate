@@ -7,34 +7,51 @@
 
   AssessmentsListController.$inject = ['Authentication'];
 
-  function AssessmentsListController(AssessmentsService,$scope, $state, $window, Authentication, assessment) {
+  function AssessmentsListController(AssessmentsService, $scope, $state, $window, Authentication, assessment) {
     var vm = this;
-    //$scope.radioClicked = {};
 
 
-
-    //vm.assessments = AssessmentsService.query();
-    vm.findOne = findOne
-
-    function findOne (){
-        vm.assessment = 0
-    }
-
-    function done() {
-			
-      console.log("Submitted");
-
-
-
-    }
-
+    vm.userEMAs = []
+    vm.submit = false;
     vm.results = [];
     vm.totalClicks =0;
-    for (var i =0 ; i <vm.results.length; i++) {
-        vm.totalClicks+=1;
+    vm.name = null;
+
+    vm.init = function (){
+    
     }
-    console.log(vm.totalClicks);
-    vm.name = '';
+
+
+
+    vm.change = function (value) {
+        vm.totalClicks =0;
+
+        for (var i =0 ; i <vm.results.length; i++) {
+
+            if(vm.results[i]!=null){
+                vm.totalClicks+=1;
+            } 
+        }
+        if ((vm.totalClicks == 2) && (vm.name != null)){
+            vm.submit = true;
+        } 
+    };
+    vm.change_ = function () {
+        if ((vm.totalClicks == 5) && ((vm.name != null) || (vm.name != ""))) {
+            vm.submit = true;
+        } 
+    };
+
+    vm.done = function (){
+        var sum =0;
+        for (var i =0 ;  i<vm.results.length;i++){
+            if(vm.results[i]!=null){
+                sum += vm.results[i];
+            } 
+            
+        }
+        vm.userEMAs.push( {name: vm.name, result: sum});
+    };
 
     vm.raa=["Physical affection with this person is very special.",
             "I experience something special with this person that I do not experience with others.", 

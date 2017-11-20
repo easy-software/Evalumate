@@ -47,14 +47,14 @@
 	</div>
 	<div class="col-md-4" >
 		<h1>Past User Taken Scores</h1>
-		<a style="color: #818185;" ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})">
-			<small>
-				Posted on
-				<span style="color: #818185;" ng-bind="article.created | date:'mediumDate'"></span>
-			</small>
-			<h4 style="color: #818185;" class="list-group-item-heading" ng-bind="article.title"></h4>
-			<p style="color: #818185;" class="list-group-item-text" ng-bind="article.date"></p>
-		</a>
+		<div class="row" ng-repeat="test in vm.userEMAs track by $index">
+			<div class="col-md-6">
+				{{test.name}}
+			</div>
+			<div class="col-md-6">
+				{{test.result}}
+			</div>
+		</div>
 	</div>
 	<div class="col-md-4" >
 		<h1> Score Translation</h1>
