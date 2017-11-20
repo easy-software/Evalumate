@@ -21,6 +21,8 @@
     function done() {
       console.log("Submitted");
     }
+    vm.results = [];
+    console.log(vm.results[0]);
 
     vm.raa=["Physical affection with this person is very special.",
             "I experience something special with this person that I do not experience with others.", 

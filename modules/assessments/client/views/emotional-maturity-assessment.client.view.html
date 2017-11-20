@@ -1,8 +1,7 @@
 <section ng-controller="AssessmentsListController">
 
-
-
-  <div class="container ">
+  <div class="container " style="background-color: #F5F5F5;text-align: center;">
+    <h3>In order to submit this assessment, all questions will need to be answered!</h3>
     <div>
       <form  ng-submit="done()">
       
@@ -12,7 +11,7 @@
              
            </div>
            <div class="col-md-10">
-             <h4 class="text-center">{{ema}}</h4>
+             <h4 class="text-center">{{$index + 1 }} {{". "}}{{ema}}</h4>
            </div>
            <div class="col-md-1">
            </div>
