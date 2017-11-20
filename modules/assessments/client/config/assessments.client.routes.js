@@ -15,7 +15,7 @@
         template: '<ui-view/>'
       })
       .state('assessments.emotional-maturity-landing', {
-        url: '/landing',
+        url: '/emlanding',
         templateUrl: 'modules/assessments/client/views/emotional-maturity-landing.client.view.html',
         controller: 'AssessmentsListController',
         controllerAs: 'vm',
@@ -26,6 +26,24 @@
       .state('EMA', {
         url: '/EMA',
         templateUrl: 'modules/assessments/client/views/emotional-maturity-assessment.client.view.html',
+        controller: 'AssessmentsListController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Emotional Maturity Assessment'
+        }
+      })
+      .state('assessments.romantic-attraction-landing', {
+        url: '/ralanding',
+        templateUrl: 'modules/assessments/client/views/romantic-attraction-landing.client.view.html',
+        controller: 'AssessmentsListController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Emotional Maturity Assessments Landing'
+        }
+      })
+      .state('RAA', {
+        url: '/RAA',
+        templateUrl: 'modules/assessments/client/views/romantic-attraction-assessment.client.view.html',
         controller: 'AssessmentsListController',
         controllerAs: 'vm',
         data: {

@@ -22,6 +22,12 @@
       state: 'assessments.emotional-maturity-landing'
     });
 
+    // Add the dropdown list item
+    menuService.addSubMenuItem('topbar', 'assessments', {
+      title: 'Romantic Attraction',
+      state: 'assessments.romantic-attraction-landing'
+    });
+
     // Add the dropdown create item
     menuService.addSubMenuItem('topbar', 'assessments', {
       title: 'Email Friend Assessment',
