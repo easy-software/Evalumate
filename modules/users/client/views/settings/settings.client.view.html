@@ -1,4 +1,18 @@
 <section ng-controller="SettingsController">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Proxima Nova" />
+	<style>
+		h1   {font-family: Comfortaa;}
+		h2 {font-family: Comfortaa;}
+		h4 {font-family: Comfortaa;
+				text-align: center
+		}
+		input {font-family: Comfortaa;}
+		h5 {font-family: Comfortaa;}
+		a {font-family: Proxima Nova;
+		}
+		button {font-family: Comfortaa;}
+	</style>
   <div class="page-header">
     <h1>Settings</h1>
   </div>
@@ -6,16 +20,16 @@
     <nav class="col-sm-3 col-md-3">
       <ul class="nav nav-pills nav-stacked">
         <li ui-sref-active="active">
-          <a ui-sref="settings.profile">Edit Profile</a>
+          <a ui-sref="settings.profile" style="font-family:Comfortaa">Edit Profile</a>
         </li>
         <li ui-sref-active="active">
-          <a ui-sref="settings.picture">Change Profile Picture</a>
+          <a ui-sref="settings.picture" style="font-family:Comfortaa">Change Profile Picture</a>
         </li>
         <li ui-sref-active="active" ng-show="user.provider === 'local'">
-          <a ui-sref="settings.password">Change Password</a>
+          <a ui-sref="settings.password" style="font-family:Comfortaa">Change Password</a>
         </li>
         <li ui-sref-active="active">
-          <a ui-sref="settings.accounts">Manage Social Accounts</a>
+          <a ui-sref="settings.accounts" style="font-family:Comfortaa">Manage Social Accounts</a>
         </li>
       </ul>
     </nav>
