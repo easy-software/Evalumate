@@ -13,7 +13,7 @@ var AssessmentSchema = new Schema({
   name: {
     type: String,
     default: '',
-    required: 'Please fill Assessment name',
+    //required: 'Please fill Assessment name',
     trim: true
   },
   created: {

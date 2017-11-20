@@ -47,7 +47,7 @@
 	       // Create new Article object
 	       var article = new AssessmentsService({
 	         email1: {
-						 email:'joserivera4497@gmail.com'
+						 address: $scope.email1
 					 }
 	       });
 

@@ -25,19 +25,19 @@ exports.invokeRolesPolicies = function () {
     roles: ['user'],
     allows: [{
       resources: '/api/assessments',
-      permissions: ['get', 'post']
+      permissions: ['get', 'post', 'options']
     }, {
       resources: '/api/assessments/:assessmentId',
-      permissions: ['get','post']
+      permissions: ['get','post','options']
     }]
   }, {
     roles: ['guest'],
     allows: [{
       resources: '/api/assessments',
-      permissions: ['get','post']
+      permissions: ['get','post','options']
     }, {
       resources: '/api/assessments/:assessmentId',
-      permissions: ['get','post']
+      permissions: ['get','post','options']
     }]
   }]);
 };
