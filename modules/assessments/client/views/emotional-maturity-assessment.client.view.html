@@ -3,12 +3,29 @@
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Proxima Nova" />
 
-  <div class="container;" style="background-color: #F5F5F5;text-align: center; font-family: Comfortaa; font-weight: bold">
-    <h3>In order to submit this assessment, all questions will need to be answered!</h3>
-    <div>
-      <form  ng-submit="done()">
 
-        <div class="form-group" ng-repeat="ema in vm.ema track by $index">
+  <div class="container;" style="background-color: #F5F5F5;text-align: center; font-family: Comfortaa; font-weight: bold">
+
+    <h3>In order to submit this assessment, all questions will need to be answered!</h3>
+
+    <div >
+      <form  ng-submit="done()" >
+        
+        <div class="row">
+           <div class="col-md-1">
+           </div>
+           <div class="col-md-10">
+             <div class="form-group" >
+              <label class="control-label col-sm-5" for="email">Name of person you would like to assess: </label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" id="email" placeholder="Enter Name" name="email" ng-model='vm.name' ng-change="vm.change_()">
+              </div>
+            </div>
+           </div>
+           <div class="col-md-1">
+           </div>
+         </div>
+        <div class="form-group" ng-repeat="ema in vm.ema track by $index" style="text-align: center;">
          <div class="row">
            <div class="col-md-1">
 
@@ -23,28 +40,28 @@
            <div class="col-md-1">
            </div>
            <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #fad654; vertical-align: middle;">
-             <label class="ea"><input class="ea" type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' value="1"> 1 - Almost Never </label>
+             <label class="ea"><input class="ea" type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' ng-value="1" ng-click="vm.change($index)" > 1 - Almost Never </label>
            </div>
-            <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #ffa309; vertical-align: middle;">
-             <label class="ea"><input class="ea" type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="2"> 2 - Sometimes</label>
+            <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #ffa309; vertical-align: middle;" >
+             <label class="ea"><input class="ea" type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' ng-value="2" ng-click="vm.change($index)"> 2 - Sometimes</label>
            </div>
             <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #d97804; vertical-align: middle;">
-             <label class="ea"><input class="ea" type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="3"> 3 - Moderately Often</label>
+             <label class="ea"><input class="ea" type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' ng-value="3" ng-change="vm.change($index)"> 3 - Moderately Often</label>
            </div>
 
             <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #ed2937; vertical-align: middle;">
-             <label class="ea"><input class="ea" type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="4"> 4 - Often</label>
+             <label class="ea"><input class="ea" type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' ng-value="4" ng-change="vm.change($index)"> 4 - Often</label>
            </div>
             <div class="col-md-2" style="border-style: solid; border-width: 5px; border-color: #b4292e; vertical-align: middle;">
-             <label class="ea"><input class="ea" type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' value="5"> 5 - Very Often</label>
+             <label class="ea"><input class="ea" type="radio" name="optradio{{$index}}" ng-model='vm.results[$index]' ng-value="5" ng-change="vm.change($index)" > 5 - Very Often</label>
            </div>
            <div class="col-md-1">
 
            </div>
          </div>
         </div>
-        <div style="text-align: center;">
-          <button type="button btn-lg" class="btn btn-success" ng-click="done()">Submit</button>
+        <div style="text-align: center;" ng-show='vm.submit'>
+          <button type="button btn-lg" class="btn btn-success" ng-click="vm.done()" ui-sref="assessments.emotional-maturity-landing">Submit</button>
         </div>
 
       </form>

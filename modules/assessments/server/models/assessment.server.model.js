@@ -24,10 +24,16 @@ var AssessmentSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'User'
   },
-  result: {
-    type: Number,
-    default:  0
-  },
+  result: [{
+    name:{
+      type: String,
+      default: ''
+    },
+    score: {
+      type: Number,
+      default:  0
+    }
+  }],
 	email1 : {
 		address: {
 			type: String,
