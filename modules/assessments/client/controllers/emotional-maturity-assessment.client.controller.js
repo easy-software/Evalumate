@@ -5,20 +5,25 @@
     .module('assessments')
     .controller('AssessmentsListController', AssessmentsListController);
 
-  AssessmentsListController.$inject = ['Authentication'];
+  AssessmentsListController.$inject = ['AssessmentsService','Authentication'];
 
-  function AssessmentsListController(AssessmentsService, $scope, $state, $window, Authentication, assessment) {
+  function AssessmentsListController(AssessmentsService) {
     var vm = this;
 
 
     vm.userEMAs = [{
-        name: 'Stanley',
+        name: 'Tiffany',
         result: 130
+    },
+    {
+        name: 'Jose',
+        result: 110
     }]
     vm.submit = false;
     vm.results = [];
     vm.totalClicks =0;
     vm.name = null;
+    vm.assessment_= AssessmentsService.query();
 
     vm.init = function (){
         vm.assessment_= AssessmentsService.query();
@@ -55,6 +60,22 @@
         }
         vm.userEMAs.push( {name: vm.name, result: sum});
     };
+
+    vm.save = function() {
+      
+
+      // TODO: move create/update logic to service
+      if (vm.assessment_.length > 0) {
+            var assess = vm.assessment_[0]
+            AssessmentsService.update({ email1: 'after@gmail.com' }, assess);
+            console.log(vm.assessment_[0]);
+
+      } else {
+            console.log("EMPTY")
+      }
+
+    }
+
 
     vm.raa=["Physical affection with this person is very special.",
             "I experience something special with this person that I do not experience with others.", 
