@@ -19,10 +19,10 @@
 		 var reSend = document.getElementById('resend');
 
 		 $scope.getEmail = function(){
-			 $scope.emailstring = 'mailto:' + $scope.email1 + ',';
-			 $scope.emailstring += $scope.email2 + ',';
-			 $scope.emailstring += $scope.email3;
-			 send.action = 'mailto:?bcc=' +$scope.email1 + ',' + $scope.email2 +',' + $scope.email3 +
+			 $scope.emailstring = 'mailto:' + $scope.assessment.email1.address + ',';
+			 $scope.emailstring += $scope.assessment.email2.address + ',';
+			 $scope.emailstring += $scope.assessment.email3.address;
+			 send.action = 'mailto:?bcc=' +$scope.assessment.email1.address + ',' + $scope.assessment.email2.address +',' + $scope.assessment.email3.address +
 			 	'&subject=You have been selected by a friend to participate in their LovED Assessment&body=Dear Friend, %0D%0A' +
 			 	'%0D%0AI have selected you as one of my three trusted participants to anonymously evaluate my level of ' +
 				'Emotional Maturity (EM). Using this really cool assessment as a tool gives me the honest feedback I need in' +
@@ -44,94 +44,74 @@
 				 return false;
 			 }
 
+			 if($scope.assessments.length>0)
+			 {
+				 var article = $scope.assessment;
 
+					console.log(article)
+
+	       article.$update(function () {
+	         $location.path('assessments/create' + $scope.assessments._id);
+	       }, function (errorResponse) {
+	         $scope.error = errorResponse.data.message;
+	       });
+			 }
+
+			 else{
 			 // Create new Article object
-			 var assess = new AssessmentsService({
-				 email1: {
-									 address: $scope.email1
-				 },
-				 email2: {
-									 address: $scope.email2
-				 },
-				 email3: {
-									 address: $scope.email3
-				 }
-				});
+				 var assess = new AssessmentsService({
+					 email1: {
+										 address: $scope.assessment.email1.address
+					 },
+					 email2: {
+										 address: $scope.assessment.email2.address
+					 },
+					 email3: {
+										 address: $scope.assessment.email3.address
+					 }
+				 });
 
 
-			 // Redirect after save
-			 assess.$save(function (response) {
-				 //$location.path('articles/' + response._id);
+				 // Redirect after save
+				 assess.$save(function (response) {
+					 //$location.path('articles/' + response._id);
 
-				 // Clear form fields
-				 $scope.email1 = '';
-				 $window.location.reload();
-			 }, function (errorResponse) {
-				 $scope.error = errorResponse.data.message;
-			 });
-
+					 // Clear form fields
+					 $scope.email1 = '';
+					 $window.location.reload();
+				 }, function (errorResponse) {
+					 $scope.error = errorResponse.data.message;
+				 });
+		 		}
 			 };
 
 			 $scope.update = function (isValid) {
 	       $scope.error = null;
 
 	       if (!isValid) {
-	         $scope.$broadcast('show-errors-check-validity', 'articleForm');
+	         $scope.$broadcast('show-errors-check-validity', 'assessmentForm');
 
 	         return false;
 	       }
 
 	       var article = $scope.assessment;
 
-				console.log(article)
+					console.log(article)
 
-				article.update($scope.assessments[0]._id)
-					.then(function(response) {
-						console.log("Email updated!");
-					}, function(error) {
-						//otherwise display the error
-						$scope.error = 'Unable to update slot!\n' + error;
-				});
-			};
+	       article.$update(function () {
+	         $location.path('assessments/create' + $scope.assessments._id);
+	       }, function (errorResponse) {
+	         $scope.error = errorResponse.data.message;
+	       });
+	     };
 
 		 $scope.remEmail = function() {
 		 	$scope.assessments.$promise.then(function(data) {
        //console.log(data[0].email1.address);
 			 //data[0].email1.hasResponded = true;
-
-			 console.log(data[0]._id);
-
-			 if($scope.assessments.length > 0)
-			 {
-				 console.log('NOT EMPTY');
-			 }
-			 else
-			 {
-				 console.log('EMPTY');
-			 }
-			 if(data[0].email1.hasResponded==false)
-			 {
 			 	$scope.remEmail1 = data[0].email1.address;
-		 	 } else {
-			 	$scope.remEmail1 ='';
-			 }
-
-			 if(data[0].email2.hasResponded==false)
-			 {
 			 	$scope.remEmail2 = data[0].email2.address;
-			 } else {
-				 $scope.remEmail2 = '';
-			 }
-
-			 if(data[0].email3.hasResponded==false)
-			 {
-				 $scope.remEmail3 = data[0].email3.address;
-			 } else {
-					$scope.remEmail3='';
-			 }
-
-
-
+				$scope.remEmail3 = data[0].email3.address;
 			 resend.action = 'mailto:?bcc=' + $scope.remEmail1 + ',' + $scope.remEmail2 +',' + $scope.remEmail3;
 			 reSend.submit();
    		});
@@ -140,19 +120,36 @@
 
 
 		 $scope.checkEmail = function(){
-			 // if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.assessment.email1.address) && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.assessment.email1.address) &&
-			 // /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.assessment.email3.address))
-			 // {
-				//  return false;
-			 // }
-			 // else {
+			 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.assessment.email1.address) && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.assessment.email2.address) &&
+			 /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.assessment.email3.address))
+			 {
 				 return false;
-			 //}
+			 }
+			 else {
+				 return true;
+			 }
 		};
-		$scope.findOne = function () {
+		$scope.find = function () {
+			$scope.assesss = AssessmentsService.query();
+		};
+		// $scope.findOne = function () {
+		// 	console.log('hello');
+		// 	$scope.assessment = AssessmentsService.get({
+		// 			$scope.assessments.$promise.then(function(data) {
+		// 				assessmentId: data[0]._id;
+		// 			});
+		// 	});
+		// };
+		$scope.id = ''
+		$scope.assessments.$promise.then(function(data) {
+			$scope.id = data[0]._id;
 			$scope.assessment = AssessmentsService.get({
-				assessmentID: $stateParams.assessmentId
+				assessmentId: $scope.id
 			});
+		});
+		console.log($scope.id)
+		$scope.findOne = function () {
+
 		};
 	}
 }());
