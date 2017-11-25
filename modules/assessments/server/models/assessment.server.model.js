@@ -47,7 +47,37 @@ var AssessmentSchema = new Schema({
 			type: Number,
 			default: 0
 		}
+	},
+	email2 : {
+		address: {
+			type: String,
+			default: ''
+		},
+		hasResponded: {
+			type: Boolean,
+			default: false
+		},
+		score: {
+			type: Number,
+			default: 0
+		}
+	},
+	email3 : {
+		address: {
+			type: String,
+			default: ''
+		},
+		hasResponded: {
+			type: Boolean,
+			default: false
+		},
+		score: {
+			type: Number,
+			default: 0
+		}
 	}
+
+
 });
 
 mongoose.model('Assessment', AssessmentSchema);
