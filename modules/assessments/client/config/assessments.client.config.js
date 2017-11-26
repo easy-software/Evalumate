@@ -18,19 +18,20 @@
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'assessments', {
-      title: 'Emotional Maturity',
-      state: 'assessments.emotional-maturity-landing'
+      title: 'Romantic Attraction (RA)',
+      state: 'assessments.romantic-attraction-landing'
     });
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'assessments', {
-      title: 'Romantic Attraction',
-      state: 'assessments.romantic-attraction-landing'
+      title: 'Emotional Maturity (EM)',
+      state: 'assessments.emotional-maturity-landing'
     });
 
+   
     // Add the dropdown create item
     menuService.addSubMenuItem('topbar', 'assessments', {
-      title: 'Email Friend Assessment',
+      title: 'My Emotional Maturity (EM)',
       state: 'assessments.create',
       roles: ['user']
     });

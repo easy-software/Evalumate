@@ -1,8 +1,3 @@
-// 'use strict';
-//
-// angular.module('assessment').controller('EmailController', ['$scope','Authentication','Assessment',
-//   function ($scope, Authentication, Assessment) {
-
 (function () {
   'use strict';
 
@@ -19,24 +14,75 @@
 		 $scope.email2 = '';
 		 $scope.email3 = '';
 		 $scope.emailstring = '';
+		 $scope.assessments = AssessmentsService.query();
 		 var send = document.getElementById('infoSubmit');
+		 var reSend = document.getElementById('resend');
 
 		 $scope.getEmail = function(){
-			 $scope.emailstring = 'mailto:' + $scope.email1 + ',';
-			 $scope.emailstring += $scope.email2 + ',';
-			 $scope.emailstring += $scope.email3;
-			 send.action = 'mailto:?bcc=' +$scope.email1 + ',' + $scope.email2 +',' + $scope.email3 + '&subject=lovED: ' +
-			 'Your friend is awaiting your response to the emotional maturity quiz. &body=Don\'t worry,'+
-			 'your response will be kept totally anonymous and they will only see an average of multiple scores. Don\'t keep them waiting! Click this link to rate your friend now.';
+			 $scope.emailstring = 'mailto:' + $scope.assessment.email1.address + ',';
+			 $scope.emailstring += $scope.assessment.email2.address + ',';
+			 $scope.emailstring += $scope.assessment.email3.address;
+			 send.action = 'mailto:?bcc=' +$scope.assessment.email1.address + ',' + $scope.assessment.email2.address +',' + $scope.assessment.email3.address +
+			 	'&subject=You have been selected by a friend to participate in their LovED Assessment&body=Dear Friend, %0D%0A' +
+			 	'%0D%0AI have selected you as one of my three trusted participants to anonymously evaluate my level of ' +
+				'Emotional Maturity (EM). Using this really cool assessment as a tool gives me the honest feedback I need in' +
+				'order to understand how I occur to others. I value your perspective and I know that the time it takes you to ' +
+				 'complete this quiz will allow me to grow and become a better version of myself.%0D%0A' +
+				 '%0D%0AWhen you have a few minutes, click on the link below and it’ll take you straight to the assessment. '+
+				 'Don’t worry, it’s anonymous - so give me your honest feedback. \n Thank you for helping me with my personal growth '+
+				 'journey. %0D%0A%0D%0A You are LovEd!'
 			 send.submit();
  	 	};
 
-			 $scope.authentication = Authentication;
+		$scope.create = function (isValid) {
+			 //console.log('HelloWorld')
+			 $scope.error = null;
 
-	     // Create new Assessment
-	     $scope.create = function (isValid) {
-				 //console.log('HelloWorld')
-				 $scope.error = null;
+			 if (!isValid) {
+				 $scope.$broadcast('show-errors-check-validity', 'assessmentForm');
+
+				 return false;
+			 }
+
+			 if($scope.assessments.length>0)
+			 {
+				 var article = $scope.assessment;
+
+					console.log(article)
+
+	       article.$update();
+			 }
+
+			 else{
+			 // Create new Article object
+				 var assess = new AssessmentsService({
+					 email1: {
+										 address: $scope.assessment.email1.address
+					 },
+					 email2: {
+										 address: $scope.assessment.email2.address
+					 },
+					 email3: {
+										 address: $scope.assessment.email3.address
+					 }
+				 });
+
+
+				 // Redirect after save
+				 assess.$save(function (response) {
+					 //$location.path('articles/' + response._id);
+
+					 // Clear form fields
+					 $scope.email1 = '';
+					 $window.location.reload();
+				 }, function (errorResponse) {
+					 $scope.error = errorResponse.data.message;
+				 });
+		 		}
+			 };
+
+			 $scope.update = function (isValid) {
+	       $scope.error = null;
 
 	       if (!isValid) {
 	         $scope.$broadcast('show-errors-check-validity', 'assessmentForm');
@@ -44,38 +90,62 @@
 	         return false;
 	       }
 
-	       // Create new Article object
-	       var article = new AssessmentsService({
-	         email1: {
-						 address: $scope.email1
-					 }
-	       });
+	       var article = $scope.assessment;
 
-	       // Redirect after save
-	       article.$save(function (response) {
-	         //$location.path('articles/' + response._id);
+					console.log(article)
 
-	         // Clear form fields
-	         $scope.email1 = '';
-	         // $scope.content = '';
-	         // $scope.mantra = '';
-	         $window.location.reload();
+	       article.$update(function () {
+	         $location.path('assessments/create' + $scope.assessments._id);
 	       }, function (errorResponse) {
 	         $scope.error = errorResponse.data.message;
 	       });
+	     };
 
-				 };
+		 $scope.remEmail = function() {
+		 	$scope.assessments.$promise.then(function(data) {
+       //console.log(data[0].email1.address);
+			 //data[0].email1.hasResponded = true;
+			 	$scope.remEmail1 = data[0].email1.address;
+			 	$scope.remEmail2 = data[0].email2.address;
+				$scope.remEmail3 = data[0].email3.address;
+			 resend.action = 'mailto:?bcc=' + $scope.remEmail1 + ',' + $scope.remEmail2 +',' + $scope.remEmail3;
+			 reSend.submit();
+   		});
+ 		};
+
 
 
 		 $scope.checkEmail = function(){
-			 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.email3) && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.email1) &&
-			 /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.email2))
+			 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.assessment.email1.address) && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.assessment.email2.address) &&
+			 /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.assessment.email3.address))
 			 {
 				 return false;
 			 }
 			 else {
 				 return true;
 			 }
+		};
+		$scope.find = function () {
+			$scope.assesss = AssessmentsService.query();
+		};
+		// $scope.findOne = function () {
+		// 	console.log('hello');
+		// 	$scope.assessment = AssessmentsService.get({
+		// 			$scope.assessments.$promise.then(function(data) {
+		// 				assessmentId: data[0]._id;
+		// 			});
+		// 	});
+		// };
+		$scope.id = ''
+		$scope.assessments.$promise.then(function(data) {
+			$scope.id = data[0]._id;
+			$scope.assessment = AssessmentsService.get({
+				assessmentId: $scope.id
+			});
+		});
+		console.log($scope.id)
+		$scope.findOne = function () {
+
 		};
 	}
 }());

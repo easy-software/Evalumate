@@ -24,10 +24,32 @@ var AssessmentSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'User'
   },
-  result: {
-    type: Number,
-    default:  0
-  },
+  raaresult: [{
+    name:{
+      type: String,
+      default: ''
+    },
+    score: {
+      type: Number,
+      default:  0
+    },
+    time : {
+     type : Date, default: Date.now 
+ 	}
+  }],
+  emaresult: [{
+    name:{
+      type: String,
+      default: ''
+    },
+    score: {
+      type: Number,
+      default:  0
+    },
+    time : {
+     type : Date, default: Date.now 
+ 	}
+  }],
 	email1 : {
 		address: {
 			type: String,
@@ -41,7 +63,37 @@ var AssessmentSchema = new Schema({
 			type: Number,
 			default: 0
 		}
+	},
+	email2 : {
+		address: {
+			type: String,
+			default: ''
+		},
+		hasResponded: {
+			type: Boolean,
+			default: false
+		},
+		score: {
+			type: Number,
+			default: 0
+		}
+	},
+	email3 : {
+		address: {
+			type: String,
+			default: ''
+		},
+		hasResponded: {
+			type: Boolean,
+			default: false
+		},
+		score: {
+			type: Number,
+			default: 0
+		}
 	}
+
+
 });
 
 mongoose.model('Assessment', AssessmentSchema);

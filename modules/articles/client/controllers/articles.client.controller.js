@@ -64,6 +64,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$window'
       }
 
       var article = $scope.article;
+			console.log(article)
 
       article.$update(function () {
         $location.path('journal/' + article._id);
