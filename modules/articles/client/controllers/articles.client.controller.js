@@ -21,7 +21,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$window'
         content: this.content,
         mantra: this.mantra
       });
-      
+
       // Redirect after save
       article.$save(function (response) {
         //$location.path('articles/' + response._id);
