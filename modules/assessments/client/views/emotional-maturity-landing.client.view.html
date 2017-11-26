@@ -1,4 +1,4 @@
-<section ng-controller="ArticlesController" ng-init="find()">
+<section ng-controller="AssessmentsListController" ng-init="find()">
 	<!--link rel="stylesheet" type="text/css" href="modules/assessments/client/css/assessment-landing-page.css" /-->
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Proxima Nova" />
@@ -16,12 +16,11 @@
   		<button type="button" class="btn btn-warning" >Take an Assessment</button>
   </a>
 
-
 </div>
 
 </section>
 
-<section ng-controller="ArticlesController" ng-init="find()">
+<section ng-controller="AssessmentsListController" ng-init="find()">
 
 	<style>
 	h1   {font-family: Comfortaa; color: #d97804;}
@@ -47,14 +46,17 @@
 	</div>
 	<div class="col-md-4" >
 		<h1>Past User Taken Scores</h1>
-		<a style="color: #818185;" ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})">
-			<small>
-				Posted on
-				<span style="color: #818185;" ng-bind="article.created | date:'mediumDate'"></span>
-			</small>
-			<h4 style="color: #818185;" class="list-group-item-heading" ng-bind="article.title"></h4>
-			<p style="color: #818185;" class="list-group-item-text" ng-bind="article.date"></p>
-		</a>
+		<div class="row" ng-repeat="test in vm.assessment.emaresult.slice().reverse()">
+			<div class="col-md-4" style="color: #818185;">
+				{{test.name}}
+			</div>
+			<div class="col-md-4" style="color: #818185;">
+				{{test.score}}
+			</div >
+			<div class="col-md-4" style="color: #818185;">
+				{{vm.convertDate(test.time)}}
+			</div>
+		</div>
 	</div>
 	<div class="col-md-4" >
 		<h1> Score Translation</h1>

@@ -1,4 +1,4 @@
-<section ng-controller="AssessmentsController">
+<section ng-controller="AssessmentsListController">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Proxima Nova" />
 	<style>
@@ -31,19 +31,26 @@
 
 <div class="row" style="text-align:center">
 	<br>
-	<div class="col-md-6">
-		<h1>Past Scores</h1>
-		<a style="color: #818185;" ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})">
-			<small>
-				Posted on
-				<span style="color: #818185;" ng-bind="article.created | date:'mediumDate'"></span>
-			</small>
-			<h4 style="color: #818185;" class="list-group-item-heading" ng-bind="article.title"></h4>
-			<p style="color: #818185;" class="list-group-item-text" ng-bind="article.date"></p>
-		</a>
+	<div class="col-md-4">
+		<h1>Past Friend Invite Scores</h1>
+		
 	</div>
-	<div class="col-md-6">
-		<h1>Score Translation</h1>
+	<div class="col-md-4" >
+		<h1>Past User Taken Scores</h1>
+		<div class="row" ng-repeat="test in vm.assessment.raaresult.slice().reverse()">
+			<div class="col-md-4" style="color: #818185;">
+				{{test.name}}
+			</div>
+			<div class="col-md-4" style="color: #818185;">
+				{{test.score}}
+			</div >
+			<div class="col-md-4" style="color: #818185;">
+				{{vm.convertDate(test.time)}}
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4" >
+		<h1> Score Translation</h1>
 		<!--a style="color: #818185;" ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})">
 			<small>
 				Posted on
@@ -53,6 +60,6 @@
 			<p style="color: #818185;" class="list-group-item-text" ng-bind="article.date"></p>
 		</a-->
 	</div>
-	</div>
 </div>
+
 </section>
