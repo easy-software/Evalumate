@@ -15,7 +15,6 @@
   <a  href="EMA">
   		<button type="button" class="btn btn-warning" >Take an Assessment</button>
   </a>
-  <h1>{{vm.assessment_[0].email1.address}}</h1>
 
 </div>
 
@@ -47,12 +46,15 @@
 	</div>
 	<div class="col-md-4" >
 		<h1>Past User Taken Scores</h1>
-		<div class="row" ng-repeat="test in vm.userEMAs track by $index">
-			<div class="col-md-6" style="color: #818185;">
+		<div class="row" ng-repeat="test in vm.assessment.emaresult.slice().reverse()">
+			<div class="col-md-4" style="color: #818185;">
 				{{test.name}}
 			</div>
-			<div class="col-md-6" style="color: #818185;">
-				{{test.result}}
+			<div class="col-md-4" style="color: #818185;">
+				{{test.score}}
+			</div >
+			<div class="col-md-4" style="color: #818185;">
+				{{vm.convertDate(test.time)}}
 			</div>
 		</div>
 	</div>
