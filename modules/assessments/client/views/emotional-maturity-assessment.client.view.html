@@ -23,7 +23,7 @@
            <div class="col-md-1">
            </div>
          </div>
-
+         <!--
         <div class="form-group" ng-repeat="ema in vm.ema track by $index" style="text-align: center;">
          <div class="row">
            <div class="col-md-1">
@@ -61,6 +61,38 @@
          <br>
          <br>
         </div>
+
+        -->
+        <style type="text/css">
+          tr:nth-child(even) {
+              background-color: #dddddd;
+          }
+        </style>
+        <table>
+          <tr>
+            <td style="text-align: left;">Questions&nbsp</td>
+            <td style="border-style: solid; border-width: 5px; border-color: #fad654; vertical-align: middle;">Almost Never</td>
+            <td style="border-style: solid; border-width: 5px; border-color: #ffa309; vertical-align: middle;">Sometimes</td>
+            <td style="border-style: solid; border-width: 5px; border-color: #d97804; vertical-align: middle; margin: 5px">Moderately Often</td>
+            <td style="border-style: solid; border-width: 5px; border-color: #ed2937; vertical-align: middle;">Often</td>
+            <td style="border-style: solid; border-width: 5px; border-color: #b4292e; vertical-align: middle;">Very Often</td>
+          </tr>
+          <style type="text/css">
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+          </style>
+          <tr ng-repeat="ema in vm.ema track by $index">
+            <td style="text-align: left;">{{ema }}&nbsp</td>
+            <td><label class="ea"><input class="ea" type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' ng-value="1" ng-click="vm.change($index)" >&nbsp</label></td>
+            <td><label class="ea"><input class="ea" type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' ng-value="2" ng-click="vm.change($index)" >&nbsp</label></td>
+            <td><label class="ea"><input class="ea" type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' ng-value="3" ng-click="vm.change($index)" >&nbsp</label></td>
+            <td><label class="ea"><input class="ea" type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' ng-value="4" ng-click="vm.change($index)" >&nbsp</label></td>
+            <td><label class="ea"><input class="ea" type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' ng-value="5" ng-click="vm.change($index)" >&nbsp</label></td>
+          </tr>
+        </table>
         <div style="text-align: center;" ng-show='vm.submit'>
           <button type="button btn-lg" class="btn btn-success" ng-click="vm.save()" ui-sref="assessments.emotional-maturity-landing">Submit</button>
         </div>

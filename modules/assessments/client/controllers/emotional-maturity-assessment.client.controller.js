@@ -69,8 +69,7 @@
         }
 
 
-      if (vm.assessment_.length > 0) {
-            
+      if (vm.assessment_.length > 0) {            
             if (vm.page=="EMA"){
                 vm.assessment.emaresult.push({name: vm.name, score: sum});
             }
@@ -80,7 +79,6 @@
             
 
             var assessment = vm.assessment;
-            console.log(assessment)
             assessment.$update();
 
       } else {
