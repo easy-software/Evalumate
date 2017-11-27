@@ -11,7 +11,7 @@
 	</style>
 
 	<div class="jumbotron text-center" style="color:818185">
-  <h1 style="color: #ffa309;"> Emotional Maturity Assessment</h1>
+  <h1 style="color: #ffa309;"> Emotional Maturity Quiz</h1>
 	<br>
   <a  href="EMA">
   		<button type="button" class="btn btn-warning" >Take Assessment</button>
@@ -35,7 +35,7 @@
 <div class="row" style="text-align:center">
 	<br>
 	<div class="col-md-4">
-		<h1>Past Friend Invite Scores</h1>
+		<h1>Self-Assessment Scores</h1>
 		<a style="color: #818185;" ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})">
 			<small>
 				Posted on
@@ -46,7 +46,7 @@
 		</a>
 	</div>
 	<div class="col-md-4" >
-		<h1>Past User Taken Scores</h1>
+		<h1>EMQ Scores</h1>
 		<div class="row" ng-repeat="test in vm.assessment.emaresult.slice().reverse()">
 			<div class="col-md-4" style="color: #818185;">
 				{{test.name}}

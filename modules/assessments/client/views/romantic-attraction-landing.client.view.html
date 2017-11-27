@@ -10,10 +10,10 @@
 	</style>
 	<div class="jumbotron text-center">
 
-  <h1 style="color: #ffa309;">Romantic Attraction Assessment</h1>
-
+  <h1 style="color: #ffa309;">Romantic Attraction Quiz</h1>
+<br>
   <a href="RAA">
-  		<button type="button" class="btn btn-warning">Take an Assessment</button>
+  		<button type="button" class="btn btn-warning">Take Assessment</button>
   </a>
 </section>
 
@@ -31,12 +31,8 @@
 
 <div class="row" style="text-align:center">
 	<br>
-	<div class="col-md-4">
-		<h1>Past Friend Invite Scores</h1>
-		
-	</div>
-	<div class="col-md-4" >
-		<h1>Past User Taken Scores</h1>
+	<div class="col-md-6" >
+		<h1>RAQ Scores</h1>
 		<div class="row" ng-repeat="test in vm.assessment.raaresult.slice().reverse()">
 			<div class="col-md-4" style="color: #818185;">
 				{{test.name}}
@@ -49,7 +45,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4" >
+	<div class="col-md-6" >
 		<h1> Score Translation</h1>
 		<!--a style="color: #818185;" ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})">
 			<small>

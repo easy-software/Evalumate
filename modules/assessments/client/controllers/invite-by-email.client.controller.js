@@ -13,8 +13,11 @@
 		 $scope.email1 = '';
 		 $scope.email2 = '';
 		 $scope.email3 = '';
+
 		 $scope.emailstring = '';
 		 $scope.assessments = AssessmentsService.query();
+		 $scope.urlId = AssessmentsService.query()._id;
+		 //console.log('UrlId: ' $scope.urlId);
 		 var send = document.getElementById('infoSubmit');
 		 var reSend = document.getElementById('resend');
 
@@ -50,7 +53,11 @@
 
 					console.log(article)
 
-	       article.$update();
+	       article.$update()(function () {
+		         $location.path('assessments/create' + $scope.assessments._id);
+		       }, function (errorResponse) {
+		         $scope.error = errorResponse.data.message;
+		       });;
 			 }
 
 			 else{
@@ -73,8 +80,8 @@
 					 //$location.path('articles/' + response._id);
 
 					 // Clear form fields
-					 $scope.email1 = '';
-					 $window.location.reload();
+					 //$scope.email1 = '';
+					 //$window.location.reload();
 				 }, function (errorResponse) {
 					 $scope.error = errorResponse.data.message;
 				 });
