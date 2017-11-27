@@ -10,7 +10,7 @@
   function menuConfig(menuService) {
     // Set top bar menu items
     menuService.addMenuItem('topbar', {
-      title: 'Assessments',
+      title: 'Take Quiz',
       state: 'assessments',
       type: 'dropdown',
       roles: ['user']
@@ -18,13 +18,13 @@
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'assessments', {
-      title: 'Emotional Maturity',
+      title: 'Emotional Maturity Quiz (EMQ)',
       state: 'assessments.emotional-maturity-landing'
     });
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'assessments', {
-      title: 'Romantic Attraction',
+      title: 'Romantic Attraction Quiz (RMQ)',
       state: 'assessments.romantic-attraction-landing'
     });
 
@@ -34,6 +34,6 @@
       state: 'assessments.create',
       roles: ['user']
     });
-    
+
   }
 }());

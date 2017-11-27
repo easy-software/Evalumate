@@ -13,8 +13,8 @@
     <img src="modules/core/client/img/brand/evalumatelogofinal.png" style="float: left; height: 40px;" align="middle"/>
     </a>
   </div>
-  <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-    <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">
+  <nav class="collapse navbar-collapse " collapse="!isCollapsed" role="navigation">
+    <ul class="nav navbar-nav navbar-right" ng-if="menu.shouldRender(authentication.user);">
       <li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown' }" class="{{item.class}}" dropdown="item.type === 'dropdown'">
         <a class="header" ng-switch-when="dropdown" class="dropdown-toggle" dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
         <ul ng-switch-when="dropdown" class="dropdown-menu">
