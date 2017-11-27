@@ -1,237 +1,165 @@
-(function () {
-  'use strict';
+// (function () {
+//   'use strict';
+//
+//   angular
+//     .module('ways2grows')
+//     .controller('Ways2growsListController', Ways2growsListController);
+//
+//   Ways2growsListController.$inject = ['Ways2growsService'];
+//
+//   function Ways2growsListController(Ways2growsService) {
+//     var vm = this;
+//     vm.ways2grows = Ways2growsService.query();
+//   }
+// }());
+'use strict';
 
-  angular
-    .module('ways2grows')
-    .controller('Ways2growsListController', Ways2growsListController);
+// Ways2Grow controller
+angular.module('ways2grows').controller('Ways2growsListController', ['$scope', '$window', '$stateParams', '$location', 'Authentication', 'Ways2growsService',
+  function ($scope, $window, $stateParams, $location, Authentication, Ways2growsService) {
+    $scope.authentication = Authentication;
+    //$scope.ways2grows = Ways2growsService.query();
+    // Create new Article
+//     $scope.isEmpty = function(number) {
+//          if(number == 10){// you can change it however you want
+//             $scope.staff.staffTotal == 0;
+//             return true;
+//
+//           }else{
+//             $scope.staff.staffTotal == number;
+//             return true;
+//           }
+// };
 
-  Ways2growsListController.$inject = ['Ways2growsService'];
+    $scope.create = function (selectedOptionsValue, lastSpinDayValue,lastSpinMonthValue,lastSpinYearValue/*isValid*/) {
+      $scope.error = null;
 
-  function Ways2growsListController(Ways2growsService) {
-    var vm = this;
-    vm.ways2grows = Ways2growsService.query();
+    //  if (!isValid) {
+        //$scope.$broadcast('show-errors-check-validity', 'articleForm');
+
+      //  return false;
+      //}
+
+      // Create new Article object
+      var ways2grow = new Ways2growsService({
+        lastSpinDay: lastSpinDayValue,
+        lastSpinMonth: lastSpinMonthValue,
+        lastSpinYear: lastSpinYearValue,
+        selectedOptions: selectedOptionsValue,
+      });
+      //console.log(ways2grow.lastSpin);
+
+      // Redirect after save
+      ways2grow.$save(function (response) {
+        //$location.path('articles/' + response._id);
+
+        // Clear form fields
+        //$scope.lastSpinDay = '';
+        //$scope.lastSpinMonth = '';
+        //$scope.lastSpinYear = '';
+        //$scope.selectedOptions = '';
+        //console.log($scope.ways2grow.lastSpinDay + "vdvjiefhievinev");
+        // $scope.ways2grow.lastSpinDay = '';
+        // $scope.ways2grow.lastSpinMonth = '';
+        // $scope.ways2grow.lastSpinYear = '';
+        // $scope.ways2grow.selectedOptions = '';
+        //$scope.findAndRemove();
+        //$window.location.reload();
+        $scope.find();
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+
+    $scope.remove = function (article) {
+      if (article) {
+        article.$remove();
+
+        for (var i in $scope.ways2grows) {
+          if ($scope.ways2grows[i] === article) {
+            $scope.ways2grows.splice(i, 1);
+          }
+        }
+      } else {
+        $scope.ways2grows.$remove(function () {
+          $location.path('ways2grows'); //this works
+        });
+      }
+    };
+
+    // Update existing Article
+    $scope.update = function (/*isValid*/) {
+      $scope.error = null;
+
+      //if (!isValid) {
+        //$scope.$broadcast('show-errors-check-validity', 'articleForm');
+
+        //return false;
+      //}
+
+      var ways2grow = $scope.ways2grows[0];
+      //console.log(ways2grow.lastSpinDay + " hguwjhwej");
+      //console.log(lastSpinDayValue);
+      //ways2grow.lastSpinDay = lastSpinDayValue;
+      //ways2grow.lastSpinMonth= lastSpinMonthValue;
+      //ways2grow.lastSpinYear= lastSpinYearValue;
+      //ways2grow.selectedOptions= selectedOptionsValue;
+
+      ways2grow.$update(function () {
+        //$window.location.reload();
+        //$scope.find();
+        //$location.path('ways2grows/');
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+
+
+    // Find a list of Articles
+    $scope.find = function () {
+      //$scope.ways2grows = Ways2growsService.findById("5a08dca2b437ad9260402679");
+      $scope.ways2grows = Ways2growsService.query();
+      console.log($scope.ways2grows);
+      // $scope.ways2grows.$promise.then(function(data){
+      //   //console.log(data[0].lastSpin);
+      //   //console.log(data[0].selectedOptions);
+      //   //console.log("this is the data" + data[1].lastSpinDay);
+      //   console.log(data.length + " this is the length of the data");
+      //   console.log(data.length-1 + " this is the length of the data -1");
+      //   if(data !== null && data !== undefined && data.length>0){
+      //     console.log(data);
+      //     console.log(data[0]._id);
+      //     //var ways2growDocument = Ways2growsSer
+      //     $scope.lastSpinDay = data[0].lastSpinDay;
+      //     $scope.lastSpinMonth = data[0].lastSpinMonth;
+      //     $scope.lastSpinYear = data[0].lastSpinYear;
+      //     $scope.selectedOptions = data[0].selectedOptions;
+      //     $scope.ways2growId = data[0]._id;
+      //   }
+        // $scope.ways2grow.lastSpinDay = data[0].lastSpinDay;
+        // $scope.ways2grow.lastSpinMonth = data[0].lastSpinMonth;
+        // $scope.ways2grow.lastSpinYear = data[0].lastSpinYear;
+        // $scope.ways2grow.selectedOptions = data[0].selectedOptions;
+        // $scope.ways2grow.lastSpinDay = data[0].ways2grow.lastSpinDay;
+        // $scope.ways2grow.lastSpinMonth = data[0].ways2grow.lastSpinMonth;
+        // $scope.ways2grow.lastSpinYear = data[0].ways2grow.lastSpinYear;
+        // $scope.ways2grow.selectedOptions = data[0].ways2grow.selectedOptions;
+      //});
+    };
+
+    /*$scope.id = ''
+		$scope.ways2grow.$promise.then(function(data) {
+			$scope.id = data[0]._id;
+			$scope.ways2grow = Ways2growsService.get({
+				ways2growId: $scope.id
+			});
+		});*/
+
+    // Find existing Article
+    $scope.findOne = function () {
+      $scope.ways2grow = Ways2growsService.get({
+        ways2growId: $stateParams.ways2growId
+      });
+    };
   }
-}());
-
-
-  /*angular
-    .module('ways2grows',[])
-    .controller('Ways2growsListController', ['$scope', function($scope){
-        var d3 = require("d3");
-        $scope.color = d3.scale.ordinal()
-            .domain(["Option 1", "Option 2", "Option 3","Option 4", "Option 5", "Option 6","Option 7", "Option 8", "Option 9","Option 10", "Option 11", "Option 12","Option 13", "Option 14", "Option 15","Option 16", "Option 17", "Option 18","Option 19", "Option 20", "Option 21","Option 22", "Option 23", "Option 24","Option 25", "Option 26", "Option 27","Option 28", "Option 29", "Option 30"])
-            .range(["#fad654" , "#ffa309" , "#d97804", "#ed2937","#b4292e","#818185"]);
-        $scope.ways_to_grow_data = [
-                    {"label":"Option 1", "option":" Invite someone to go ahead of you in line."},
-                    {"label":"Option 2", "option":" Compliment 3 People."},
-                    {"label":"Option 3", "option":" Acknowledge someone's contribution."},
-                    {"label":"Option 4", "option":" Meditate for 30 minutes."},
-                    {"label":"Option 5", "option":" Hold the door open for people."},
-                    {"label":"Option 6", "option":" Create a bucket list and share it."},
-                    {"label":"Option 7", "option":" Create a gratitude list and share it."},
-                    {"label":"Option 8", "option":" Ask an elder about his/her childhood."},
-                    {"label":"Option 9", "option":" De-clutter your environment and donate."},
-                    {"label":"Option 10", "option":" Treate a stranger to a coffee."},
-                    {"label":"Option 11", "option":" Share some wisdom with your younger self."},
-                    {"label":"Option 12", "option":" Give someone a handmade card/gift."},
-                    {"label":"Option 13", "option":" Share your Strive for 5 progress with a friend."},
-                    {"label":"Option 14", "option":" Listen to a personal growth podcast."},
-                    {"label":"Option 15", "option":" Stop using social media for today."},
-                    {"label":"Option 16", "option":" Share LovEd with someone who's struggling."},
-                    {"label":"Option 17", "option":" Watch a TED Talk on personal growth."},
-                    {"label":"Option 18", "option":" Have a date night with yourself."},
-                    {"label":"Option 19", "option":" Do something you enjoyed as a kid."},
-                    {"label":"Option 20", "option":" Write a letter to someone you admire."},
-                    {"label":"Option 21", "option":" Share something that people don't know about you."},
-                    {"label":"Option 22", "option":" List everyone you carry resentment for."},
-                    {"label":"Option 23", "option":" Write yourself a forgiveness letter."},
-                    {"label":"Option 24", "option":" Write an encouragement letter to your future self."},
-                    {"label":"Option 25", "option":" List what you've learned from past relationships."},
-                    {"label":"Option 26", "option":" Ask for feedback from someone."},
-                    {"label":"Option 27", "option":" Reach out to someone for advice."},
-                    {"label":"Option 28", "option":" Invite a negative person in your life to change."},
-                    {"label":"Option 29", "option":" Create a list of things you need to let go."},
-                    {"label":"Option 30", "option":" Apologize to someone."},
-        ];
-
-        $scope.ways_to_grow_data_bold = [
-                    {"label":"Option 21", "option":" Share something that people don't know about you."},
-                    {"label":"Option 22", "option":" List everyone you carry resentment for."},
-                    {"label":"Option 23", "option":" Write yourself a forgiveness letter."},
-                    {"label":"Option 24", "option":" Write an encouragement letter to your future self."},
-                    {"label":"Option 25", "option":" List what you've learned from past relationships."},
-                    {"label":"Option 26", "option":" Ask for feedback from someone."},
-                    {"label":"Option 27", "option":" Reach out to someone for advice."},
-                    {"label":"Option 28", "option":" Invite a negative person in your life to change."},
-                    {"label":"Option 29", "option":" Create a list of things you need to let go."},
-                    {"label":"Option 30", "option":" Apologize to someone."},
-
-        ];
-
-  Ways2growsListController.$inject = ['Ways2growsService'];
-
-	function Ways2growsListController(Ways2growsService) {
-    var vm = this;
-
-    vm.ways2grows = Ways2growsService.query();
-
-  }
-}]);
-app.directive('linearChart', function($window){
-        return{
-                restrict:'EA',
-                template:"<svg width='850' height='200'></svg>",
-                link: function(scope, elem, attrs){
-                    var spinCounter = 0;
-                    var padding = {top:20, right:40, bottom:0, left:0},
-                        w = 500 - padding.left - padding.right,
-                        h = 500 - padding.top  - padding.bottom,
-                        r = Math.min(w, h)/2,
-                        rotation = 0,
-                        oldrotation = 0,
-                        pickedOption = 100000,
-                        selectedOptions = [];
-                    var chartData = scope[attrs.ways_to_grow_data];
-                    var chartDataBold = scope[attrs.ways_to_grow_data_bold];
-                    var svg = d3.select('#chart')
-                        .append("svg")
-                        .data(chartData)
-                        .attr("width",  w + padding.left + padding.right)
-                        .attr("height", h + padding.top + padding.bottom);
-                    var container = svg.append("g")
-                        .attr("class", "chartholder")
-                        .attr("transform", "translate(" + (w/2 + padding.left) + "," + (h/2 + padding.top) + ")");
-
-                    var vis = container
-                        .append("g");
-
-                    var pie = d3.layout.pie().sort(null).value(function(d){return 1;});
-
-                    // declare an arc generator function
-                    var arc = d3.svg.arc().outerRadius(r);
-
-                    // select paths, use arc generator to draw
-                    var arcs = vis.selectAll("g.slice")
-                        .data(pie)
-                        .enter()
-                        .append("g")
-                        .attr("class", "slice");
-
-                    arcs.append("path")
-                        .attr("fill", function(d, i){ return color(i); })
-                        .attr("d", function (d) { return arc(d); });
-
-                    // add the text
-                    arcs.append("text").attr("transform", function(d){
-                            d.innerRadius = 0;
-                            d.outerRadius = r;
-                            d.angle = (d.startAngle + d.endAngle)/2;
-                            return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")translate(" + (d.outerRadius -10) +")";
-                        })
-                        .attr("text-anchor", "end")
-                        .text( function(d, i) {
-                            return chartData[i].label;
-                        });
-
-                    container.on("click", spinWheel);
-
-                    function spinWheel(d){
-                        container.on("click", null);
-
-                        if(selectedOptions.length == chartData.length){
-                            d3.select("#option h1")
-                                    .text("All options have been chosen!");
-                        }
-
-                        if(spinCounter<=20)
-                             var  ps = 360/30;
-                         else
-                            var  ps = 360/30;
-
-                        var rng  = Math.floor((Math.random() * 1440) + 360);
-                        rotation = (Math.round(rng / ps) * ps);
-                        //console.log(rotation+"rotation");
-                        //pickedOption = Math.round(ways_to_grow_data.length - (rotation % 360)/ps);
-                        //pickedOption = pickedOption >= ways_to_grow_data.length ? (pickedOption % ways_to_grow_data.length) : pickedOption;
-
-                        if(spinCounter<20){
-                        pickedOption = Math.round(chartData.length - (rotation % 360)/ps);
-                        var oldPickedOption= pickedOption
-                        console.log(pickedOption+"beforeunder20");
-                        pickedOption = pickedOption >= chartData.length-10 ? (pickedOption % (chartData.length-10)) : pickedOption;
-                        console.log(pickedOption+"afterunder20");
-                        if(pickedOption!=oldPickedOption){
-                            rotation = rotation - (ps*10);
-                            //console.log(rotation+"alteredrotation");
-                        }
-
-                        }
-                        else{
-                        pickedOption = Math.round(chartData.length - (rotation % 360)/ps);
-                        console.log(pickedOption+"beforenormal");
-                        pickedOption = pickedOption >= chartData.length ? (pickedOption % chartData.length) : pickedOption;
-                        console.log(pickedOption+"afternormal");
-                        }
-
-                        //pickedOption = Math.round(ways_to_grow_data.length - (rotation % 360)/ps);
-                        //console.log(pickedOption + "before");
-                        //pickedOption = ((pickedOption >= ways_to_grow_data.length &&spinCounter>20) || (pickedOption >= ways_to_grow_data.length-10 &&spinCounter<21)) ? (pickedOption % ways_to_grow_data.length) : pickedOption;
-                        //console.log(pickedOption + "after");
-                        //console.log(pickedOption);
-                        if(selectedOptions.indexOf(pickedOption) !== -1){
-                            d3.select(this).call(spinWheel);
-                            //spinCounter++;
-                            //console.log(spinCounter);
-                            return;
-                        } else {
-                            selectedOptions.push(pickedOption);
-                            spinCounter++;
-                            console.log(spinCounter);
-                        }
-
-                        rotation += 90 - Math.round(ps/2);
-                        //console.log(rotation+"newrotation");
-
-                        var dataPick = "";
-
-                        if(spinCounter >20)
-                            dataPick = chartDataBold[pickedOption-20].option;
-                        else
-                            dataPick = chartData[pickedOption].option;
-
-
-                        vis.transition()
-                            .duration(3000)
-                            .attrTween("transform", rotateWheel)
-                            .each("end", function(){
-                                d3.select("#option h1")
-                                    .text(dataPick);
-                                oldrotation = rotation;
-                                container.on("click", spinWheel);
-                            });
-                    }
-                    function drawChart(){
-                    svg.append("g")
-                        .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h/2)+padding.top) + ")")
-                        .append("path")
-                        .attr("d", "M-" + (r*.15) + ",0L0," + (r*.05) + "L0,-" + (r*.05) + "Z")
-                        .style({"fill":"black"});
-
-                    container.append("circle")
-                        .attr("cx", 0)
-                        .attr("cy", 0)
-                        .attr("r", 50)
-                        .style({"fill":"white","cursor":"pointer"});
-
-                    container.append("text")
-                        .attr("x", 0)
-                        .attr("y", 15)
-                        .attr("text-anchor", "middle")
-                        .text("SPIN")
-                        .style({"font-weight":"bold", "font-size":"30px"});
-                    }
-                    function rotateWheel(to) {
-                      var i = d3.interpolate(oldrotation % 360, rotation);
-                      return function(t) {
-                        return "rotate(" + i(t) + ")";
-                    };*/
+]);

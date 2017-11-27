@@ -1,81 +1,16 @@
-<section>
+<section id = "Ways2growsListController" ng-controller="Ways2growsListController" ng-init="find()">
 	<link rel="stylesheet" type="text/css" href="modules/ways2grows/client/css/strive.css" />
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Proxima Nova" />
- <!--<div class="page-header">
-    <h1>Ways2grows</h1>
-  </div>
-  <div class="list-group">
-    <a ng-repeat="ways2grow in vm.ways2grows"
-       ui-sref="ways2grows.view({ ways2growId: ways2grow._id })"
-       class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="ways2grow.created | date:'mediumDate'"></span>
-        by
-        <span ng-if="ways2grow.user" ng-bind="ways2grow.user.displayName"></span>
-        <span ng-if="!ways2grow.user">Deleted User</span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="ways2grow.name"></h4>
-    </a>
-  </div>
-  <div class="alert alert-warning text-center" ng-if="vm.ways2grows.$resolved && !vm.ways2grows.length">
-    No Ways2grows yet, why don't you <a ui-sref="ways2grows.create">create one</a>?
-  </div>
--->
-<!---<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Strive for 5 Challenge</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>-->
-<!--<body>
-
-
-
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script type="text/javascript" charset="utf-8"></script>
-</body>
-</html>
-</section>-->
-
-<!---<body ng-app="d3AngularApp">
-    <div ng-controller="chartCntrl">
-        <div id="bar-chart"></div>
-    </div>
-    <h1> Strive for 5 Challenge </h1>
-    <p>
-    <b>The Strive-for-5 Challenge promotes self-awareness, which is required for developing our emotional maturity. Being the 5 is having a willingness to grow, the courage to be vulnerable with others, and being self-reflective.
-    <br>
-    <br>
-    As research suggests, it takes 21 days to form a new habit. The first 3 weeks serve as practice for personal growth. The final week will put your emotional development to the test.
-    <br>
-    <br>
-
-    This challenge is about stepping outside of your comfort zone. We have purposely created some tasks to sound ambiguous, as an opportunity for you to interpret them in a way that resonates most profoundly with you.
-    </b>
-    </p>
-    <div id="chart"></div>
-    <div id="option"><h1></h1></div>-->
-    <!-- Main app module js -->
-   <!--- <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
-    <script src="script.js" type="text/javascript"></script>
-</body>
-
-</html>
-</section>-->
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Strive for 5 Challenge</title>
+    <title>Strive-for-5 Challenge</title>
 </head>
 <body>
     <h1> Strive for 5 Challenge </h1>
-      <div d3-wheel data = "data"></div>
     <p>
-		<font size = "5"><p>The Strive-for-5 Challenge promotes our self-awareness,
+		<font size = "5"><p style="text-align: center">The Strive-for-5 Challenge promotes our self-awareness,
 					which is required for developing great emotional maturity.</p></font>
 		    <br>
 
@@ -108,8 +43,56 @@
     <div id="chart"></div>
     <div id="option"><h1></h1></div>
     <script type="text/javascript" src="modules/ways2grows/client/views/script.js"></script>
+		<!--<div class="col-md-12">
+			<form ng-submit="create()">
+				<input  name="lastSpinDay" ng-model="lastSpinDay" id="lastSpinDay" class="form-control" >
+				<input  name="lastSpinMonth" ng-model="lastSpinMonth" id="lastSpinMonth" class="form-control" >
+				<input  name="lastSpinYear" ng-model="lastSpinYear" id="lastSpinYear" class="form-control" >
+				<input  name="selectedOptions" ng-model="selectedOptions" id="selectedOptions" class="form-control">-->
+				<!-- <input  name="lastSpinDay" ng-model="ways2grow.lastSpinDay" id="lastSpinDay" class="form-control" value="swag">
+				<input  name="lastSpinMonth" ng-model="ways2grow.lastSpinMonth" id="lastSpinMonth" class="form-control" value="swag">
+				<input  name="lastSpinYear" ng-model="ways2grow.lastSpinYear" id="lastSpinYear" class="form-control" value="swag">
+				<input  name="selectedOptions" ng-model="ways2grow.selectedOptions" id="selectedOptions" class="form-control" value="swag2"> -->
+				<!--<input type="submit" class="btn btn-default">
+				<script type = "text/javascript">
+						var $myText = $("#lastSpin");
+							setInterval(function() {
+				    var data = $myText.data("value"),
+				        val = $myText.val();
 
+				    if (data !== val) {
+				        $myText.data("value", val);
+				        //alert("changed");
+				    }
+					}, 100);
+				</script>
+			</form>-->
+			<!--articleForm.$valid goes in create-->
+
+	      <!--<fieldset>
+	        <div class="form-group" show-errors>
+	          <label for="title">Title</label>
+	          <input name="title" type="text" ng-model="title" id="title" class="form-control" placeholder="Title" required>
+	          <div ng-messages="articleForm.title.$error" role="alert">
+	            <p class="help-block error-text" ng-message="required">Journal title is required.</p>
+	          </div>
+	        </div>
+	        <div class="form-group">
+	          <label for="content">Content</label>
+	          <textarea name="content" ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+	        </div>
+	        <div class="form-group">
+	          <input type="submit" class="btn btn-default">
+	        </div>
+	        <div ng-show="error" class="text-danger">
+	          <strong ng-bind="error"></strong>
+	        </div>
+	      </fieldset>
+	    </form>
+	  </div>-->
+		<!-- <input type="submit" class="btn btn-default"> -->
     <!-- Main app module js -->
+	</div>
 </body>
 </html>
 </section>

@@ -5,27 +5,29 @@
     .module('assessments')
     .controller('AssessmentsListController', AssessmentsListController);
 
-  AssessmentsListController.$inject = ['Authentication'];
+  AssessmentsListController.$inject = ['AssessmentsService','Authentication'];
 
-  function AssessmentsListController(AssessmentsService, $scope, $state, $window, Authentication, assessment) {
+  function AssessmentsListController(AssessmentsService) {
     var vm = this;
 
-
-    vm.userEMAs = [{
-        name: 'Stanley',
-        result: 130
-    }]
     vm.submit = false;
     vm.results = [];
     vm.totalClicks =0;
     vm.name = null;
+    vm.assessment_= AssessmentsService.query();
+
 
     vm.init = function (){
         vm.assessment_= AssessmentsService.query();
     }
 
+    vm.convertDate = function(Date_){
+        //2017-11-26T01:08:22.360Z
+        return Date_.substr(5,2)+'/'+Date_.substr(8,2)+'/'+Date_.substr(2,2);
+    }
 
 
+    //listens to changes on radio button
     vm.change = function (value) {
         vm.totalClicks =0;
 
@@ -35,12 +37,13 @@
                 vm.totalClicks+=1;
             } 
         }
-        if ((vm.totalClicks == 2) && (vm.name != null)){
+        if ((vm.totalClicks >2) && (vm.name != null)){
             vm.submit = true;
         } 
     };
+    //listens to changes on name field
     vm.change_ = function () {
-        if ((vm.totalClicks == 5) && ((vm.name != null) || (vm.name != ""))) {
+        if ((vm.totalClicks > 5) && ((vm.name != null) || (vm.name != ""))) {
             vm.submit = true;
         } 
     };
@@ -53,8 +56,69 @@
             } 
             
         }
+        console.log({name: vm.name, result: sum});
         vm.userEMAs.push( {name: vm.name, result: sum});
     };
+
+    vm.save = function() {
+     var sum =0;
+        for (var i =0 ;  i<vm.results.length;i++){
+            if(vm.results[i]!=null){
+                sum += vm.results[i];
+            } 
+        }
+
+
+      if (vm.assessment_.length > 0) {            
+            if (vm.page=="EMA"){
+                vm.assessment.emaresult.push({name: vm.name, score: sum});
+            }
+            else if (vm.page=="RAA"){
+                vm.assessment.raaresult.push({name: vm.name, score: sum});
+            }
+            
+
+            var assessment = vm.assessment;
+            assessment.$update();
+
+      } else {
+        
+            var assessment = new AssessmentsService();
+
+            if (vm.page=="EMA"){
+                assessment.emaresult = [{name: vm.name, score: sum}];
+            }
+            else if (vm.page=="RAA"){
+                assessment.raaresult = [{name: vm.name, score: sum}];
+            }
+            
+
+            vm.assessment = assessment;
+            assessment.$save();
+
+      }
+
+    }
+
+    vm.find = function () {
+            vm.assess = AssessmentsService.query();
+        };
+       
+    vm.id = ''
+    AssessmentsService.query().$promise.then(function(data) {
+        if (data.length > 0){
+            vm.id = data[0]._id;
+            vm.assessment = AssessmentsService.get({
+            assessmentId: vm.id
+            });
+        } 
+    });
+    console.log(vm.id)
+
+    vm.findOne = function () {
+
+    };
+
 
     vm.raa=["Physical affection with this person is very special.",
             "I experience something special with this person that I do not experience with others.", 

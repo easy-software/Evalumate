@@ -10,23 +10,21 @@ var mongoose = require('mongoose'),
  * Ways2grow Schema
  */
 var Ways2growSchema = new Schema({
-  name: {
-    type: String,
-    default: '',
-    required: 'Please fill Ways2grow name',
-    trim: true
+  lastSpinDay: {
+    type: Number,
+    default: new Date().getDate()
   },
-  lastSpin: {
-    type: Date,
-    default: Date.now
+  lastSpinMonth: {
+    type: Number,
+    default: new Date().getMonth()
+  },
+  lastSpinYear: {
+    type: Number,
+    default: new Date().getFullYear()
   },
   selectedOptions: {
     type: [Number],
     default: []
-  },
-  spinCounter: {
-    type: Number,
-    default: 0
   },
   user: {
     type: Schema.ObjectId,

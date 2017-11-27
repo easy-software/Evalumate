@@ -50,11 +50,7 @@
 
 					console.log(article)
 
-	       article.$update(function () {
-	         $location.path('assessments/create' + $scope.assessments._id);
-	       }, function (errorResponse) {
-	         $scope.error = errorResponse.data.message;
-	       });
+	       article.$update();
 			 }
 
 			 else{
