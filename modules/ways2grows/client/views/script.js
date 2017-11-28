@@ -172,6 +172,7 @@ var padding = {top:20, right:40, bottom:0, left:0},
                         .text("You have already spun once today!");
                 return;
             }*/
+            spinCounter = selectedOptions.length;
 
             if(spinCounter<=20)
                  var  ps = 360/30;
