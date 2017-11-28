@@ -22,7 +22,7 @@
 		 //console.log('UrlId: ' $scope.urlId);
 		 var send = document.getElementById('infoSubmit');
 		 var reSend = document.getElementById('resend');
-		 
+
 		 $scope.getEmail = function(){
 			 $scope.emailstring = 'mailto:' + $scope.assessment.email1.address + ',';
 			 $scope.emailstring += $scope.assessment.email2.address + ',';
@@ -33,8 +33,10 @@
 				'Emotional Maturity (EM). Using this really cool assessment as a tool gives me the honest feedback I need in' +
 				'order to understand how I occur to others. I value your perspective and I know that the time it takes you to ' +
 				 'complete this quiz will allow me to grow and become a better version of myself.%0D%0A' +
-				 '%0D%0AWhen you have a few minutes, click on the link below and it’ll take you straight to the assessment. '+
-				 'Don’t worry, it’s anonymous - so give me your honest feedback. %0D%0A%0D%0A Thank you for helping me with my personal growth '+
+				 '%0D%0AWhen you have a few minutes, click on the link below and it’ll take you straight to the assessment. %0D%0A%0D%0A'+
+				 'http://evalumate.herokuapp.com/'+ $scope.urlId +'/Self-Assessment'+
+				 '%0D%0A%0D%0ADon’t worry, it’s anonymous - so give me your honest feedback. %0D%0A%0D%0A Thank you for '+
+				 'helping me with my personal growth '+
 				 'journey. %0D%0A%0D%0A You are LovEd!'
 			 send.submit();
  	 	};

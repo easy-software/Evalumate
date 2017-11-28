@@ -46,6 +46,18 @@
 		</div>
 	</div>
 	<div class="col-md-4" >
+		<h1> Score Translation</h1>
+		<img src="modules/assessments/client/img/translatingEM.jpg" width="100%" height="250x">
+		<!--a style="color: #818185;" ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})">
+			<small>
+				Posted on
+				<span style="color: #818185;" ng-bind="article.created | date:'mediumDate'"></span>
+			</small>
+			<h4 style="color: #818185;" class="list-group-item-heading" ng-bind="article.title"></h4>
+			<p style="color: #818185;" class="list-group-item-text" ng-bind="article.date"></p>
+		</a-->
+	</div>
+	<div class="col-md-4" >
 		<h1>EMQ Scores</h1>
 		<div class="row" ng-repeat="test in vm.assessment.emaresult.slice().reverse()">
 			<div class="col-md-4" style="color: #818185;">
@@ -59,16 +71,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4" >
-		<h1> Score Translation</h1>
-		<!--a style="color: #818185;" ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})">
-			<small>
-				Posted on
-				<span style="color: #818185;" ng-bind="article.created | date:'mediumDate'"></span>
-			</small>
-			<h4 style="color: #818185;" class="list-group-item-heading" ng-bind="article.title"></h4>
-			<p style="color: #818185;" class="list-group-item-text" ng-bind="article.date"></p>
-		</a-->
-	</div>
+
 </div>
 </section>

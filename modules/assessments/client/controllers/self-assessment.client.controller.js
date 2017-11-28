@@ -106,6 +106,12 @@
 								var assessment = vm.assessment;
 								console.log(vm.assessment);
 								assessment.$update();
+								if(vm.assessment.email1.hasResponded = true &&
+									vm.assessment.email2.hasResponded == true && vm.assessment.email3.hasResponded == true)
+									{
+										var avg = (vm.assessment.email1.score + vm.assessment.email2.score + vm.assessment.email3.score)/3;
+										vm.assessment.selfResult.push({score: avg});
+									}
 							}
 						}
 						else if(vm.name == vm.assessment.email2.address)
@@ -119,6 +125,12 @@
 								vm.assessment.email2.hasResponded = true;
 								var assessment = vm.assessment;
 			          assessment.$update();
+								if(vm.assessment.email1.hasResponded = true &&
+									vm.assessment.email2.hasResponded == true && vm.assessment.email3.hasResponded == true)
+									{
+										var avg = (vm.assessment.email1.score + vm.assessment.email2.score + vm.assessment.email3.score)/3;
+										vm.assessment.selfResult.push({score: avg});
+									}
 							}
 						}
 						else if(vm.name == vm.assessment.email3.address){
@@ -131,16 +143,17 @@
 								vm.assessment.email3.hasResponded = true;
 								var assessment = vm.assessment;
 			          assessment.$update();
+								if(vm.assessment.email1.hasResponded = true &&
+									vm.assessment.email2.hasResponded == true && vm.assessment.email3.hasResponded == true)
+									{
+										var avg = parseInt((vm.assessment.email1.score + vm.assessment.email2.score + vm.assessment.email3.score)/3);
+										vm.assessment.selfResult.push({score: avg});
+									}
 							}
 						}
-
-
-
             else {
                 alert("Please make sure your email address is spelled correctly")
             }
-
-
 
     }
 

@@ -117,6 +117,8 @@
             });
         }
     });
+
+
     console.log(vm.id)
 
     vm.findOne = function () {
