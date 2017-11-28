@@ -82,6 +82,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$window'
     $scope.findOne = function () {
       $scope.article = Articles.get({
         articleId: $stateParams.articleId
+				
       });
     };
   }

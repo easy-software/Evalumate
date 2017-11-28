@@ -44,16 +44,16 @@
       .state('RAA', {
         url: '/RAA',
         templateUrl: 'modules/assessments/client/views/romantic-attraction-assessment.client.view.html',
-        controller: 'AssessmentsListController',
+        controller: 'selfAssessmentController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Emotional Maturity Assessment'
+          pageTitle: 'AssessmentsListController'
         }
       })
 			.state('Self-Assessment', {
         url: '/:assessmentId/Self-Assessment',
-        templateUrl: 'modules/assessments/client/views/self-assessment.client.view.html',
-        controller: 'AssessmentsListController',
+        templateUrl: 'modules/assessments/client/views/self-assessment.view.html',
+        controller: 'selfAssessmentController',
         controllerAs: 'vm',
         data: {
           pageTitle: 'Self-Assessment'

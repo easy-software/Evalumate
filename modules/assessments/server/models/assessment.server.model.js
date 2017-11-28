@@ -34,7 +34,7 @@ var AssessmentSchema = new Schema({
       default:  0
     },
     time : {
-     type : Date, default: Date.now 
+     type : Date, default: Date.now
  	}
   }],
   emaresult: [{
@@ -47,7 +47,7 @@ var AssessmentSchema = new Schema({
       default:  0
     },
     time : {
-     type : Date, default: Date.now 
+     type : Date, default: Date.now
  	}
   }],
 	email1 : {
@@ -91,7 +91,17 @@ var AssessmentSchema = new Schema({
 			type: Number,
 			default: 0
 		}
-	}
+	},
+	selfResult: [{
+		score: {
+      type: Number,
+      default:  0
+    },
+    time : {
+     type : Date, default: Date.now
+ 		}
+
+	}]
 
 
 });
