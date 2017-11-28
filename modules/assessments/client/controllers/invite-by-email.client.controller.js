@@ -16,11 +16,13 @@
 
 		 $scope.emailstring = '';
 		 $scope.assessments = AssessmentsService.query();
-		 $scope.urlId = AssessmentsService.query()._id;
+		 		$scope.assessments.$promise.then(function(data) {
+					$scope.urlId = data[0]._id;
+		 });
 		 //console.log('UrlId: ' $scope.urlId);
 		 var send = document.getElementById('infoSubmit');
 		 var reSend = document.getElementById('resend');
-
+		 
 		 $scope.getEmail = function(){
 			 $scope.emailstring = 'mailto:' + $scope.assessment.email1.address + ',';
 			 $scope.emailstring += $scope.assessment.email2.address + ',';
@@ -49,15 +51,18 @@
 
 			 if($scope.assessments.length>0)
 			 {
+				 $scope.assessment.email1.hasResponded = false;
+				 $scope.assessment.email1.score = 0;
+				 $scope.assessment.email2.hasResponded = false;
+				 $scope.assessment.email2.score = 0;
+				 $scope.assessment.email3.hasResponded = false;
+				 $scope.assessment.email3.score = 0;
 				 var article = $scope.assessment;
 
 					console.log(article)
 
-	       article.$update()(function () {
-		         $location.path('assessments/create' + $scope.assessments._id);
-		       }, function (errorResponse) {
-		         $scope.error = errorResponse.data.message;
-		       });;
+
+	       article.$update();
 			 }
 
 			 else{

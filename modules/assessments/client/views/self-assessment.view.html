@@ -1,10 +1,10 @@
-<section ng-controller="AssessmentsListController" class="ea">
+<section ng-controller="selfAssessmentController" ng-init="init()"class="ea">
 	<link rel="stylesheet" type="text/css" href="modules/assessments/client/css/ea.css" />
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Proxima Nova" />
 
 
-  <div class="container;" style="background-color: #F5F5F5;text-align: center; font-family: Comfortaa; font-weight: bold" ng-init="vm.page = 'EMA'">
+  <div class="container;" style="background-color: #F5F5F5;text-align: center; font-family: Comfortaa; font-weight: bold" ng-init="init()">
 
     <h3>In order to submit this assessment, all questions will need to be answered!</h3>
     <div >
@@ -84,8 +84,9 @@
                 padding: 8px;
             }
           </style>
-          <tr ng-repeat="ema in vm.ema track by $index">
-            <td style="text-align: left;">{{ema }}&nbsp</td>
+
+          <tr ng-repeat="sa in vm.sa track by $index">
+            <td style="text-align: left;">{{sa}}&nbsp</td>
             <td><label class="ea"><input class="ea" type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' ng-value="1" ng-click="vm.change($index)" >&nbsp</label></td>
             <td><label class="ea"><input class="ea" type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' ng-value="2" ng-click="vm.change($index)" >&nbsp</label></td>
             <td><label class="ea"><input class="ea" type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' ng-value="3" ng-click="vm.change($index)" >&nbsp</label></td>
@@ -94,10 +95,11 @@
           </tr>
         </table>
         <div style="text-align: center;" ng-show='vm.submit'>
-          <button type="button btn-lg" class="btn btn-success" ng-click="vm.save()" ui-sref="assessments.emotional-maturity-landing">Submit</button>
+          <button type="button btn-lg" class="btn btn-success" ng-click="vm.save()">Submit</button>
         </div>
 
       </form>
+			<h1>HelloWWorld</h1>
     </div>
 
 </div>

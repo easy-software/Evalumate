@@ -35,11 +35,11 @@
 
             if(vm.results[i]!=null){
                 vm.totalClicks+=1;
-            } 
+            }
         }
         if ((vm.totalClicks >2) && (vm.name != null)){
             vm.submit = true;
-        } 
+        }
     };
     //listens to changes on name field
     vm.change_ = function () {
@@ -48,7 +48,6 @@
         } 
         else{
             return false;
-        }
     };
 
     vm.done = function (){
@@ -56,8 +55,8 @@
         for (var i =0 ;  i<vm.results.length;i++){
             if(vm.results[i]!=null){
                 sum += vm.results[i];
-            } 
-            
+            }
+
         }
         console.log({name: vm.name, result: sum});
         vm.userEMAs.push( {name: vm.name, result: sum});
@@ -68,24 +67,24 @@
         for (var i =0 ;  i<vm.results.length;i++){
             if(vm.results[i]!=null){
                 sum += vm.results[i];
-            } 
+            }
         }
 
 
-      if (vm.assessment_.length > 0) {            
+      if (vm.assessment_.length > 0) {
             if (vm.page=="EMA"){
                 vm.assessment.emaresult.push({name: vm.name, score: sum});
             }
             else if (vm.page=="RAA"){
                 vm.assessment.raaresult.push({name: vm.name, score: sum});
             }
-            
+
 
             var assessment = vm.assessment;
             assessment.$update();
 
       } else {
-        
+
             var assessment = new AssessmentsService();
 
             if (vm.page=="EMA"){
@@ -94,7 +93,7 @@
             else if (vm.page=="RAA"){
                 assessment.raaresult = [{name: vm.name, score: sum}];
             }
-            
+
 
             vm.assessment = assessment;
             assessment.$save();
@@ -104,9 +103,11 @@
     }
 
     vm.find = function () {
-            vm.assess = AssessmentsService.query();
+            AssessmentsService.query().$promise.then(function(data) {
+							//if(data[0].email1.hasResponded == true && data[0].email2.hasResponded == true && data[0].email1.hasResponded == true)
+						});
         };
-       
+
     vm.id = ''
     AssessmentsService.query().$promise.then(function(data) {
         if (data.length > 0){
@@ -114,7 +115,7 @@
             vm.assessment = AssessmentsService.get({
             assessmentId: vm.id
             });
-        } 
+        }
     });
     console.log(vm.id)
 
@@ -124,34 +125,34 @@
 
 
     vm.raa=["Physical affection with this person is very special.",
-            "I experience something special with this person that I do not experience with others.", 
-            "I am curious about why and how much this person is interested in me.", 
-            "I get excited when I meet this person unexpectedly.", 
-            "I am willing to change in order to be more desirable to this person.", 
-            "I have a longing for this person when we are apart.", 
-            "Being with this person is more important to me than where we are or what we are doing.", 
-            "I want to be very special in this person's life.", 
-            "I see this person as a long term companion.", 
-            "I am willing to continue this relationship in spite of any unpleasantness.", 
-            "I am willing to do things for this person without having to know the reason why.", 
-            "We often have a very good time even when we are not doing anything special.", 
-            "I get a thrill from just looking at this person.", 
-            "I enjoy this person in ways beyond just sharing affection.", 
-            "There is something almost mystical in our eye-to-eye contact.", 
-            "I could see myself growing old with this person.", 
-            "This person is a beautiful person (inner beauty).", 
-            "This person is often on my mind.", 
-            "I would feel sad if this person became strongly interested in someone else.", 
-            "I want our attraction to be mutual.", 
-            "I experience unusual and pleasantly exciting feelings when I am with this person.", 
-            "I want this person to respect me for my abilities.", 
-            "I enjoy being with this person even when we are silent.", 
-            "It means a lot to me when this person does something special for me.", 
-            "I would like to know what this person finds attractive about me.", 
-            "There are so many things I wish we could do together, if only there was enough time.", 
-            "I have a protective interest about this person's well being.", 
-            "I like doing things for this person.", 
-            "I have thoughts of what our future together might look like." 
+            "I experience something special with this person that I do not experience with others.",
+            "I am curious about why and how much this person is interested in me.",
+            "I get excited when I meet this person unexpectedly.",
+            "I am willing to change in order to be more desirable to this person.",
+            "I have a longing for this person when we are apart.",
+            "Being with this person is more important to me than where we are or what we are doing.",
+            "I want to be very special in this person's life.",
+            "I see this person as a long term companion.",
+            "I am willing to continue this relationship in spite of any unpleasantness.",
+            "I am willing to do things for this person without having to know the reason why.",
+            "We often have a very good time even when we are not doing anything special.",
+            "I get a thrill from just looking at this person.",
+            "I enjoy this person in ways beyond just sharing affection.",
+            "There is something almost mystical in our eye-to-eye contact.",
+            "I could see myself growing old with this person.",
+            "This person is a beautiful person (inner beauty).",
+            "This person is often on my mind.",
+            "I would feel sad if this person became strongly interested in someone else.",
+            "I want our attraction to be mutual.",
+            "I experience unusual and pleasantly exciting feelings when I am with this person.",
+            "I want this person to respect me for my abilities.",
+            "I enjoy being with this person even when we are silent.",
+            "It means a lot to me when this person does something special for me.",
+            "I would like to know what this person finds attractive about me.",
+            "There are so many things I wish we could do together, if only there was enough time.",
+            "I have a protective interest about this person's well being.",
+            "I like doing things for this person.",
+            "I have thoughts of what our future together might look like."
             ]
 
     vm.ema=["This person is aware of and able to express accurately how he/she feels.",
@@ -186,6 +187,6 @@
             "This person willingly carries his/her own share of the workload."
     ];
 
-   
+
   }
 }());
