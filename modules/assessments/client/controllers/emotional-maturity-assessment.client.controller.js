@@ -46,7 +46,7 @@
         if ((vm.totalClicks > 5) && ((vm.name != null) || ( /^\S+$/.test(vm.name)  ))) {
             return true;
         } 
-        else{
+        else
             return false;
     };
 
