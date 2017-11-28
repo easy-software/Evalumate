@@ -16,9 +16,20 @@ h5 {font-family: Proxima Nova;
 }
 input {font-family: Comfortaa;}
 p {font-family: Proxima Nova;
+		list-style-position: outside;
+		margin-left: 1em;
 
 }
 
 li {font-family: Proxima Nova;
+	list-style-position: outside;
+
+    /*
+     * Because the bullet is outside of the list’s
+     * container, indent the list entirely
+     */
+    margin-left: 1em;
 	color: #818185
+
 }
+
