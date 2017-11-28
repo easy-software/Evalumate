@@ -50,6 +50,15 @@
           pageTitle: 'Emotional Maturity Assessment'
         }
       })
+			.state('Self-Assessment', {
+        url: '/:assessmentId/Self-Assessment',
+        templateUrl: 'modules/assessments/client/views/self-assessment.client.view.html',
+        controller: 'AssessmentsListController',
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Self-Assessment'
+        }
+      })
       .state('assessments.create', {
         url: '/create',
         templateUrl: 'modules/assessments/client/views/form-assessment.client.view.html',

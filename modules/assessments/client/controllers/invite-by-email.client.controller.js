@@ -13,8 +13,11 @@
 		 $scope.email1 = '';
 		 $scope.email2 = '';
 		 $scope.email3 = '';
+
 		 $scope.emailstring = '';
 		 $scope.assessments = AssessmentsService.query();
+		 $scope.urlId = AssessmentsService.query()._id;
+		 //console.log('UrlId: ' $scope.urlId);
 		 var send = document.getElementById('infoSubmit');
 		 var reSend = document.getElementById('resend');
 
@@ -29,7 +32,7 @@
 				'order to understand how I occur to others. I value your perspective and I know that the time it takes you to ' +
 				 'complete this quiz will allow me to grow and become a better version of myself.%0D%0A' +
 				 '%0D%0AWhen you have a few minutes, click on the link below and it’ll take you straight to the assessment. '+
-				 'Don’t worry, it’s anonymous - so give me your honest feedback. \n Thank you for helping me with my personal growth '+
+				 'Don’t worry, it’s anonymous - so give me your honest feedback. %0D%0A%0D%0A Thank you for helping me with my personal growth '+
 				 'journey. %0D%0A%0D%0A You are LovEd!'
 			 send.submit();
  	 	};
@@ -50,7 +53,11 @@
 
 					console.log(article)
 
-	       article.$update();
+	       article.$update()(function () {
+		         $location.path('assessments/create' + $scope.assessments._id);
+		       }, function (errorResponse) {
+		         $scope.error = errorResponse.data.message;
+		       });;
 			 }
 
 			 else{
@@ -73,33 +80,33 @@
 					 //$location.path('articles/' + response._id);
 
 					 // Clear form fields
-					 $scope.email1 = '';
-					 $window.location.reload();
+					 //$scope.email1 = '';
+					 //$window.location.reload();
 				 }, function (errorResponse) {
 					 $scope.error = errorResponse.data.message;
 				 });
 		 		}
 			 };
 
-			 $scope.update = function (isValid) {
-	       $scope.error = null;
-
-	       if (!isValid) {
-	         $scope.$broadcast('show-errors-check-validity', 'assessmentForm');
-
-	         return false;
-	       }
-
-	       var article = $scope.assessment;
-
-					console.log(article)
-
-	       article.$update(function () {
-	         $location.path('assessments/create' + $scope.assessments._id);
-	       }, function (errorResponse) {
-	         $scope.error = errorResponse.data.message;
-	       });
-	     };
+			 // $scope.update = function (isValid) {
+	     //   $scope.error = null;
+       //
+	     //   if (!isValid) {
+	     //     $scope.$broadcast('show-errors-check-validity', 'assessmentForm');
+       //
+	     //     return false;
+	     //   }
+       //
+	     //   var article = $scope.assessment;
+       //
+				// 	console.log(article)
+       //
+	     //   article.$update(function () {
+	     //     $location.path('assessments/create' + $scope.assessments._id);
+	     //   }, function (errorResponse) {
+	     //     $scope.error = errorResponse.data.message;
+	     //   });
+	     // };
 
 		 $scope.remEmail = function() {
 		 	$scope.assessments.$promise.then(function(data) {
@@ -108,7 +115,15 @@
 			 	$scope.remEmail1 = data[0].email1.address;
 			 	$scope.remEmail2 = data[0].email2.address;
 				$scope.remEmail3 = data[0].email3.address;
-			 resend.action = 'mailto:?bcc=' + $scope.remEmail1 + ',' + $scope.remEmail2 +',' + $scope.remEmail3;
+			 resend.action = send.action = 'mailto:?bcc=' +$scope.assessment.email1.address + ',' + $scope.assessment.email2.address +',' + $scope.assessment.email3.address +
+			 	'&subject=Reminder: You have been selected by a friend to participate in their LovED Assessment&body=Dear Friend, %0D%0A' +
+			 	'%0D%0AI have selected you as one of my three trusted participants to anonymously evaluate my level of ' +
+				'Emotional Maturity (EM). Using this really cool assessment as a tool gives me the honest feedback I need in' +
+				'order to understand how I occur to others. I value your perspective and I know that the time it takes you to ' +
+				 'complete this quiz will allow me to grow and become a better version of myself.%0D%0A' +
+				 '%0D%0AWhen you have a few minutes, click on the link below and it’ll take you straight to the assessment. '+
+				 'Don’t worry, it’s anonymous - so give me your honest feedback. %0D%0A%0D%0A Thank you for helping me with my personal growth '+
+				 'journey. %0D%0A%0D%0A You are LovEd! %0D%0A%0D%0A%0D%0A If you have already completed the assessment, please ignore this message'
 			 reSend.submit();
    		});
  		};
@@ -138,11 +153,14 @@
 		// };
 		$scope.id = ''
 		$scope.assessments.$promise.then(function(data) {
+			if(data.length>0){
 			$scope.id = data[0]._id;
 			$scope.assessment = AssessmentsService.get({
 				assessmentId: $scope.id
 			});
+		}
 		});
+
 		console.log($scope.id)
 		$scope.findOne = function () {
 

@@ -58,9 +58,10 @@ var padding = {top:20, right:40, bottom:0, left:0},
         ];
 
         var spinCounter = 0;
-        var date = new Date();
+        var currdate = new Date();
         var lastSpinDateMonth = -1;
         var lastSpinDateDay = -1;
+        var lastSpinDateYear = -1;
         //console.log(date);
 
         var svg = d3.select('#chart')
@@ -108,17 +109,62 @@ var padding = {top:20, right:40, bottom:0, left:0},
 
         container.on("click", spinWheel);
 
-
         function spinWheel(d){
 
             container.on("click", null);
+            // var output = document. getElementById('selectedOptions');
+            // console.log(output.value + " hi");
+            // var spinOutputDay = document.getElementById('lastSpinDay');
+            //   console.log(spinOutputDay.value  + " hiday " + currdate.getDate());
+            // var spinOutputMonth = document.getElementById('lastSpinMonth');
+            //   console.log(spinOutputMonth.value + " himonth " + currdate.getMonth());
+            // var spinOutputYear = document.getElementById('lastSpinYear');
+            //   console.log(spinOutputYear.value + " hiyear " + currdate.getFullYear());
+            // var empty = false;
+            // if(output.value==''){
+            //   empty = true;
+            //   //d3.select("#option h1")
+            //           //.text("You have already spun once today!");
+            // }
+            //console.log(scope.ways2grows[0]);
+
+            /*if(spinOutputDay.value==currdate.getDate() &&
+            spinOutputMonth.value==currdate.getMonth()+1 &&
+            spinOutputYear.value==currdate.getFullYear()){
+              d3.select("#option h1")
+                      .text("You have already spun once today!");
+              return;
+            }*/
+
+            var scope = angular.element($("#Ways2growsListController")).scope();
+            console.log(scope + " this is the scope");
+            // if(output.value!=''){
+            //   var myArray = output.value.split(",");
+            //   for(var i=0; i<myArray.length; i++) { myArray[i] = parseInt(myArray[i], 10); }
+            //   selectedOptions = myArray;
+            // }
+            if(scope.ways2grows === undefined || scope.ways2grows === null || scope.ways2grows.length === 0){
+              selectedOptions = [];
+            }
+            else{
+              selectedOptions = scope.ways2grows[0].selectedOptions;
+              if(scope.ways2grows[0].lastSpinDay===currdate.getDate() &&
+              scope.ways2grows[0].lastSpinMonth==currdate.getMonth()+1 &&
+              scope.ways2grows[0].lastSpinYear==currdate.getFullYear()){
+                d3.select("#option h1")
+                        .text("You have already spun once today!");
+                return;
+              }
+            }
+            console.log( " sup",selectedOptions);
+            //console.log(spinOutput.value + " hi");
 
             if(selectedOptions.length == ways_to_grow_data.length){
-                /*selectedOptions = [];
-                spinCounter = 0;*/
-                d3.select("#option h1")
-                        .text("All options have been selected!");
-                return;
+                selectedOptions = [];
+                spinCounter = 0;
+                //d3.select("#option h1")
+                        //.text("All options have been selected!");
+                //return;
             }
 
             /*if(lastSpinDateMonth == date.getMonth()+1 && lastSpinDateDay == date.getDate()){
@@ -126,6 +172,7 @@ var padding = {top:20, right:40, bottom:0, left:0},
                         .text("You have already spun once today!");
                 return;
             }*/
+            spinCounter = selectedOptions.length;
 
             if(spinCounter<=20)
                  var  ps = 360/30;
@@ -171,8 +218,9 @@ var padding = {top:20, right:40, bottom:0, left:0},
                 selectedOptions.push(pickedOption);
                 spinCounter++;
                 //date = new Date();
-                lastSpinDateMonth = date.getMonth()+1;
-                lastSpinDateDay = date.getDate();
+                lastSpinDateMonth = currdate.getMonth()+1;
+                lastSpinDateDay = currdate.getDate();
+                lastSpinDateYear = currdate.getFullYear();
                 console.log(spinCounter);
             }
 
@@ -194,8 +242,48 @@ var padding = {top:20, right:40, bottom:0, left:0},
                     d3.select("#option h1")
                         .text(dataPick);
                     oldrotation = rotation;
+                    // output.value = selectedOptions;
+                    // spinOutputDay.value = lastSpinDateDay;
+                    // spinOutputMonth.value = lastSpinDateMonth;
+                    // spinOutputYear.value = lastSpinDateYear;
+                    scope.$apply(function(){
+                      if(scope.ways2grows === null || scope.ways2grows === undefined || scope.ways2grows.length === 0){
+                      scope.create(selectedOptions, lastSpinDateDay, lastSpinDateMonth, lastSpinDateYear);
+                    }else{
+                      console.log("updating",scope.ways2growId);
+                      scope.ways2grows[0].lastSpinDay = lastSpinDateDay;
+                      scope.ways2grows[0].lastSpinMonth = lastSpinDateMonth;
+                      scope.ways2grows[0].lastSpinYear = lastSpinDateYear;
+                      scope.ways2grows[0].selectedOptions = selectedOptions;
+                      scope.update();
+                    }
+                    });
+
                     container.on("click", spinWheel);
                 });
+                //output.focus();
+                //output.value = selectedOptions;
+              //  console.log(selectedOptions + " after spin");
+                //spinOutput.focus();
+                // output.value = selectedOptions;
+                // spinOutputDay.value = lastSpinDateDay;
+                // spinOutputMonth.value = lastSpinDateMonth;
+                // spinOutputYear.value = lastSpinDateYear;
+
+                //console.log(lastSpinDateMonth + " " + lastSpinDateDay + " after spin");
+              //  if(empty){
+              // setTimeout(function(){
+              //   scope.$apply(function(){
+              //     scope.create(selectedOptions, lastSpinDateDay, lastSpinDateMonth, lastSpinDateYear);
+              //   })}, 5000);
+            //  }
+              //else{
+                //setTimeout(function(){
+                //  scope.$apply(function(){
+              //      scope.update(selectedOptions, lastSpinDateDay, lastSpinDateMonth, lastSpinDateYear);
+                //  })}, 5000);
+            //  }
+
         }
         svg.append("g")
             .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h/2)+padding.top) + ")")
