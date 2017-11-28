@@ -44,10 +44,10 @@
       .state('RAA', {
         url: '/RAA',
         templateUrl: 'modules/assessments/client/views/romantic-attraction-assessment.client.view.html',
-        controller: 'selfAssessmentController',
+        controller: 'AssessmentsListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'AssessmentsListController'
+          pageTitle: 'Romantic Attraction Assessment'
         }
       })
 			.state('Self-Assessment', {
