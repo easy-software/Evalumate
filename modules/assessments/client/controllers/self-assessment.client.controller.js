@@ -95,7 +95,8 @@
 
 						//console.log(vm.assessment);
 						var assessment = vm.assessment;
-						if (vm.name == vm.assessment.email1.address) {
+						if(vm.name == vm.assessment.email1.address)
+						{
 							if(vm.assessment.email1.hasResponded == true)
 							{
 								alert("You've already rated this person");
@@ -104,9 +105,8 @@
 								vm.assessment.email1.score = sum;
 								vm.assessment.email1.hasResponded = true;
 								var assessment = vm.assessment;
-								console.log(vm.assessment);
-								assessment.$update();
-								if(vm.assessment.email1.hasResponded = true &&
+			          assessment.$update();
+								if(vm.assessment.email1.hasResponded == true &&
 									vm.assessment.email2.hasResponded == true && vm.assessment.email3.hasResponded == true)
 									{
 										var avg = (vm.assessment.email1.score + vm.assessment.email2.score + vm.assessment.email3.score)/3;
@@ -125,7 +125,7 @@
 								vm.assessment.email2.hasResponded = true;
 								var assessment = vm.assessment;
 			          assessment.$update();
-								if(vm.assessment.email1.hasResponded = true &&
+								if(vm.assessment.email1.hasResponded == true &&
 									vm.assessment.email2.hasResponded == true && vm.assessment.email3.hasResponded == true)
 									{
 										var avg = (vm.assessment.email1.score + vm.assessment.email2.score + vm.assessment.email3.score)/3;
@@ -143,7 +143,7 @@
 								vm.assessment.email3.hasResponded = true;
 								var assessment = vm.assessment;
 			          assessment.$update();
-								if(vm.assessment.email1.hasResponded = true &&
+								if(vm.assessment.email1.hasResponded == true &&
 									vm.assessment.email2.hasResponded == true && vm.assessment.email3.hasResponded == true)
 									{
 										var avg = parseInt((vm.assessment.email1.score + vm.assessment.email2.score + vm.assessment.email3.score)/3);
