@@ -16,7 +16,7 @@
              <div class="form-group" >
               <label class="control-label col-sm-5" for="email">Name of person you would like to assess: </label>
               <div class="col-sm-5">
-                <input type="text" class="form-control" id="email" placeholder="Enter Name" name="email" ng-model='vm.name' ng-change="vm.change_()">
+                <input type="text" class="form-control" id="email" placeholder="Enter Name" name="email" ng-model='vm.name' ng-change="vm.change_()" required>
               </div>
             </div>
            </div>
@@ -93,8 +93,8 @@
             <td><label class="ea"><input class="ea" type="radio" name="optradio{{$index}}"  ng-model='vm.results[$index]' ng-value="5" ng-click="vm.change($index)" >&nbsp</label></td>
           </tr>
         </table>
-        <div style="text-align: center;" ng-show='vm.submit'>
-          <button type="button btn-lg" class="btn btn-success" ng-click="vm.save()" ui-sref="assessments.emotional-maturity-landing">Submit</button>
+        <div style="text-align: center;" ng-show='vm.change_'>
+          <button type="button btn-lg" class="btn btn-warning" ng-click="vm.save()" ui-sref="assessments.emotional-maturity-landing">Submit</button>
         </div>
 
       </form>
