@@ -16,7 +16,6 @@
     vm.name = null;
 		vm.url = window.location.href;
     vm.assessment_= AssessmentsService.query();
-
     vm.init = function (){
 
     };
@@ -102,6 +101,9 @@
 								alert("You've already rated this person");
 							}
 							else {
+								// document.getElementById("myButton").onclick = function () {
+						    //     location.href = "https://evalumate.herokuapp.com";
+						    // };
 								vm.assessment.email1.score = sum;
 								vm.assessment.email1.hasResponded = true;
 								var assessment = vm.assessment;

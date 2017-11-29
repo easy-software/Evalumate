@@ -101,7 +101,10 @@ var AssessmentSchema = new Schema({
      type : Date, default: Date.now
  		}
 
-	}]
+	}],
+	dateSent : {
+		type : String, default: ''
+	}
 
 
 });

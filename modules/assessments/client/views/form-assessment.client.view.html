@@ -59,6 +59,8 @@
 			your response will be kept totally anonymous and they will only see an average of multiple scores. Click here to rate your friend."-->
 
 			<form  id="infoSubmit" name="assessmentForm" method="post">
+				<div class="row">
+					<div class="col-md-6">
 				<h2 style="color:#fad654;">Email 1</h2>
 					<input type="email" size="40" placeholder="username@email.com" required ng-model="assessment.email1.address"   />
 
@@ -69,6 +71,11 @@
 					<input type="email" size="40" placeholder="username@email.com" ng-model="assessment.email3.address" required />
 				</br></br>
 					<button class="btn btn-warning" method="post" ng-click="getEmail(); create(assessmentForm.$valid)" novalidate ng-hide="checkEmail()">Send Email</button>
+				</div>
+				<div class="col-md-6">
+					<h2 style="color: #D97804; text-align: center"> {{msg}}</h2>
+				</div>
+				</div>
 			</form>
 		</div>
 		<form id="resend"  method="post">
