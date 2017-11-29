@@ -169,16 +169,22 @@
 			 } else {
 				 $scope.remEmail3 = '';
 			 }
-			 resend.action = send.action = 'mailto:?bcc=' +$scope.remEmail1 + ',' + $scope.remEmail2 +',' + $scope.remEmail3 +
-			 	'&subject=Friendly Reminder: Your Friend is Waiting for Your Feedback.'+
-				'&body=Dear Friend, %0D%0A' +
-			 	'%0D%0AJust to remind you that you have been selected you as one of my three trusted participants to ' +
-				'anonymously evaluate my level of Emotional Maturity (EM).%0D%0A' +
-				'%0D%0AI’d really appreciate it if you took a few minutes to click on the link below and '+
-				'complete my assessment. Again, this is an anonymous questionnaire, so thank you for your honest feedback.%0D%0A' +
-				'%0D%0AYour support is greatly appreciated.%0D%0A' +
-				'%0D%0AYou are LovEd! '
-			 reSend.submit();
+			 if(data[0].email1.hasResponded == true && data[0].email2.hasResponded == true && data[0].email3.hasResponded == true)
+			 {
+				 alert('All three friends have responded, please navigate to the view your scores page or invtie 3 new friends to rate you.')
+			 }
+			 else {
+				 	resend.action = send.action = 'mailto:?bcc=' +$scope.remEmail1 + ',' + $scope.remEmail2 +',' + $scope.remEmail3 +
+				 	'&subject=Friendly Reminder: Your Friend is Waiting for Your Feedback.'+
+					'&body=Dear Friend, %0D%0A' +
+				 	'%0D%0AJust to remind you that you have been selected you as one of my three trusted participants to ' +
+					'anonymously evaluate my level of Emotional Maturity (EM).%0D%0A' +
+					'%0D%0AI’d really appreciate it if you took a few minutes to click on the link below and '+
+					'complete my assessment. Again, this is an anonymous questionnaire, so thank you for your honest feedback.%0D%0A' +
+					'%0D%0AYour support is greatly appreciated.%0D%0A' +
+					'%0D%0AYou are LovEd! '
+				 	reSend.submit();
+		 		}
    		});
  		};
 
