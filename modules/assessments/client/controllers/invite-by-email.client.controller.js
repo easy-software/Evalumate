@@ -13,7 +13,8 @@
 		 $scope.email1 = '';
 		 $scope.email2 = '';
 		 $scope.email3 = '';
-
+		 $scope.date = '';
+		 $scope.numResponses = 0;
 		 $scope.emailstring = '';
 		 $scope.assessments = AssessmentsService.query();
 		 		$scope.assessments.$promise.then(function(data) {
@@ -22,6 +23,7 @@
 		 //console.log('UrlId: ' $scope.urlId);
 		 var send = document.getElementById('infoSubmit');
 		 var reSend = document.getElementById('resend');
+
 
 		 $scope.getEmail = function(){
 			 $scope.emailstring = 'mailto:' + $scope.assessment.email1.address + ',';
@@ -59,15 +61,47 @@
 				 $scope.assessment.email2.score = 0;
 				 $scope.assessment.email3.hasResponded = false;
 				 $scope.assessment.email3.score = 0;
+				 var today = new Date();
+				 var dd = today.getDate();
+				 var mm = today.getMonth()+1; //January is 0!
+				 var yyyy = today.getFullYear();
+				 if(dd<10) {
+				 	dd = '0'+dd
+				 }
+
+				 if(mm<10) {
+					   mm = '0'+mm
+					}
+
+				 today = mm + '/' + dd + '/' + yyyy;
+				 $scope.assessment.dateSent = today;
 				 var article = $scope.assessment;
 
 					console.log(article)
 
 
-	       article.$update();
+	       article.$update(function () {
+	         $location.path('/assessments/create');
+					 $window.location.reload();
+	       }, function (errorResponse) {
+	         $scope.error = errorResponse.data.message;
+	       });
 			 }
 
 			 else{
+				 var today = new Date();
+				 var dd = today.getDate();
+				 var mm = today.getMonth()+1; //January is 0!
+				 var yyyy = today.getFullYear();
+				 if(dd<10) {
+				 	dd = '0'+dd
+				 }
+
+				 if(mm<10) {
+					   mm = '0'+mm
+					}
+
+				 today = mm + '/' + dd + '/' + yyyy;
 			 // Create new Article object
 				 var assess = new AssessmentsService({
 					 email1: {
@@ -78,20 +112,18 @@
 					 },
 					 email3: {
 										 address: $scope.assessment.email3.address
-					 }
+					 },
+					 dateSent: today
 				 });
 
 
 				 // Redirect after save
-				 assess.$save(function (response) {
-					 //$location.path('articles/' + response._id);
-
-					 // Clear form fields
-					 //$scope.email1 = '';
-					 //$window.location.reload();
-				 }, function (errorResponse) {
-					 $scope.error = errorResponse.data.message;
-				 });
+				 assess.$save(function () {
+	         $location.path('/assessments/create');
+					 $window.location.reload();
+	       }, function (errorResponse) {
+	         $scope.error = errorResponse.data.message;
+	       });
 		 		}
 			 };
 
@@ -119,18 +151,33 @@
 		 	$scope.assessments.$promise.then(function(data) {
        //console.log(data[0].email1.address);
 			 //data[0].email1.hasResponded = true;
-			 	$scope.remEmail1 = data[0].email1.address;
-			 	$scope.remEmail2 = data[0].email2.address;
-				$scope.remEmail3 = data[0].email3.address;
-			 resend.action = send.action = 'mailto:?bcc=' +$scope.assessment.email1.address + ',' + $scope.assessment.email2.address +',' + $scope.assessment.email3.address +
-			 	'&subject=Reminder: You have been selected by a friend to participate in their LovED Assessment&body=Dear Friend, %0D%0A' +
-			 	'%0D%0AI have selected you as one of my three trusted participants to anonymously evaluate my level of ' +
-				'Emotional Maturity (EM). Using this really cool assessment as a tool gives me the honest feedback I need in' +
-				'order to understand how I occur to others. I value your perspective and I know that the time it takes you to ' +
-				 'complete this quiz will allow me to grow and become a better version of myself.%0D%0A' +
-				 '%0D%0AWhen you have a few minutes, click on the link below and it’ll take you straight to the assessment. '+
-				 'Don’t worry, it’s anonymous - so give me your honest feedback. %0D%0A%0D%0A Thank you for helping me with my personal growth '+
-				 'journey. %0D%0A%0D%0A You are LovEd! %0D%0A%0D%0A%0D%0A If you have already completed the assessment, please ignore this message'
+			 if(data[0].email1.hasResponded == false)
+			 {
+				 $scope.remEmail1 = data[0].email1.address;
+			 } else {
+				 $scope.remEmail1 = '';
+			 }
+			 if(data[0].email2.hasResponded == false)
+			 {
+				 $scope.remEmail2 = data[0].email2.address;
+			 } else {
+				 $scope.remEmail2 = '';
+			 }
+			 if(data[0].email3.hasResponded == false)
+			 {
+				 $scope.remEmail3 = data[0].email3.address;
+			 } else {
+				 $scope.remEmail3 = '';
+			 }
+			 resend.action = send.action = 'mailto:?bcc=' +$scope.remEmail1 + ',' + $scope.remEmail2 +',' + $scope.remEmail3 +
+			 	'&subject=Friendly Reminder: Your Friend is Waiting for Your Feedback.'+
+				'&body=Dear Friend, %0D%0A' +
+			 	'%0D%0AJust to remind you that you have been selected you as one of my three trusted participants to ' +
+				'anonymously evaluate my level of Emotional Maturity (EM).%0D%0A' +
+				'%0D%0AI’d really appreciate it if you took a few minutes to click on the link below and '+
+				'complete my assessment. Again, this is an anonymous questionnaire, so thank you for your honest feedback.%0D%0A' +
+				'%0D%0AYour support is greatly appreciated.%0D%0A' +
+				'%0D%0AYou are LovEd! '
 			 reSend.submit();
    		});
  		};
@@ -160,11 +207,49 @@
 		// };
 		$scope.id = ''
 		$scope.assessments.$promise.then(function(data) {
+			$scope.msg = 'It looks like you haven\'t invited any  friends to rate your emotional maturity yet.';
 			if(data.length>0){
 			$scope.id = data[0]._id;
 			$scope.assessment = AssessmentsService.get({
 				assessmentId: $scope.id
 			});
+			if(data[0].dateSent != ''){
+				$scope.date = data[0].dateSent;
+				if(data[0].email1.hasResponded == true)
+				{
+					$scope.numResponses++;
+				}
+				if(data[0].email2.hasResponded == true)
+				{
+					$scope.numResponses++;
+				}
+				if(data[0].email3.hasResponded == true)
+				{
+					$scope.numResponses++;
+				}
+				if($scope.numResponses == 2  || $scope.numResponses == 0){
+				$scope.msg = 'The last time you sent an email was on ' + $scope.date +
+										 ', as of right now, ' + $scope.numResponses + ' friends have responded!';
+				}
+				else if($scope.numResponses == 1)
+				{
+					$scope.msg = 'The last time you sent an email was on ' + $scope.date +
+											 ', as of right now, ' + $scope.numResponses + ' friend has responded!';
+				}
+				else if($scope.numResponses == 3){
+					$scope.msg = 'Congratulations, all 3 of your friends have replied! Navigate to the EMQ' +
+					' landing page to view your scores, or invite 3 more friends to get another Self-assessment score!';
+				}
+				else
+				{
+					$scope.msg = 'It looks like you haven\'t invited any  friends to rate your emotional maturity yet.';
+				}
+			}
+			else
+			{
+				$scope.msg = 'It looks like you haven\'t invited any  friends to rate your emotional maturity yet.';
+			}
+
 		}
 		});
 
