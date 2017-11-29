@@ -34,7 +34,7 @@ module.exports = function (grunt) {
       },
       serverJS: {
         files: _.union(defaultAssets.server.gruntConfig, defaultAssets.server.allJS),
-        tasks: ['jshint'],
+        tasks: [],
         options: {
           livereload: true
         }
@@ -47,28 +47,28 @@ module.exports = function (grunt) {
       },
       clientJS: {
         files: defaultAssets.client.js,
-        tasks: ['jshint'],
+        tasks: [],
         options: {
           livereload: true
         }
       },
       clientCSS: {
         files: defaultAssets.client.css,
-        tasks: ['csslint'],
+        tasks: [],
         options: {
           livereload: true
         }
       },
       clientSCSS: {
         files: defaultAssets.client.sass,
-        tasks: ['sass', 'csslint'],
+        tasks: ['sass'],
         options: {
           livereload: true
         }
       },
       clientLESS: {
         files: defaultAssets.client.less,
-        tasks: ['less', 'csslint'],
+        tasks: ['less'],
         options: {
           livereload: true
         }
@@ -89,29 +89,6 @@ module.exports = function (grunt) {
       debug: ['nodemon', 'watch', 'node-inspector'],
       options: {
         logConcurrentOutput: true
-      }
-    },
-    jshint: {
-      all: {
-        src: _.union(defaultAssets.server.gruntConfig, defaultAssets.server.allJS, defaultAssets.client.js, testAssets.tests.server, testAssets.tests.client, testAssets.tests.e2e),
-        options: {
-          jshintrc: true,
-          node: true,
-          mocha: true,
-          jasmine: true
-        }
-      }
-    },
-    eslint: {
-      options: {},
-      target: _.union(defaultAssets.server.gruntConfig, defaultAssets.server.allJS, defaultAssets.client.js, testAssets.tests.server, testAssets.tests.client, testAssets.tests.e2e)
-    },
-    csslint: {
-      options: {
-        csslintrc: '.csslintrc'
-      },
-      all: {
-        src: defaultAssets.client.css
       }
     },
     ngAnnotate: {
@@ -297,24 +274,23 @@ module.exports = function (grunt) {
   });
 
   // Lint CSS and JavaScript files.
-  grunt.registerTask('lint', ['sass', 'less', 'jshint', 'eslint', 'csslint']);
 
   // Lint project files and minify them into two production files.
-  grunt.registerTask('build', ['env:dev', 'lint', 'ngAnnotate', 'uglify', 'cssmin']);
+  grunt.registerTask('build', ['env:dev', 'ngAnnotate', 'uglify', 'cssmin']);
 
   // Run the project tests
-  grunt.registerTask('test', ['env:test', 'lint', 'mkdir:upload', 'copy:localConfig', 'server', 'mochaTest', 'karma:unit', 'protractor']);
-  grunt.registerTask('test:server', ['env:test', 'lint', 'server', 'mochaTest']);
-  grunt.registerTask('test:client', ['env:test', 'lint', 'karma:unit']);
-  grunt.registerTask('test:e2e', ['env:test', 'lint', 'dropdb', 'server', 'protractor']);
+  grunt.registerTask('test', ['env:test', 'mkdir:upload', 'copy:localConfig', 'server', 'mochaTest', 'karma:unit', 'protractor']);
+  grunt.registerTask('test:server', ['env:test', 'server', 'mochaTest']);
+  grunt.registerTask('test:client', ['env:test', 'karma:unit']);
+  grunt.registerTask('test:e2e', ['env:test', 'dropdb', 'server', 'protractor']);
   // Run project coverage
-  grunt.registerTask('coverage', ['env:test', 'lint', 'mocha_istanbul:coverage', 'karma:unit']);
+  grunt.registerTask('coverage', ['env:test', 'mocha_istanbul:coverage', 'karma:unit']);
 
   // Run the project in development mode
-  grunt.registerTask('default', ['env:dev', 'lint', 'mkdir:upload', 'copy:localConfig', 'concurrent:default']);
+  grunt.registerTask('default', ['env:dev', 'mkdir:upload', 'copy:localConfig', 'concurrent:default']);
 
   // Run the project in debug mode
-  grunt.registerTask('debug', ['env:dev', 'lint', 'mkdir:upload', 'copy:localConfig', 'concurrent:debug']);
+  grunt.registerTask('debug', ['env:dev', 'mkdir:upload', 'copy:localConfig', 'concurrent:debug']);
 
   // Run the project in production mode
   grunt.registerTask('prod', ['build', 'env:prod', 'mkdir:upload', 'copy:localConfig', 'concurrent:default']);

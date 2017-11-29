@@ -43,9 +43,11 @@
     };
     //listens to changes on name field
     vm.change_ = function () {
-        if ((vm.totalClicks > 5) && ((vm.name != null) || (vm.name != ""))) {
-            vm.submit = true;
-        }
+        if ((vm.totalClicks > 5) && ((vm.name != null) || ( /^\S+$/.test(vm.name)  ))) {
+            return true;
+        } 
+        else
+            return false;
     };
 
     vm.done = function (){
