@@ -18,6 +18,12 @@
 
 
     vm.init = function (){
+        if (vm.page=="EMA"){
+                vm.len ==  30
+        }
+            else if (vm.page=="RAA"){
+                vm.len ==  29
+            }
         vm.assessment_= AssessmentsService.query();
     }
 
@@ -29,6 +35,7 @@
 
     //listens to changes on radio button
     vm.change = function (value) {
+        console.log(vm.len);
         vm.totalClicks =0;
 
         for (var i =0 ; i <vm.results.length; i++) {
@@ -37,13 +44,19 @@
                 vm.totalClicks+=1;
             }
         }
-        if ((vm.totalClicks >2) && (vm.name != null)){
+        if ((vm.totalClicks == vm.len) && (vm.name != null)){
             vm.submit = true;
         }
     };
     //listens to changes on name field
     vm.change_ = function () {
-        if ((vm.totalClicks > 5) && ((vm.name != null) || ( /^\S+$/.test(vm.name)  ))) {
+         if (vm.page=="EMA"){
+                vm.len ==  30;
+        }
+            else if (vm.page=="RAA"){
+                vm.len ==  29;
+            }
+        if ((vm.totalClicks == vm.len) && ((vm.name != null) || ( /^\S+$/.test(vm.name)  ))) {
             return true;
         } 
         else

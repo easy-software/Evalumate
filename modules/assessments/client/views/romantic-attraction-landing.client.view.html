@@ -26,6 +26,8 @@
 	input {font-family: Comfortaa;}
 	p {font-family: Proxima Nova;}
 	a {font-family: Proxima Nova;}
+	td {font-family: Proxima Nova;}
+	table {width: 100%;}
 	button {font-family: Comfortaa;}
 	</style>
 
@@ -33,17 +35,31 @@
 	<br>
 	<div class="col-md-6" >
 		<h1>RAQ Scores</h1>
-		<div class="row" ng-repeat="test in vm.assessment.raaresult.slice().reverse()">
-			<div class="col-md-4" style="color: #818185;">
-				{{test.name}}
-			</div>
-			<div class="col-md-4" style="color: #818185;">
-				{{test.score}}
-			</div >
-			<div class="col-md-4" style="color: #818185;">
-				{{vm.convertDate(test.time)}}
-			</div>
-		</div>
+		<table>
+			<tr class="row" >
+				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654;font-family: Comfortaa;font-size: 150%;">
+					NAME
+				</td>
+				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654;font-family: Comfortaa;font-size: 150%;">
+					SCORE
+				</td >
+				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654;font-family: Comfortaa;font-size: 150%;">
+					DATE TAKEN
+				</td >
+			</tr>
+			<tr class="row" ng-repeat="test in vm.assessment.raaresult.slice().reverse()" >
+				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654">
+					{{test.name}}
+				</td>
+				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654">
+					{{test.score}}
+				</td >
+				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654">
+					{{vm.convertDate(test.time)}}
+				</td >
+			</tr>
+		</table>
+		
 	</div>
 	<div class="col-md-6" >
 		<h1> Score Translation</h1>
