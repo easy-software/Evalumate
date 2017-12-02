@@ -10,10 +10,10 @@
 	</style>
 	<div class="jumbotron text-center" style="background: url('modules/assessments/client/img/raa.jpg'); background-size: 100%;  background-position: center;  ">
 
-  <h1 style="color: #ffa309;text-shadow: 3px 3px 0px #000">Romantic Attraction Quiz</h1>
+  <h1 style="color: white;font-family: Proxima Nova;font-weight: 600; letter-spacing: 2px;text-transform: uppercase;line-height: 1.2em;">ROMANTIC ATTRACTION QUIZ</h1>
 <br>
   <a href="RAA">
-  		<button type="button" class="btn btn-warning">Take Assessment</button>
+  		<button type="button" class="btn btn-warning" style="border-radius: 20px; background-color: #ffa309">Take Assessment</button>
   </a>
 </section>
 
@@ -22,11 +22,11 @@
 
 	<style>
 	h1   {font-family: Comfortaa; color: #d97804;}
-	h2 {font-family: Comfortaa;}
+	h2 {font-family: Proxima Nova;font-weight: 600; letter-spacing: 2px;text-transform: uppercase;line-height: 1.2em;color:	#585858;}
 	input {font-family: Comfortaa;}
 	p {font-family: Proxima Nova;}
 	a {font-family: Proxima Nova;}
-	td {font-family: Proxima Nova;}
+	td {font-family: adobe garamond pro;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654;}
 	table {width: 100%;}
 	button {font-family: Comfortaa;}
 	</style>
@@ -34,27 +34,30 @@
 <div class="row" style="text-align:center">
 	<br>
 	<div class="col-md-6" >
-		<h1>RAQ Scores</h1>
+		<h2>RAQ Scores</h2>
 		<table>
+			<tr>
+				
+			</tr>
 			<tr class="row" >
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654;font-family: Comfortaa;font-size: 150%;">
-					NAME
+				<td class="col-md-4" style="font-size: 125%; color:#d97804">
+					Name
 				</td>
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654;font-family: Comfortaa;font-size: 150%;">
-					SCORE
+				<td class="col-md-4" style="font-size: 125%; color:#d97804">
+					Score
 				</td >
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654;font-family: Comfortaa;font-size: 150%;">
-					DATE TAKEN
+				<td class="col-md-4" style="font-size: 125%; color:#d97804">
+					Date Taken
 				</td >
 			</tr>
 			<tr class="row" ng-repeat="test in vm.assessment.raaresult.slice().reverse()" >
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654">
+				<td class="col-md-4" style="color: #818185;">
 					{{test.name}}
 				</td>
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654">
+				<td class="col-md-4" style="color: #818185;"">
 					{{test.score}}
 				</td >
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654">
+				<td class="col-md-4" style="color: #818185;">
 					{{vm.convertDate(test.time)}}
 				</td >
 			</tr>
@@ -62,25 +65,51 @@
 		
 	</div>
 	<div class="col-md-6" >
-		<h1> Score Translation</h1>
-			<img src="modules/assessments/client/img/translatingRA.jpg" width="80%" height="250x">
-			<!--a style="color: #818185;" ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})">
-				<small>
-					Posted on
-					<span style="color: #818185;" ng-bind="article.created | date:'mediumDate'"></span>
-				</small>
-				<h4 style="color: #818185;" class="list-group-item-heading" ng-bind="article.title"></h4>
-				<p style="color: #818185;" class="list-group-item-text" ng-bind="article.date"></p>
-			</a-->
-		</div>
-		<!--a style="color: #818185;" ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})">
-			<small>
-				Posted on
-				<span style="color: #818185;" ng-bind="article.created | date:'mediumDate'"></span>
-			</small>
-			<h4 style="color: #818185;" class="list-group-item-heading" ng-bind="article.title"></h4>
-			<p style="color: #818185;" class="list-group-item-text" ng-bind="article.date"></p>
-		</a-->
+		<h2 style="text-decoration: underline;"> Score Translation</h2>
+		<table>
+			
+			<tr>
+				<td style="font-size: 125%; color:#d97804">Rating</td>
+				<td style="font-size: 125%; color:#d97804">Scale</td>
+				<td style="font-size: 125%; color:#d97804">Level</td>
+			</tr>
+			<tr>
+				<td style="color: #818185;">134-150</td>
+				<td style="color: #818185;">6</td>
+				<td style="color: #818185;">Highest Attraction</td>
+			</tr>
+			<tr>
+				<td style="color: #818185;">115-133</td>
+				<td style="color: #818185;">5</td>
+				<td style="color: #818185;">Great Attraction</td>
+			</tr>
+			<tr>
+				<td style="color: #818185;">96-114</td>
+				<td style="color: #818185;">4</td>
+				<td style="color: #818185;">Just Friends</td>
+			</tr>
+			<tr>
+				<td style="color: #818185;">77-95</td>
+				<td style="color: #818185;">3</td>
+				<td style="color: #818185;">No Attraction</td>
+			</tr>
+			<tr>
+				<td style="color: #818185;">54-76</td>
+				<td style="color: #818185;">2</td>
+				<td style="color: #818185;">No Attraction</td>
+			</tr>
+			<tr>
+				<td style="color: #818185;">30-53</td>
+				<td style="color: #818185;">1</td>
+				<td style="color: #818185;">No Attraction</td>
+			</tr>
+			<tr >
+				<td colspan="3""><font style="color: #ed2937">REMEMBER:</font> In order to sustain a relationship, we must score 5 or 6 on the scale of attraction and those feelings must be mutual.</td>
+			</tr>
+			
+		</table>
+	</div>
+		
 	</div>
 </div>
 

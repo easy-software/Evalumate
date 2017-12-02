@@ -15,7 +15,7 @@
 	label {font-family: Comfortaa;}
 	</style>
   <div class="page-header">
-    <h1>New Journal</h1>
+    <h1 style="color: black;font-family: Proxima Nova;font-weight: 600; letter-spacing: 2px;text-transform: uppercase;line-height: 1.2em;color: #585858;">New Journal</h1>
   </div>
   <div class="col-md-12">
     <form name="articleForm" class="form-horizontal" ng-submit="create(articleForm.$valid)" novalidate>
@@ -44,7 +44,7 @@
 
 <section ng-controller="ArticlesController" ng-init="find()">
   <div class="page-header">
-    <h1 style="color:#d97804">Posted Journals</h1>
+    <h1 style="color: black;font-family: Proxima Nova;font-weight: 600; letter-spacing: 2px;text-transform: uppercase;line-height: 1.2em;color: #585858;">Posted Journals</h1>
   </div>
   <div class="list-group">
     <a ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})" class="list-group-item">
