@@ -7,7 +7,7 @@ angular.module('chat').run(['Menus',
     Menus.addMenuItem('topbar', {
       title: 'Chat',
       state: 'chat'
-      roles: ['user']
+      //roles: ['user']
     });
   }
 ]);
