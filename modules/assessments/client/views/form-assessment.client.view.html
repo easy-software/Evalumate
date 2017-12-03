@@ -1,28 +1,5 @@
 <section ng-app="assessments" ng-init="findOne()">
-  <!--
-  <div class="page-header">
-    <h1>{{vm.assessment._id ? 'Edit Assessment' : 'New Assessment'}}</h1>
-  </div>
-  <div class="col-md-12">
-    <form name="vm.form.assessmentForm" class="form-horizontal" ng-submit="vm.save(vm.form.assessmentForm.$valid)" novalidate>
-      <fieldset>
-        <div class="form-group" show-errors>
-          <label class="control-label" for="name">Name</label>
-          <input name="name" type="text" ng-model="vm.assessment.name" id="name" class="form-control" placeholder="Name" required>
-          <div ng-messages="vm.form.assessmentForm.name.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Assessment name is required.</p>
-          </div>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-default">{{vm.assessment._id ? 'Update' : 'Create'}}</button>
-        </div>
-        <div ng-show="vm.error" class="text-danger">
-          <strong ng-bind="vm.error"></strong>
-        </div>
-      </fieldset>
-    </form>
-  </div>
--->
+
 <div ng-controller='emailController' ng-init="findOne()">
 	<!--link rel="stylesheet" type="text/css" href="modules/core/client/css/emailFriends.css" /-->
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
@@ -34,57 +11,57 @@
 			h4 {font-family: Comfortaa;
 					text-align: center
 			}
-			input {font-family: Comfortaa;}
+			input {font-family: Adobe Garamond Pro;}
 			h5 {font-family: Comfortaa;}
 			p {font-family: Proxima Nova;
 				 text-align: center;
 			}
 			button {font-family: Comfortaa;}
 		</style>
-		<h1 class="text" style="color:#FFA309;"> Emotional Maturity Self-Assessment
+		<h1 class="text" style="color: black;font-family: Proxima Nova;font-weight: 600; letter-spacing: 2px;text-transform: uppercase;line-height: 1.2em;color: #282828;"> Emotional Maturity Self-Assessment
 		</h1>
-		</br>
-		<h4 style="color:#818185;"> Not only is it important to make smart choice in a partner,
-			but also in how we can grow our own EM so we become the partners we would want.
-			<br><br>
+		<div style="background-color: #fad654; padding: 10px">
+			<font size = "4" >
+			<p style="text-align: center; font-family: Adobe Garamond Pro; color: #585858">Not only is it important to make smart choice in a partner, but also in how we can grow our own EM so we become the partners we would want.
+			</p> 
+			<p style="text-align: center; font-family: Adobe Garamond Pro; color: #585858">
 			It’s not only in how we occur to ourselves, but also in how we occur to others because that
 			is who we’re impacting with our behavior. With this self-assessment, we get honest feedback that
 			allows us to understand how we occur to others.
-			<br><br>
-			By inviting three individuals that we know and trust to anonymously evaluate us, we can strive to be the 5.
-
-	</h4>
-		<div class="jumbotron">
-			<!--?subject=lovED: you've been invited to rate your friend's emotional maturity!&body=Don't worry,
-			your response will be kept totally anonymous and they will only see an average of multiple scores. Click here to rate your friend."-->
+			</p>
+			<p style="text-align: center; font-family: Adobe Garamond Pro; color: #585858">
+			By inviting three individuals that we know and trust to anonymously evaluate us, we can strive to be the 5.</p>
+			</font>
+		</div>
+		
+		
+		<div class="jumbotron" style="border-radius: 0;">
 
 			<form  id="infoSubmit" name="assessmentForm" method="post">
 				<div class="row">
 					<div class="col-md-6">
-				<h2 style="color:#fad654;">Email 1</h2>
-					<input type="email" size="40" placeholder="username@email.com" required ng-model="assessment.email1.address"   />
+				<h2 style="font-family: Proxima Nova; color:#303030">Email 1</h2>
+					<input type="email" size="40" placeholder="username@email.com" required ng-model="assessment.email1.address" />
 
-					<h2 style="color:#FFA309;">Email 2</h2>
+					<h2 style="font-family: Proxima Nova; color:#303030">Email 2</h2>
 					<input type="email" size="40" placeholder="username@email.com" ng-model="assessment.email2.address" required />
 
-					<h2 style="color:#D97804;">Email 3</h2>
+					<h2 style="font-family: Proxima Nova; color:#303030">Email 3</h2>
 					<input type="email" size="40" placeholder="username@email.com" ng-model="assessment.email3.address" required />
 				</br></br>
-					<button class="btn btn-warning" method="post" ng-click="getEmail(); create(assessmentForm.$valid)" novalidate ng-hide="checkEmail()">Send Email</button>
+					<button style="color: white;border-radius: 3px; border-color:#ffa309;  background-color: #ffa309; padding: 7px;padding-left: 12px;padding-right: 12px;" method="post" ng-click="getEmail(); create(assessmentForm.$valid)" novalidate ng-hide="checkEmail()">Send Email</button>
 				</div>
 				<div class="col-md-6">
-					<h2 style="color: #D97804; text-align: center"> {{msg}}</h2>
+					<h2 style="color: #D97804; text-align: center; font-family: Adobe Garamond Pro"> {{msg}}</h2>
 				</div>
 				</div>
 			</form>
 		</div>
 		<form id="resend"  method="post">
-				<!-- action="mailto:test@test.com,test2@test.com,test3@test.com?subject=lovED: Your friend is still awaiting your response to the emotional maturity quiz&body=Don't worry,
-					 your response will be kept totally anonymous and they will only see an average of multiple scores. Don't keep them waiting! Click this link to rate your friend now." input class="text" style="font-family: Comfortaa" type="submit"
-				value="If you already invited friends and want to send them a reminder, click here"-->
 			</form>
-				<h5>If you already invited friends and want to send them a reminder, click <input type="submit"  value="here" ng-click="remEmail()" style="outline:none; border: 0; color: blue; margin: 0"></h5>
+		<h4 >If you already invited friends and want to send them a reminder, click <input type="submit"  value="here" ng-click="remEmail()" style="outline:none; border: 0; color: blue; margin: 0"></h4>
 
+		<hr>
 	</br>
 
 

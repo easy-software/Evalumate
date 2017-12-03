@@ -5,7 +5,7 @@ angular.module('articles').run(['Menus',
   function (Menus) {
     // Add the articles dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Journals',
+      title: 'JOURNALS',
       state: 'articles',
       type: 'dropdown',
       roles: ['user']

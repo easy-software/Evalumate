@@ -10,7 +10,7 @@
   function menuConfig(menuService) {
     // Set top bar menu items
     menuService.addMenuItem('topbar', {
-      title: 'Red Flags',
+      title: 'RED FLAGS',
       state: 'redflags.list',
       type: 'button',
       roles: ['user']
