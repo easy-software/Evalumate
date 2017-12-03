@@ -35,7 +35,6 @@
 
     //listens to changes on radio button
     vm.change = function (value) {
-        console.log(vm.len);
         vm.totalClicks =0;
 
         for (var i =0 ; i <vm.results.length; i++) {
@@ -71,7 +70,6 @@
             }
 
         }
-        console.log({name: vm.name, result: sum});
         vm.userEMAs.push( {name: vm.name, result: sum});
     };
 
@@ -131,8 +129,6 @@
         }
     });
 
-
-    console.log(vm.id)
 
     vm.findOne = function () {
 
