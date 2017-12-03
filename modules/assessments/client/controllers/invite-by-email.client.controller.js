@@ -18,7 +18,10 @@
 		 $scope.emailstring = '';
 		 $scope.assessments = AssessmentsService.query();
 		 		$scope.assessments.$promise.then(function(data) {
-					$scope.urlId = data[0]._id;
+					if(data.length>0){
+						$scope.urlId = data[0]._id;
+					}
+
 		 });
 		 //console.log('UrlId: ' $scope.urlId);
 		 var send = document.getElementById('infoSubmit');
@@ -199,7 +202,7 @@
 			 else {
 				 return true;
 			 }
-		};
+ 	 	};
 		$scope.find = function () {
 			$scope.assesss = AssessmentsService.query();
 		};
