@@ -10,7 +10,7 @@
   function menuConfig(menuService) {
     // Set top bar menu items
     menuService.addMenuItem('topbar', {
-      title: 'Take Quiz',
+      title: 'TAKE QUIZ',
       state: 'assessments',
       type: 'dropdown',
       roles: ['user']

@@ -10,7 +10,7 @@
   function menuConfig(menuService) {
     // Set top bar menu items
     menuService.addMenuItem('topbar', {
-      title: 'Profile',
+      title: 'PROFILE',
       state: 'profiles.list',
       type: 'button',
       roles: ['user']
