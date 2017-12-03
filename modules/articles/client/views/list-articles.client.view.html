@@ -11,21 +11,21 @@
 	button {font-family: Comfortaa;}
 	</style>
   <div class="page-header">
-    <h1>Journal Entries</h1>
+    <h1 style="color: black;font-family: Proxima Nova;font-weight: 600; letter-spacing: 2px;text-transform: uppercase;line-height: 1.2em;color: #282828;">Journal Entries</h1>
   </div>
   <div class="list-group">
     <a ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})" class="list-group-item">
-      <small class="list-group-item-text">
+      <small class="list-group-item-text" style="font-family:Adobe Garamond Pro">
         Posted on
-        <span ng-bind="article.created | date:'mediumDate'"></span>
-        by
-        <span ng-bind="article.user.displayName"></span>
+        <span ng-bind="article.created | date:'mediumDate'" style="font-family:Adobe Garamond Pro"></span>
+        <!-- by
+        <span ng-bind="article.user.displayName"></span> -->
       </small>
-      <h4 class="list-group-item-heading" ng-bind="article.title"></h4>
-      <p class="list-group-item-text" ng-bind="article.content"></p>
+      <h4 class="list-group-item-heading" ng-bind="article.title" style="font-family:Adobe Garamond Pro"></h4>
+      <p class="list-group-item-text" ng-bind="article.content" style="font-family:Adobe Garamond Pro"></p>
     </a>
   </div>
-  <div class="alert alert-warning text-center" ng-if="articles.$resolved && !articles.length">
-    No journal entires yet, why don't you <a ui-sref="articles.create">create one</a>?
+  <div class="alert alert-warning text-center" ng-if="articles.$resolved && !articles.length" style="font-family:Adobe Garamond Pro">
+    No journal entires yet, why don't you <a ui-sref="articles.create" style="font-family:Adobe Garamond Pro">create one</a>?
   </div>
 </section>

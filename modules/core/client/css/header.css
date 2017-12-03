@@ -8,7 +8,8 @@ h1.header {
 	margin-bottom: 0px;
 	margin-left: auto;
 	text-align: center;
-	text-align: justify
+	text-align: justify;
+	text-transform: uppercase;
 	}
 
 	h2.header {font-family: Comfortaa; width: 64%; margin: 0 auto;
@@ -17,7 +18,8 @@ h1.header {
 	margin-bottom: 0px;
 	margin-left: auto;
 	text-align: center;
-	text-align: justify
+	text-align: justify;
+	text-transform: uppercase;
 	}
 
 	h3.header {font-family: Comfortaa; width: 64%; margin: 0 auto;
@@ -27,6 +29,7 @@ h1.header {
 	margin-left: auto;
 	text-align: justify;
 	text-align: center;
+	text-transform: uppercase;
 	}
 	h4.header {font-family: Proxima Nova; width: 64%; margin: 0 auto;
 	margin-top: 0px;
@@ -35,13 +38,18 @@ h1.header {
 	margin-left: auto;
 	text-align: justify;
 	text-align: center;
+	text-transform: uppercase;
 	}
-	input.header {font-family: Comfortaa;}
+	input.header {
+		font-family: Comfortaa;
+	}
 	p.header {font-family: Proxima Nova; width: 64%; margin: 0 auto;
 	margin-top: 0px;
 	margin-right: auto;
 	margin-bottom: 0px;
 	margin-left: auto;
 	text-align: center;
-	text-align: justify;}
+	text-align: justify;
+	text-transform: uppercase;
+	}
 button.header {font-family: Comfortaa;}
