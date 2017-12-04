@@ -13,7 +13,8 @@
       title: 'RED FLAGS',
       state: 'redflags.list',
       type: 'button',
-      roles: ['user']
+      roles: ['user'],
+      position: 3
     });
 
    

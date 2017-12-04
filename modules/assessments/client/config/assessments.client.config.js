@@ -13,7 +13,8 @@
       title: 'TAKE QUIZ',
       state: 'assessments',
       type: 'dropdown',
-      roles: ['user']
+      roles: ['user'],
+      position: 2
     });
 
     // Add the dropdown list item

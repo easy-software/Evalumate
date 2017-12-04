@@ -8,7 +8,8 @@ angular.module('articles').run(['Menus',
       title: 'JOURNAL',
       state: 'articles',
       type: 'dropdown',
-      roles: ['user']
+      roles: ['user'],
+      position: 4
     });
 
     // Add the dropdown list item

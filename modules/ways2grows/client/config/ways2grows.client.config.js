@@ -13,7 +13,8 @@
       title: 'STRIVE-FOR-5',
       state: 'ways2grows.list',
       type: 'button',
-      roles: ['user']
+      roles: ['user'],
+      position: 5
     });
 
 
