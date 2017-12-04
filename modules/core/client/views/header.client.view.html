@@ -19,7 +19,7 @@
 
         <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
           <img ng-src="{{authentication.user.profileImageURL}}" alt="{{}}" class="header-profile-image" />
-          <span ng-bind="authentication.user.displayName" style="font-size:16px; font-family: Comfortaa; width: 64%;" ></span> <b class="caret"></b>
+          <span ng-bind="authentication.user.displayName" style="font-size:16px; font-family: Proxima Nova; width: 64%; color: black;font-weight: 1000; letter-spacing: 2px" ></span> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu" role="menu">
           <li ui-sref-active="active">
@@ -44,22 +44,22 @@
   <nav class="collapse navbar-collapse " collapse="!isCollapsed" role="navigation">
     <ul class="nav navbar-nav navbar-right" ng-if="menu.shouldRender(authentication.user);">
       <li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown' }" class="{{item.class}}" dropdown="item.type === 'dropdown'">
-        <a class="header" ng-switch-when="dropdown" class="dropdown-toggle" dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
+        <a class="header" ng-switch-when="dropdown" class="dropdown-toggle" dropdown-toggle role="button"  style="color:black;font-weight: 1000; letter-spacing: 2px">{{::item.title}}&nbsp;<span class="caret"></span></a>
         <ul ng-switch-when="dropdown" class="dropdown-menu">
           <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(authentication.user);" ui-sref-active="active">
-            <a class="header" ui-sref="{{subitem.state}}" ng-bind="subitem.title"></a>
+            <a class="header" style="color:black" ui-sref="{{subitem.state}}" ng-bind="subitem.title" ></a>
           </li>
         </ul>
-        <a class="header"ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
+        <a class="header"ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title" style="color:black;font-weight: 1000; letter-spacing: 2px"></a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
       <li ui-sref-active="active">
-        <a class="header" ui-sref="authentication.signup" style="font-size:18px; ">Sign Up</a>
+        <a class="header" ui-sref="authentication.signup" style="font-size:18px;font-weight: 1000; letter-spacing: 2px ">Sign Up</a>
       </li>
       <li class="divider-vertical"></li>
       <li ui-sref-active="active">
-        <a class = "header" ui-sref="authentication.signin" style="font-size:18px;">Sign In</a>
+        <a class = "header" ui-sref="authentication.signin" style="font-size:18px;font-weight: 1000; letter-spacing: 2px">Sign In</a>
       </li>
     </ul>
 
