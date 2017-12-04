@@ -1,32 +1,38 @@
 a.header {
-	font-family:Comfortaa
+	font-family:Proxima Nova
 }
 h1.header {
-	font-family:  Comfortaa;width: 64%; margin: 0 auto;
+	font-family:  Proxima Nova;width: 64%; margin: 0 auto;
 	margin-top: 0px;
 	margin-right: auto;
 	margin-bottom: 0px;
 	margin-left: auto;
 	text-align: center;
-	text-align: justify
+	text-align: justify;
+	text-transform: uppercase;
+	color: black;
 	}
 
-	h2.header {font-family: Comfortaa; width: 64%; margin: 0 auto;
+	h2.header {font-family: Proxima Nova; width: 64%; margin: 0 auto;
 	margin-top: 0px;
 	margin-right: auto;
 	margin-bottom: 0px;
 	margin-left: auto;
 	text-align: center;
-	text-align: justify
+	text-align: justify;
+	text-transform: uppercase;
+	color: black;
 	}
 
-	h3.header {font-family: Comfortaa; width: 64%; margin: 0 auto;
+	h3.header {font-family: Proxima Nova; width: 64%; margin: 0 auto;
 	margin-top: 0px;
 	margin-right: auto;
 	margin-bottom: 0px;
 	margin-left: auto;
 	text-align: justify;
 	text-align: center;
+	text-transform: uppercase;
+	color: black;
 	}
 	h4.header {font-family: Proxima Nova; width: 64%; margin: 0 auto;
 	margin-top: 0px;
@@ -35,13 +41,22 @@ h1.header {
 	margin-left: auto;
 	text-align: justify;
 	text-align: center;
+	text-transform: uppercase;
+	color: black;
 	}
-	input.header {font-family: Comfortaa;}
+	input.header {
+		font-family: Proxima Nova;
+		color: black;
+	}
 	p.header {font-family: Proxima Nova; width: 64%; margin: 0 auto;
 	margin-top: 0px;
 	margin-right: auto;
 	margin-bottom: 0px;
 	margin-left: auto;
 	text-align: center;
-	text-align: justify;}
-button.header {font-family: Comfortaa;}
+	text-align: justify;
+	text-transform: uppercase;
+	color: black;
+	}
+button.header {font-family: Comfortaa;
+color: black;}

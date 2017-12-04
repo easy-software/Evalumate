@@ -61,13 +61,13 @@
                 vm.totalClicks+=1;
             }
         }
-        if ((vm.totalClicks >2) && (vm.name != null)){
+        if ((vm.totalClicks ==30) && (vm.name != null)){
             vm.submit = true;
         }
     };
     //listens to changes on name field
     vm.change_ = function () {
-        if ((vm.totalClicks > 5) && ((vm.name != null) || (vm.name != ""))) {
+        if ((vm.totalClicks == 30) && ((vm.name != null) || (vm.name != ""))) {
             vm.submit = true;
         }
     };

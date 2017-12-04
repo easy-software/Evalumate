@@ -10,15 +10,19 @@
 	a {font-family: Proxima Nova;}
 	td {font-family: Proxima Nova;}
 	table {width: 100%;}
-	button {font-family: Comfortaa;}
+	button {font-family: Adobe Garamond Pro;}
+	button:focus {
+	    outline:none;
+	    box-shadow:none;
+	}
 	</style>
 
 
-	<div class="jumbotron text-center" style="color:818185; background: url('modules/assessments/client/img/ema.jpg') no-repeat center center; background-size: 100%;  background-position: center; " >
-  <h1 style="color: #ffa309;text-shadow: 3px 3px 0px #000"> Emotional Maturity Quiz</h1>
+	<div class="jumbotron text-center" style="border-radius: 0;color:818185; background: url('modules/assessments/client/img/ema.jpg') no-repeat center center;  background-position: center;  background-size: cover ;" >
+  <h1 style="color: white;font-family: Proxima Nova;font-weight: 600; letter-spacing: 2px;text-transform: uppercase;line-height: 1.2em;"> EMOTIONAL MATURITY QUIZ</h1>
 	<br>
-  <a  href="EMA">
-  		<button type="button" class="btn btn-warning" >Take Assessment</button>
+  <a  href="EMA" style="text-align: center;">
+  		<button type="button"  style="color: white;border-radius: 3px; border-color:#ffa309;  background-color: #ffa309; padding: 7px;padding-left: 12px;padding-right: 12px;" >TAKE QUIZ</button>
   </a>
 
 </div>
@@ -29,11 +33,11 @@
 
 	<style>
 	h1   {font-family: Comfortaa; color: #d97804;}
-	h2 {font-family: Comfortaa;}
+	h2 {font-family: Proxima Nova;font-weight: 600; letter-spacing: 2px;text-transform: uppercase;line-height: 1.2em;color:	#585858;}
 	input {font-family: Comfortaa;}
 	p {font-family: Proxima Nova;}
 	a {font-family: Proxima Nova;}
-	td {font-family: Proxima Nova;}
+	td {font-family: adobe garamond pro;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654;}
 	table {width: 100%;}
 	button {font-family: Comfortaa;}
 	</style>
@@ -41,22 +45,23 @@
 <div class="row" style="text-align:center">
 	<br>
 	<div class="col-md-4">
-		<h1>Self-Assessment Scores</h1>
+		<h2>Self-Assessment Scores</h2>
+			<br>
 		<table>
 			<tr class="row" >
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654;font-family: Comfortaa;font-size: 150%;">
-					DATE TAKEN
+				<td class="col-md-4" style="font-size: 125%; color:#d97804;text-transform: uppercase">
+					Date Taken
 				</td >
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654;font-family: Comfortaa;font-size: 150%;">
-					SCORE
+				<td class="col-md-4" style="font-size: 125%; color:#d97804;text-transform: uppercase">
+					Score
 				</td >
 			</tr>
 			<tr class="row" ng-repeat="test in vm.assessment.selfResult.slice().reverse()">
 				
-				<td class="col-md-3"  style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654">
+				<td class="col-md-3"  style="color: #818185;">
 					{{vm.convertDate(test.time)}}
 				</td>
-				<td class="col-md-3"  style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654">
+				<td class="col-md-3"  style="color: #818185;">
 					{{test.score}}
 				</td >
 			<tr>
@@ -64,32 +69,77 @@
 		
 	</div>
 	<div class="col-md-4" >
-		<h1> Score Translation</h1>
-		<img src="modules/assessments/client/img/translatingEM.jpg" width="100%" height="250x">
+		<h2 > Score Translation</h2>
+		<br>
+		<table>
+			<tr>
+				<td style="font-size: 125%; color:#d97804;text-transform: uppercase">Rating</td>
+				<td style="font-size: 125%; color:#d97804;text-transform: uppercase">&nbspScale&nbsp</td>
+				<td style="font-size: 125%; color:#d97804;text-transform: uppercase">Level</td>
+				<td style="font-size: 125%; color:#d97804;text-transform: uppercase">Characteristics</td>
+			</tr>
+			<tr>
+				<td style="color: #818185; white-space: nowrap;">&nbsp 134-150 &nbsp</td>
+				<td style="color: #818185;">6</td>
+				<td style="color: #818185;text-transform: uppercase">Highest Maturity</td>
+				<td style="color: #818185;">Empathetic, Other-centered,Whole and Complete</td>
+			</tr>
+			<tr>
+				<td style="color: #818185; white-space: nowrap;">115-133</td>
+				<td style="color: #818185;">5</td>
+				<td style="color: #818185;text-transform: uppercase">Greatest Maturity</td>
+				<td style="color: #818185;">Willingness to Grow</td>
+			</tr>
+			<tr>
+				<td style="color: #818185; white-space: nowrap;">96-114</td>
+				<td style="color: #818185;">4</td>
+				<td style="color: #818185;text-transform: uppercase">Typical Maturity</td>
+				<td style="color: #818185;">Think they're fully mature, inside the box thinkers</td>
+			</tr>
+			<tr>
+				<td style="color: #818185; white-space: nowrap;">77-95</td>
+				<td style="color: #818185;">3</td>
+				<td style="color: #818185;text-transform: uppercase">Low Maturity</td>
+				<td style="color: #818185;">Needy, possesive, liars, bullies</td>
+			</tr>
+			<tr>
+				<td style="color: #818185; white-space: nowrap;">54-76</td>
+				<td style="color: #818185;">2</td>
+				<td style="color: #818185;text-transform: uppercase">No Maturity</td>
+				<td style="color: #818185;">Abusive, mean, tantrums</td>
+			</tr>
+			<tr>
+				<td style="color: #818185;">30-53</td>
+				<td style="color: #818185;">1</td>
+				<td style="color: #818185;text-transform: uppercase">Lacking Awareness, infatile</td>
+				<td style="color: #818185;">Abusive, mean, tantrums</td>
+			</tr>
+		</table>
 		
 	</div>
 	<div class="col-md-4" >
-		<h1>EMQ Scores</h1>
+		<h2>EMQ Scores</h2>
+			<br>
 		<table>
 			<tr class="row" >
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654;font-family: Comfortaa;font-size: 150%;">
-					NAME
+				<td class="col-md-4" style="font-size: 125%; color:#d97804;text-transform: uppercase">
+					Name
 				</td>
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654;font-family: Comfortaa;font-size: 150%;">
-					SCORE
+				<td class="col-md-4" style="font-size: 125%; color:#d97804;text-transform: uppercase">
+					Score
 				</td >
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654;font-family: Comfortaa;font-size: 150%;">
-					DATE TAKEN
+				<td class="col-md-4" style="font-size: 125%; color:#d97804;text-transform: uppercase">
+					Date Taken
 				</td >
 			</tr>
 			<tr class="row" ng-repeat="test in vm.assessment.emaresult.slice().reverse()">
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654">
+				<td class="col-md-4" style="color: #818185;">
 					{{test.name}}
 				</td>
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654">
+				<td class="col-md-4" style="color: #818185;">
 					{{test.score}}
 				</td >
-				<td class="col-md-4" style="color: #818185;border-style: solid; border-width: 5px; border-bottom-width: 2.5px; border-bottom-width: 5px;border-color: #fad654; vertical-align: middle; border-color: #fad654">
+				<td class="col-md-4" style="color: #818185;">
 					{{vm.convertDate(test.time)}}
 				</td >
 			</tr>

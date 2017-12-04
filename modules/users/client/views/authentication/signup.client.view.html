@@ -62,20 +62,22 @@
         </div>
 
 
-
+  //shows error if capcha dosnt work 
 		<span class="msg-error error"></span>
 		<div id="recaptcha" class="g-recaptcha" data-sitekey="6LfBtjQUAAAAAKkYMGGIjFpfGmTs5KjqWIlui8OO"></div>
-
+  //sitekey provided by google is needed 
 		<form action="https://www.google.com/recaptcha/api/siteverify" method="post">
+      //post request can be used to send token back to google for verfication 
 		<br>
 		<form action="">
+      //check box for 13 year or higher confirmation
 <input type="checkbox" name="brithday" id="apple" onclick ="check()" > I am at least 13 years old
 </form>
 
 </form>
 
 
-
+//this makes the submit button pop up with verification and 13 year old check box is fullfiled 
 <script>
 function check() {
 	var v = grecaptcha.getResponse();
