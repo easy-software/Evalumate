@@ -5,9 +5,11 @@
 <html>
 <head>
     <meta charset="utf-8">
+		<!--This is the HTML View for the StriveForFive Page-->
     <title>Strive-for-5 Challenge</title>
 </head>
 <body>
+		<!--This is the static information provided by the client about the StriveForFive Challenge-->
     <h1> Strive-for-5 Challenge </h1>
 		<br>
     <p>
@@ -42,58 +44,13 @@
 			</font>
 
     </p>
+		<!--The chart div encompasses the wheel-->
     <div id="chart"></div>
+		<!--This option div displays the value associated with each slice on the wheel - when the wheel spins,
+		the information is displayed next to it, in this div-->
     <div id="option"><h1></h1></div>
+		<!--This is the main javascript code that contains all of the logic for the wheel-->
     <script type="text/javascript" src="modules/ways2grows/client/views/script.js"></script>
-		<!--<div class="col-md-12">
-			<form ng-submit="create()">
-				<input  name="lastSpinDay" ng-model="lastSpinDay" id="lastSpinDay" class="form-control" >
-				<input  name="lastSpinMonth" ng-model="lastSpinMonth" id="lastSpinMonth" class="form-control" >
-				<input  name="lastSpinYear" ng-model="lastSpinYear" id="lastSpinYear" class="form-control" >
-				<input  name="selectedOptions" ng-model="selectedOptions" id="selectedOptions" class="form-control">-->
-				<!-- <input  name="lastSpinDay" ng-model="ways2grow.lastSpinDay" id="lastSpinDay" class="form-control" value="swag">
-				<input  name="lastSpinMonth" ng-model="ways2grow.lastSpinMonth" id="lastSpinMonth" class="form-control" value="swag">
-				<input  name="lastSpinYear" ng-model="ways2grow.lastSpinYear" id="lastSpinYear" class="form-control" value="swag">
-				<input  name="selectedOptions" ng-model="ways2grow.selectedOptions" id="selectedOptions" class="form-control" value="swag2"> -->
-				<!--<input type="submit" class="btn btn-default">
-				<script type = "text/javascript">
-						var $myText = $("#lastSpin");
-							setInterval(function() {
-				    var data = $myText.data("value"),
-				        val = $myText.val();
-
-				    if (data !== val) {
-				        $myText.data("value", val);
-				        //alert("changed");
-				    }
-					}, 100);
-				</script>
-			</form>-->
-			<!--articleForm.$valid goes in create-->
-
-	      <!--<fieldset>
-	        <div class="form-group" show-errors>
-	          <label for="title">Title</label>
-	          <input name="title" type="text" ng-model="title" id="title" class="form-control" placeholder="Title" required>
-	          <div ng-messages="articleForm.title.$error" role="alert">
-	            <p class="help-block error-text" ng-message="required">Journal title is required.</p>
-	          </div>
-	        </div>
-	        <div class="form-group">
-	          <label for="content">Content</label>
-	          <textarea name="content" ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
-	        </div>
-	        <div class="form-group">
-	          <input type="submit" class="btn btn-default">
-	        </div>
-	        <div ng-show="error" class="text-danger">
-	          <strong ng-bind="error"></strong>
-	        </div>
-	      </fieldset>
-	    </form>
-	  </div>-->
-		<!-- <input type="submit" class="btn btn-default"> -->
-    <!-- Main app module js -->
 	</div>
 </body>
 </html>
