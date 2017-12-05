@@ -183,11 +183,41 @@
 				 	'%0D%0AJust to remind you that you have been selected you as one of my three trusted participants to ' +
 					'anonymously evaluate my level of Emotional Maturity (EM).%0D%0A' +
 					'%0D%0AI’d really appreciate it if you took a few minutes to click on the link below and '+
-					'complete my assessment. Again, this is an anonymous questionnaire, so thank you for your honest feedback.%0D%0A' +
+					'complete my assessment.%0D%0A%0D%0A' +
+					'http://evalumate.herokuapp.com/'+ $scope.urlId +'/Self-Assessment' +
+					'%0D%0A%0D%0AAgain, this is an anonymous questionnaire, so thank you for your honest feedback.%0D%0A' +
 					'%0D%0AYour support is greatly appreciated.%0D%0A' +
 					'%0D%0AYou are LovEd! '
 				 	reSend.submit();
 		 		}
+				if($scope.assessments.length>0)
+	 			 {
+	 				 var today = new Date();
+	 				 var dd = today.getDate();
+	 				 var mm = today.getMonth()+1; //January is 0!
+	 				 var yyyy = today.getFullYear();
+	 				 if(dd<10) {
+	 				 	dd = '0'+dd
+	 				 }
+
+	 				 if(mm<10) {
+	 					   mm = '0'+mm
+	 					}
+
+	 				 today = mm + '/' + dd + '/' + yyyy;
+	 				 $scope.assessment.dateSent = today;
+	 				 var article = $scope.assessment;
+
+	 					console.log(article)
+
+
+	 	       article.$update(function () {
+	 	         $location.path('/assessments/create');
+	 					 $window.location.reload();
+	 	       }, function (errorResponse) {
+	 	         $scope.error = errorResponse.data.message;
+	 	       });
+ 			 	}
    		});
  		};
 
