@@ -6,7 +6,7 @@
     .controller('selfAssessmentController', selfAssessmentController);
 
   selfAssessmentController.$inject = ['AssessmentsService','Authentication','$stateParams'];
-
+	//controller for friend's assessment
   function selfAssessmentController(AssessmentsService, $stateParams, $routeParams ) {
     var vm = this;
 
@@ -17,7 +17,7 @@
 		vm.url = window.location.href;
     vm.assessment_= AssessmentsService.query();
     vm.init = function (){
-
+		//get userID
     };
 		var start = 0;
 		var stop = 0;
@@ -41,6 +41,7 @@
 			}
 
 		}
+		//find user document that score will be saved to
 		vm.newId = vm.url.substring(start, stop);
 		vm.assessment = AssessmentsService.get({
 			assessmentId: vm.newId
@@ -92,8 +93,9 @@
             }
         }
 
-						//console.log(vm.assessment);
+
 						var assessment = vm.assessment;
+						//check and make sure they havent responded before, push avg if all three people have responded
 						if(vm.name == vm.assessment.email1.address)
 						{
 							if(vm.assessment.email1.hasResponded == true)
@@ -101,9 +103,6 @@
 								alert("You've already rated this person");
 							}
 							else {
-								// document.getElementById("myButton").onclick = function () {
-						    //     location.href = "https://evalumate.herokuapp.com";
-						    // };
 								vm.assessment.email1.score = sum;
 								vm.assessment.email1.hasResponded = true;
 								var assessment = vm.assessment;
@@ -153,6 +152,7 @@
 									}
 							}
 						}
+						//if their email is not matching that in the database
             else {
                 alert("Please make sure your email address is spelled correctly")
             }

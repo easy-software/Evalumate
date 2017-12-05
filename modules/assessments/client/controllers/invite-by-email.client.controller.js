@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-
+//connects controller to form-assessment page and assessments collection in db
   angular
     .module('assessments')
     .controller('emailController', emailController);
@@ -27,7 +27,7 @@
 		 var send = document.getElementById('infoSubmit');
 		 var reSend = document.getElementById('resend');
 
-
+		 //Send email button calls this function
 		 $scope.getEmail = function(){
 			 $scope.emailstring = 'mailto:' + $scope.assessment.email1.address + ',';
 			 $scope.emailstring += $scope.assessment.email2.address + ',';
@@ -45,7 +45,7 @@
 				 'journey. %0D%0A%0D%0A You are LovEd!'
 			 send.submit();
  	 	};
-
+		//send email also calls this function
 		$scope.create = function (isValid) {
 			 //console.log('HelloWorld')
 			 $scope.error = null;
@@ -55,7 +55,7 @@
 
 				 return false;
 			 }
-
+			 //if the user already has a collection in the db, update
 			 if($scope.assessments.length>0)
 			 {
 				 $scope.assessment.email1.hasResponded = false;
@@ -64,6 +64,8 @@
 				 $scope.assessment.email2.score = 0;
 				 $scope.assessment.email3.hasResponded = false;
 				 $scope.assessment.email3.score = 0;
+
+				 //the following few lines get the date and add it to be saved to the db
 				 var today = new Date();
 				 var dd = today.getDate();
 				 var mm = today.getMonth()+1; //January is 0!
@@ -90,7 +92,7 @@
 	         $scope.error = errorResponse.data.message;
 	       });
 			 }
-
+			 //if not then make one
 			 else{
 				 var today = new Date();
 				 var dd = today.getDate();
@@ -130,30 +132,10 @@
 		 		}
 			 };
 
-			 // $scope.update = function (isValid) {
-	     //   $scope.error = null;
-       //
-	     //   if (!isValid) {
-	     //     $scope.$broadcast('show-errors-check-validity', 'assessmentForm');
-       //
-	     //     return false;
-	     //   }
-       //
-	     //   var article = $scope.assessment;
-       //
-				// 	console.log(article)
-       //
-	     //   article.$update(function () {
-	     //     $location.path('assessments/create' + $scope.assessments._id);
-	     //   }, function (errorResponse) {
-	     //     $scope.error = errorResponse.data.message;
-	     //   });
-	     // };
-
+			 //reminder email button calls this function
 		 $scope.remEmail = function() {
 		 	$scope.assessments.$promise.then(function(data) {
-       //console.log(data[0].email1.address);
-			 //data[0].email1.hasResponded = true;
+       //check to see who hasnt responded
 			 if(data[0].email1.hasResponded == false)
 			 {
 				 $scope.remEmail1 = data[0].email1.address;
@@ -172,10 +154,12 @@
 			 } else {
 				 $scope.remEmail3 = '';
 			 }
+			 //if everyone has responded, alert user
 			 if(data[0].email1.hasResponded == true && data[0].email2.hasResponded == true && data[0].email3.hasResponded == true)
 			 {
 				 alert('All three friends have responded, please navigate to the view your scores page or invtie 3 new friends to rate you.')
 			 }
+			 //otherwise send email to people that haven't answered yet
 			 else {
 				 	resend.action = send.action = 'mailto:?bcc=' +$scope.remEmail1 + ',' + $scope.remEmail2 +',' + $scope.remEmail3 +
 				 	'&subject=Friendly Reminder: Your Friend is Waiting for Your Feedback.'+
@@ -192,6 +176,7 @@
 		 		}
 				if($scope.assessments.length>0)
 	 			 {
+					 //change day of email last sent when reminder email is sent
 	 				 var today = new Date();
 	 				 var dd = today.getDate();
 	 				 var mm = today.getMonth()+1; //January is 0!
