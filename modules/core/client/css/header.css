@@ -45,7 +45,11 @@ h1.header {
 	color: black;
 	}
 	input.header {
+<<<<<<< HEAD
+		font-family: Comfortaa;
+=======
 		font-family: Proxima Nova;
+>>>>>>> 7ea04df0a54ffa5359bd5cc8794b4d0e7f2a783f
 		color: black;
 	}
 	p.header {font-family: Proxima Nova; width: 64%; margin: 0 auto;

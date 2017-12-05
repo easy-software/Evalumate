@@ -2,7 +2,7 @@
 	<link rel="stylesheet" type="text/css" href="modules/core/client/css/header.css" />
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Proxima Nova" />
-	
+
   <div class="navbar-header"  style="display: table-cell;vertical-align: middle">
     <button class="navbar-toggle" type="button" ng-click="toggleCollapsibleMenu()">
       <span class="sr-only">Toggle navigation</span>
@@ -11,7 +11,7 @@
       <span class="icon-bar"></span>
     </button>
 		<a class="header" ui-sref="home" class="navbar-brand">
-    <img src="modules/core/client/img/brand/evalumatelogofinal.png" style="float: left; height: 40px;" align="middle"/>
+    <img src="modules/core/client/img/brand/logo.png" style="float: left; height: 40px;" align="middle"/>
     </a>
   </div>
  <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">
@@ -31,7 +31,7 @@
           <li ui-sref-active="active" ng-show="authentication.user.provider === 'local'">
             <a class="header" ui-sref="settings.password">Change Password</a>
           </li>
-       
+
           <li class="divider"></li>
           <li>
             <a class="header" href="/api/auth/signout" target="_self">Signout</a>
@@ -64,7 +64,7 @@
     </ul>
 
 
-   
+
 
   </nav>
 </div>

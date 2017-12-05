@@ -5,11 +5,12 @@
 <html>
 <head>
     <meta charset="utf-8">
+		<!--This is the HTML View for the StriveForFive Page-->
     <title>Strive-for-5 Challenge</title>
 </head>
 <body>
-	<div class="row">
-		<h1 style="color: black;font-family: Proxima Nova;font-weight: 600; letter-spacing: 2px;text-transform: uppercase;line-height: 1.2em;color: #282828;"> Strive-for-5 Challenge </h1>
+		<!--This is the static information provided by the client about the StriveForFive Challenge-->
+    <h1> Strive-for-5 Challenge </h1>
 		<br>
 
 		<font size = "5">
@@ -19,8 +20,8 @@
 		 <br>
 		<br>
 	</div>
-    
-	
+
+
 	<div class ="row" style="text-align: center;background-color: #F0F0F0; ">
 
 		<h2 style="text-align: center; font-family: Proxima Nova; color:#303030"> What does Strive-for-5 mean?</h2>
@@ -41,10 +42,13 @@
 			</font>
 
     </p>
+		<!--The chart div encompasses the wheel-->
     <div id="chart"></div>
+		<!--This option div displays the value associated with each slice on the wheel - when the wheel spins,
+		the information is displayed next to it, in this div-->
     <div id="option"><h1></h1></div>
+		<!--This is the main javascript code that contains all of the logic for the wheel-->
     <script type="text/javascript" src="modules/ways2grows/client/views/script.js"></script>
-		
 	</div>
 </body>
 </html>
