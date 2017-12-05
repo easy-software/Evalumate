@@ -1,7 +1,8 @@
 <section ng-controller="AssessmentsListController" ng-init="find()">
-	
+
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Proxima Nova" />
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=P Adobe Garamond Pro" />
 	<style>
 	h1   {font-family: Comfortaa; color: #d97804;}
 	h2 {font-family: Comfortaa;}
@@ -18,7 +19,7 @@
 	</style>
 
 
-	<div class="jumbotron text-center" style="border-radius: 0;color:818185; background: url('modules/assessments/client/img/ema.jpg') no-repeat center center;  background-position: center;  background-size: cover ;" >
+	<div class="jumbotron text-center" style="border-radius: 0;color:818185; background: url('modules/assessments/client/img/embanner.jpg') no-repeat center center;  background-position: center;  background-size: cover;" >
   <h1 style="color: white;font-family: Proxima Nova;font-weight: 600; letter-spacing: 2px;text-transform: uppercase;line-height: 1.2em;"> EMOTIONAL MATURITY QUIZ</h1>
 	<br>
   <a  href="EMA" style="text-align: center;">
@@ -57,7 +58,7 @@
 				</td >
 			</tr>
 			<tr class="row" ng-repeat="test in vm.assessment.selfResult.slice().reverse()">
-				
+
 				<td class="col-md-3"  style="color: #818185;">
 					{{vm.convertDate(test.time)}}
 				</td>
@@ -66,7 +67,7 @@
 				</td >
 			<tr>
 		</table>
-		
+
 	</div>
 	<div class="col-md-4" >
 		<h2 > Score Translation</h2>
@@ -82,13 +83,13 @@
 				<td style="color: #818185; white-space: nowrap;">&nbsp 134-150 &nbsp</td>
 				<td style="color: #818185;">6</td>
 				<td style="color: #818185;text-transform: uppercase">Highest Maturity</td>
-				<td style="color: #818185;">Empathetic, Other-centered,Whole and Complete</td>
+				<td style="color: #818185;">Empathetic, other-centered, <br> whole and complete</td>
 			</tr>
 			<tr>
 				<td style="color: #818185; white-space: nowrap;">115-133</td>
 				<td style="color: #818185;">5</td>
 				<td style="color: #818185;text-transform: uppercase">Greatest Maturity</td>
-				<td style="color: #818185;">Willingness to Grow</td>
+				<td style="color: #818185;">Willingness to grow</td>
 			</tr>
 			<tr>
 				<td style="color: #818185; white-space: nowrap;">96-114</td>
@@ -111,11 +112,11 @@
 			<tr>
 				<td style="color: #818185;">30-53</td>
 				<td style="color: #818185;">1</td>
-				<td style="color: #818185;text-transform: uppercase">Lacking Awareness, infatile</td>
+				<td style="color: #818185;text-transform: uppercase">Lacking Awareness</td>
 				<td style="color: #818185;">Abusive, mean, tantrums</td>
 			</tr>
 		</table>
-		
+
 	</div>
 	<div class="col-md-4" >
 		<h2>EMQ Scores</h2>
@@ -144,7 +145,7 @@
 				</td >
 			</tr>
 		</table>
-		
+
 	</div>
 
 </div>
