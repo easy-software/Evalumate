@@ -13,7 +13,8 @@
       title: 'PROFILE',
       state: 'profiles.list',
       type: 'button',
-      roles: ['user']
+      roles: ['user'],
+      positon: 1
     });
 
 

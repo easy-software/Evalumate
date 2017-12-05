@@ -1,15 +1,19 @@
 //code implementation inspiration from https://gist.github.com/jrue/a2aaf36b3c096925ccbf
+//variables required for the wheel
 var padding = {top:20, right:40, bottom:0, left:0},
             w = 500 - padding.left - padding.right,
             h = 500 - padding.top  - padding.bottom,
             r = Math.min(w, h)/2,
             rotation = 0,
             oldrotation = 0,
-            pickedOption = 100000,
-            selectedOptions = [],
+            pickedOption = 100000, //this is the value that is selected when the spin button is clicked
+            selectedOptions = [], //this stores all of the options that have been selected from previous spins
             color = d3.scale.ordinal()
+            //this is the d3 function that assigns the 6 color values consistent
+            // with the company color scheme to the wheel
   .domain(["Option 1", "Option 2", "Option 3","Option 4", "Option 5", "Option 6","Option 7", "Option 8", "Option 9","Option 10", "Option 11", "Option 12","Option 13", "Option 14", "Option 15","Option 16", "Option 17", "Option 18","Option 19", "Option 20", "Option 21","Option 22", "Option 23", "Option 24","Option 25", "Option 26", "Option 27","Option 28", "Option 29", "Option 30"])
   .range(["#fad654" , "#ffa309" , "#d97804", "#ed2937","#b4292e","#818185"]);
+  //list of all of the options
         var ways_to_grow_data = [
                     {"label":"1", "option":" Invite someone to go ahead of you in line."},
                     {"label":"2", "option":" Compliment 3 People."},
@@ -42,7 +46,8 @@ var padding = {top:20, right:40, bottom:0, left:0},
                     {"label":"29", "option":" Create a list of things you need to let go."},
                     {"label":"30", "option":" Apologize to someone."},
         ];
-
+        //repeated the last 10 because the client wanted the last 10 to only be available after
+        //20 total spins. They are repeated because the wheel is made using the dimensions of the first list
         var ways_to_grow_data_bold = [
                     {"label":"21", "option":" Share something that people don't know about you."},
                     {"label":"22", "option":" List everyone you carry resentment for."},
@@ -57,13 +62,14 @@ var padding = {top:20, right:40, bottom:0, left:0},
 
         ];
 
-        var spinCounter = 0;
-        var currdate = new Date();
-        var lastSpinDateMonth = -1;
-        var lastSpinDateDay = -1;
-        var lastSpinDateYear = -1;
+        var spinCounter = 0; //how many spins in a day
+        var currdate = new Date(); //current date
+        var lastSpinDateMonth = -1; // this stores the month of the current date
+        var lastSpinDateDay = -1; // this stores the date of the current date
+        var lastSpinDateYear = -1; // this stores the year of the current date
         //console.log(date);
 
+        //this is all d3 code for visualizing the wheel
         var svg = d3.select('#chart')
             .append("svg")
             .data([ways_to_grow_data])
@@ -109,45 +115,19 @@ var padding = {top:20, right:40, bottom:0, left:0},
 
         container.on("click", spinWheel);
 
-        function spinWheel(d){
+        function spinWheel(d){ // this is the main functionality for the wheel - everything happens here
 
             container.on("click", null);
-            // var output = document. getElementById('selectedOptions');
-            // console.log(output.value + " hi");
-            // var spinOutputDay = document.getElementById('lastSpinDay');
-            //   console.log(spinOutputDay.value  + " hiday " + currdate.getDate());
-            // var spinOutputMonth = document.getElementById('lastSpinMonth');
-            //   console.log(spinOutputMonth.value + " himonth " + currdate.getMonth());
-            // var spinOutputYear = document.getElementById('lastSpinYear');
-            //   console.log(spinOutputYear.value + " hiyear " + currdate.getFullYear());
-            // var empty = false;
-            // if(output.value==''){
-            //   empty = true;
-            //   //d3.select("#option h1")
-            //           //.text("You have already spun once today!");
-            // }
-            //console.log(scope.ways2grows[0]);
-
-            /*if(spinOutputDay.value==currdate.getDate() &&
-            spinOutputMonth.value==currdate.getMonth()+1 &&
-            spinOutputYear.value==currdate.getFullYear()){
-              d3.select("#option h1")
-                      .text("You have already spun once today!");
-              return;
-            }*/
-
+            //pull data from the controller and update the variables I created with this data
             var scope = angular.element($("#Ways2growsListController")).scope();
             console.log(scope + " this is the scope");
-            // if(output.value!=''){
-            //   var myArray = output.value.split(",");
-            //   for(var i=0; i<myArray.length; i++) { myArray[i] = parseInt(myArray[i], 10); }
-            //   selectedOptions = myArray;
-            // }
+
             if(scope.ways2grows === undefined || scope.ways2grows === null || scope.ways2grows.length === 0){
               selectedOptions = [];
             }
-            else{
+            else{ // this checks to see if the user has already clicked the spin wheel function once in the same day
               selectedOptions = scope.ways2grows[0].selectedOptions;
+              // this assigns selected options to equal the options stored in the database
               if(scope.ways2grows[0].lastSpinDay===currdate.getDate() &&
               scope.ways2grows[0].lastSpinMonth==currdate.getMonth()+1 &&
               scope.ways2grows[0].lastSpinYear==currdate.getFullYear()){
@@ -157,21 +137,14 @@ var padding = {top:20, right:40, bottom:0, left:0},
               }
             }
             console.log( " sup",selectedOptions);
-            //console.log(spinOutput.value + " hi");
 
+            //this checks to see if the selected options array is full
+            //if it is, it empties it and the challenge restarts
             if(selectedOptions.length == ways_to_grow_data.length){
                 selectedOptions = [];
                 spinCounter = 0;
-                //d3.select("#option h1")
-                        //.text("All options have been selected!");
-                //return;
             }
-
-            /*if(lastSpinDateMonth == date.getMonth()+1 && lastSpinDateDay == date.getDate()){
-                d3.select("#option h1")
-                        .text("You have already spun once today!");
-                return;
-            }*/
+            //assign spincounter to equal the length of the selectied options list
             spinCounter = selectedOptions.length;
 
             if(spinCounter<=20)
@@ -181,10 +154,9 @@ var padding = {top:20, right:40, bottom:0, left:0},
 
             var rng  = Math.floor((Math.random() * 1440) + 360);
             rotation = (Math.round(rng / ps) * ps);
-            //console.log(rotation+"rotation");
-            //pickedOption = Math.round(ways_to_grow_data.length - (rotation % 360)/ps);
-            //pickedOption = pickedOption >= ways_to_grow_data.length ? (pickedOption % ways_to_grow_data.length) : pickedOption;
-
+            //this is the logic based on how many spins have been done
+            //if less than 20, the option that can be selected must be less than 21
+            //if 20 or more, the option must be more than 20
             if(spinCounter<20){
             pickedOption = Math.round(ways_to_grow_data.length - (rotation % 360)/ps);
             var oldPickedOption= pickedOption
@@ -204,11 +176,7 @@ var padding = {top:20, right:40, bottom:0, left:0},
             console.log(pickedOption+"afternormal");
             }
 
-            //pickedOption = Math.round(ways_to_grow_data.length - (rotation % 360)/ps);
-            //console.log(pickedOption + "before");
-            //pickedOption = ((pickedOption >= ways_to_grow_data.length &&spinCounter>20) || (pickedOption >= ways_to_grow_data.length-10 &&spinCounter<21)) ? (pickedOption % ways_to_grow_data.length) : pickedOption;
-            //console.log(pickedOption + "after");
-            //console.log(pickedOption);
+            //checks if the option is already in the selected options list
             if(selectedOptions.indexOf(pickedOption) !== -1){
                 d3.select(this).call(spinWheel);
                 //spinCounter++;
@@ -228,7 +196,7 @@ var padding = {top:20, right:40, bottom:0, left:0},
             //console.log(rotation+"newrotation");
 
             var dataPick = "";
-
+            //datapick the value associated with each number
             if(spinCounter >20)
                 dataPick = ways_to_grow_data_bold[pickedOption-20].option;
             else
@@ -239,13 +207,10 @@ var padding = {top:20, right:40, bottom:0, left:0},
                 .duration(3000)
                 .attrTween("transform", rotateWheel)
                 .each("end", function(){
-                    d3.select("#option h1")
+                    d3.select("#option h1")// display the information in the option div
                         .text(dataPick);
                     oldrotation = rotation;
-                    // output.value = selectedOptions;
-                    // spinOutputDay.value = lastSpinDateDay;
-                    // spinOutputMonth.value = lastSpinDateMonth;
-                    // spinOutputYear.value = lastSpinDateYear;
+                    //store the updated information in the database
                     scope.$apply(function(){
                       if(scope.ways2grows === null || scope.ways2grows === undefined || scope.ways2grows.length === 0){
                       scope.create(selectedOptions, lastSpinDateDay, lastSpinDateMonth, lastSpinDateYear);
@@ -261,30 +226,9 @@ var padding = {top:20, right:40, bottom:0, left:0},
 
                     container.on("click", spinWheel);
                 });
-                //output.focus();
-                //output.value = selectedOptions;
-              //  console.log(selectedOptions + " after spin");
-                //spinOutput.focus();
-                // output.value = selectedOptions;
-                // spinOutputDay.value = lastSpinDateDay;
-                // spinOutputMonth.value = lastSpinDateMonth;
-                // spinOutputYear.value = lastSpinDateYear;
-
-                //console.log(lastSpinDateMonth + " " + lastSpinDateDay + " after spin");
-              //  if(empty){
-              // setTimeout(function(){
-              //   scope.$apply(function(){
-              //     scope.create(selectedOptions, lastSpinDateDay, lastSpinDateMonth, lastSpinDateYear);
-              //   })}, 5000);
-            //  }
-              //else{
-                //setTimeout(function(){
-                //  scope.$apply(function(){
-              //      scope.update(selectedOptions, lastSpinDateDay, lastSpinDateMonth, lastSpinDateYear);
-                //  })}, 5000);
-            //  }
 
         }
+        //this is more d3 code for visualization and rotation - making the wheel rotate on spin
         svg.append("g")
             .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h/2)+padding.top) + ")")
             .append("path")
